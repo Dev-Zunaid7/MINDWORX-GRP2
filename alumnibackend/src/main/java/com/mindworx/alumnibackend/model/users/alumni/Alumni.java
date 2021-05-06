@@ -6,24 +6,37 @@ import java.util.List;
 
 import com.mindworx.alumnibackend.model.users.User;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Alumni extends User {
+	
+	public Alumni(Long sSID, String firstName, String lastName, LocalDate dateofBirth, String email, String psw) {
+		super(sSID, firstName, lastName, dateofBirth, email, psw);
+	}
 
-    public Alumni(Long sSID, String firstName, String lastName, LocalDate dateofBirth, String email, String psw) {
-        super(sSID, firstName, lastName, dateofBirth, email, psw);
-    }
+	public Alumni() {
+	}
 
-    //Business methods of an Alumni.
+	//Business methods of an Alumni.
 	public List<Alumni> getAlumniDetails(){
-		return List.of(
-			new Alumni(
+		Alumni alumni0 = new Alumni(
+			3421l, 
+			"Jack", 
+			"Wesly", 
+			LocalDate.of(1845, Month.FEBRUARY,6), 
+			"jWesly@Mindworx.co.za", 
+			"*********");
+
+			Alumni alumni1 = new Alumni(
 				3421l, 
-				"Jack", 
-				"Wesly", 
-				LocalDate.of(1845, Month.FEBRUARY,6), 
+				"ack", 
+				"ely", 
+				LocalDate.of(2345, Month.FEBRUARY,6), 
 				"jWesly@Mindworx.co.za", 
-				"*********")
-				
-			);
+				"*********");			
+			
+		return List.of(alumni1);
 	}
     
     
