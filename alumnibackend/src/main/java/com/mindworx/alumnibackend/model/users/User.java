@@ -1,4 +1,4 @@
-package com.mindworx.alumnibackend.model.user;
+package com.mindworx.alumnibackend.model.users;
 
 import java.time.LocalDate;
 
@@ -36,8 +36,8 @@ public abstract class User {
         this.dateofBirth = dateofBirth;
         this.email = email;
         this.psw = psw;
-        this.registerUser = registerUser;
-        this.loginUser = loginUser;
+      //  this.registerUser = registerUser;
+       // this.loginUser = loginUser;
     }
 
     public User(String firstName,
@@ -54,6 +54,16 @@ public abstract class User {
         this.psw = psw;
         this.registerUser = registerUser;
         this.loginUser = loginUser;
+    }
+
+    
+    public User(Long sSID, String firstName, String lastName, LocalDate dateofBirth, String email, String psw) {
+        this.sSID = sSID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateofBirth = dateofBirth;
+        this.email = email;
+        this.psw = psw;
     }
 
     //accessor methods
@@ -129,7 +139,7 @@ public abstract class User {
     @Override
     public String toString() {
         return "User [dateofBirth=" + dateofBirth + ", email=" + email + ", firstName=" + firstName + ", lastName="
-                + lastName + ", loginUser=" + loginUser + ", psw=" + psw + ", registerUser=" + registerUser + ", sSID="
+                + lastName + ", loginUser=" + loginUser.toString() + ", psw=" + psw + ", registerUser=" + registerUser.toString() + ", sSID="
                 + sSID + "]";
     }
 
