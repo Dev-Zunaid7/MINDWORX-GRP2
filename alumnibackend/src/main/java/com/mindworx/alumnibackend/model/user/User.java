@@ -1,4 +1,4 @@
-package com.mindworx.alumnibackend.model.user;
+package com.mindworx.alumnibackend.model.users;
 
 import java.time.LocalDate;
 
@@ -14,46 +14,41 @@ public abstract class User {
     private LocalDate dateofBirth;
     private String  email;
     private String  psw;
-    private RegistrationController registerUser = null;
-    private LoginController loginUser = null;
+    private RegistrationController registerUser;
+    private LoginController loginUser;
 
 //constructors to initialize the variables.
 
     public User() {
     }
 
-    public User(Long sSID,
-                String firstName, 
-                String lastName, 
-                LocalDate dateofBirth, 
-                String email,  
-                String psw,
-                RegistrationController registerUser, 
-                LoginController loginUser) {
+    // public User(Long sSID,
+    //             String firstName, 
+    //             String lastName, 
+    //             LocalDate dateofBirth, 
+    //             String email,  
+    //             String psw,
+    //             RegistrationController registerUser, 
+    //             LoginController loginUser) {
+    //     this.sSID = sSID;
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.dateofBirth = dateofBirth;
+    //     this.email = email;
+    //     this.psw = psw;
+    //   //  this.registerUser = registerUser;
+    //    // this.loginUser = loginUser;
+    // }
+
+
+    
+    public User(Long sSID, String firstName, String lastName, LocalDate dateofBirth, String email, String psw) {
         this.sSID = sSID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateofBirth = dateofBirth;
         this.email = email;
         this.psw = psw;
-        this.registerUser = registerUser;
-        this.loginUser = loginUser;
-    }
-
-    public User(String firstName,
-                String lastName, 
-                LocalDate dateofBirth, 
-                String email, 
-                String psw,
-                RegistrationController registerUser, 
-                LoginController loginUser) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateofBirth = dateofBirth;
-        this.email = email;
-        this.psw = psw;
-        this.registerUser = registerUser;
-        this.loginUser = loginUser;
     }
 
     //accessor methods
@@ -108,29 +103,32 @@ public abstract class User {
 //user functions. 
 
 //register or sign-up user.
-    public RegistrationController getRegisterUser() {
-        return registerUser;
-    }
+//     public RegistrationController getRegisterUser() {
+//         return registerUser;
+//     }
 
-    public void setRegisterUser(RegistrationController registerUser) {
-        this.registerUser = registerUser;
-    }
+//     public void setRegisterUser(RegistrationController registerUser) {
+//         this.registerUser = registerUser;
+//     }
 
-//login or sign-in user.
-    public LoginController getLoginUser() {
-        return loginUser;
-    }
+// //login or sign-in user.
+//     public LoginController getLoginUser() {
+//         return loginUser;
+//     }
 
-    public void setLoginUser(LoginController loginUser) {
-        this.loginUser = loginUser;
-    }
+//     public void setLoginUser(LoginController loginUser) {
+//         this.loginUser = loginUser;
+//     }
 
 //toString for displaying.
     @Override
     public String toString() {
-        return "User [dateofBirth=" + dateofBirth + ", email=" + email + ", firstName=" + firstName + ", lastName="
-                + lastName + ", loginUser=" + loginUser + ", psw=" + psw + ", registerUser=" + registerUser + ", sSID="
-                + sSID + "]";
+        return "[dateofBirth= " + dateofBirth + "\n" + 
+               "email= " + email + "\n" + 
+               "firstName= " + firstName + "\n" + 
+               "lastName= "+ lastName + "\n" +
+               "psw=" + psw + "\n" +
+               "sSID=" + sSID + "]";
     }
 
 
