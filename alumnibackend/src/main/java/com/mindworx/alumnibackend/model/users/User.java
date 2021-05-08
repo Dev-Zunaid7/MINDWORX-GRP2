@@ -1,12 +1,16 @@
+/**
+ * Class used to access/retrieve/store data from the DATABASE.
+ * used to connect to our database
+ */
+
 package com.mindworx.alumnibackend.model.users;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
 public abstract class User<T> {
 
-//These are attributes of a typical user.
+//These are attributes/data of a typical user.
     private Long    sSID;
     private String  firstName;
     private String  lastName;
@@ -14,8 +18,6 @@ public abstract class User<T> {
     private String  email;
     private String  psw;
 
-    // @JsonManagedReference
-    // protected List<T> listUsers;
 
 //constructors to initialize the variables.
     
@@ -81,20 +83,6 @@ public abstract class User<T> {
     public void setPsw(String psw) {
         this.psw = psw;
     }
-
-    //get all user details.
-    public abstract List<T> getUserDetails();
-
-    //get single user details.
-
-
-
-
-//user functions. 
-
-//register or sign-up user.
-
-// //login or sign-in user.
     
 
 }
