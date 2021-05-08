@@ -1,5 +1,5 @@
 /**
- * this class serves as one of the API layer handler of the Alumni Appilcation.
+ * Servlet implementation, this class serves as one of the API layer handler of Alumni Request&Response of the Alumni Appilcation.
  */
 package com.mindworx.alumnibackend.model.users.alumni;
 
@@ -28,7 +28,7 @@ public class AlumniController {
 
     //returns all the Alumni in the list.
     @GetMapping
-    public List<Alumni> getAlumniDetail(){   
+    protected List<Alumni> getAlumniDetail(){   
         //Redirect this to our View level architecture.
         return  alumniServices.getUserDetails();
     }

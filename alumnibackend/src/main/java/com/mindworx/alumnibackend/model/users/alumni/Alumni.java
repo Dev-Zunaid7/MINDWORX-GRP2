@@ -7,8 +7,6 @@ package com.mindworx.alumnibackend.model.users.alumni;
 import java.time.LocalDate;
 import com.mindworx.alumnibackend.model.users.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 
 public class Alumni extends User<Alumni> {
