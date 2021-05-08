@@ -27,6 +27,7 @@ public class AlumniController {
     //returns all the Alumni in the list.
     @GetMapping
     public List<Alumni> getAlumniDetail(){   
+        //Redirect this to our View level architecture.
         return  alumniServices.getUserDetails();
     }
 

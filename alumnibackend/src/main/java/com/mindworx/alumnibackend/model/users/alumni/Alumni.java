@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mindworx.alumnibackend.model.users.User;
 

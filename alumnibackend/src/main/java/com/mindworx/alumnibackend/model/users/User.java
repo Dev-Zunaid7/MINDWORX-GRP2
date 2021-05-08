@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class User<T> {
 
-//These are attributes of a typical user requested.
+//These are attributes of a typical user.
     private Long    sSID;
     private String  firstName;
     private String  lastName;
