@@ -25,7 +25,8 @@ public class AlumnibackendApplication {
             try (Connection connection = DriverManager.getConnection(connectionUrl)) {
                 
                 // READ demo
-                System.out.print("Reading data from table, press ENTER to continue...");
+                System.out.print("Reading data from table, press ENTER to continue...\n");
+                
                 String sql = "SELECT UserID, UserName, UserEmail, UserSurname, UserDOB FROM Mindworx_Users;";
                 try (Statement statement = connection.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql)) {
