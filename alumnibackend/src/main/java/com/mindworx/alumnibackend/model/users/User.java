@@ -34,7 +34,7 @@ public abstract class User<T> {
          this.psw = psw;
      }
 
-    //accessor methods
+    //accessor methods and store each into databae/retrieve each from database
     
     public String getFirstName() {
         return firstName;
