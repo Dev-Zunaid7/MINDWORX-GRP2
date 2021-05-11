@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    padding: 0;
+    margin: 0;
+}
+#form-title{
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #000;
+}
+#form{
+    height: 18em;
+    text-align: center;
+    background-color: #808080;
+    padding: 10px 12px;
+}
+.field{
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 0;
+    text-align: center;
+}
+.submit{
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+    border-radius: 12px;
+    color: #ffffff;
+    background-color: #FF8C00;
+    border: 0;
+}
+#wlcm{
+    text-align: center;
+}
+
+.containerdiv { float: below; position: relative; } 
+.cornerimage { position: absolute; top: 0; right: 0; } 
+</style>
+
+<div class="containerdiv">
+    <img border="0" src="background-image:url('pic.jpg')" alt=""">
+    
+<div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	 
+</head>
+<body>
+
+    <div id="all">
+	
+        <h1 id="wlcm"></h1>
+        <div action="#" id="form">
+            <h1 id="form-title">Sign Up</h1>
+            <input id="name" class="field" type="text" placeholder="Name">
+             <input id="surname" class="field" type="text" placeholder="Surname">
+            
+            <input id="email" class="field" type="email" placeholder="Email">
+            <input id="pw" class="field" type="password" placeholder="Password">
+            
+            <input id="pw" class="field" type="Re-type password" placeholder="Re-type Password">
+            
+            <input id="submit"
+             class="submit" type="submit" value="Submit">
+        </div>
+    </div>
+	
+  
+    <script>
+        $(document).ready(function () {
+            $("#submit").on("click", function () {
+                $("#form").fadeOut();
+                $("#wlcm").html("Hello " + $("#name").val() + "<br> Thanks for signing up!");
+            });
+        });
+    </script>
+	<div style="background-image:url('pic.jpg');">
+</body>
+</html>
