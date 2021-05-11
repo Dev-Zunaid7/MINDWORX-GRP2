@@ -1,0 +1,115 @@
+<!DOCTYPE html>    
+<html>    
+<head>   
+
+
+    <title>Login page</title>    
+    <link rel="stylesheet" type="text/css" href="css/style.css">  
+<style>
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#FF8C00;  
+    font-family: 'Arial';  
+}  
+.login{  
+        width: 382px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 60px;  
+        background: orange;  
+        border-radius: 15px ;  
+          
+} 
+
+
+h2{  
+    text-align: center;  
+    color: #000000;  
+    padding: 20px;  
+}  
+label{  
+    color: #000000;  
+    font-size: 17px;  
+}  
+#Uname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+#Pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+#log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: #08ffd1;  
+  
+  
+}  
+span{  
+    color: #000000;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+    background-color: orange;
+}  
+
+mark{
+background-color:gray;
+}
+
+</style> 	
+</head>  
+ 
+<body>
+<div style="background-image:url('936448c0-6c83-484a-9d10-227ef34648ae.jpg');">
+  
+    <h2 style="color:#08ffd1; font-size:25px;">Login Page</h2><br>    
+    <div class="login">    
+    <form id="login" method="get" action="login.php"> 
+	
+<center>
+
+<img src="myImage.jpg" alt="centered image" height="100" width="350">
+</center>
+	    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    
+    </div>
+	
+        <label><b>User Name     
+        </b>    
+        </label>    
+        <input type="text" name="Uname" id="Uname" placeholder="Username">    
+        <br><br>    
+        <label><b>Password     
+        </b>    
+        </label>    
+        <input type="Password" name="Pass" id="Pass" placeholder="Password">    
+        <br><br>    
+        <input type="button" name="log" id="log" value="Log In Here">       
+        <br><br>    
+        <input type="checkbox" id="check">    
+        <span>Remember me</span>    
+        <br><br>    
+        Forgot <a href="#">Password</a>   
+
+    </form>   
+ 
+</div>    
+</body>    
+</html>
