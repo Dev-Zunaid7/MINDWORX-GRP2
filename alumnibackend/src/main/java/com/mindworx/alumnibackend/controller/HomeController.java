@@ -1,17 +1,20 @@
 package com.mindworx.alumnibackend.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+
+@Controller
+@RequestMapping(path = " ")
 public class HomeController {
     
-    @GetMapping("/")
+    @GetMapping("")
     public String home(){
-        return ("<h1>Welcome</h1>");
+        return "index";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/alumni")
     public String user(){
         return ("<h1>Welcome Alumni</h1>");
     }
@@ -24,6 +27,16 @@ public class HomeController {
     @GetMapping("/coach")
     public String coach(){
         return ("<h1>Welcome Coach</h1>");
+    }
+
+    @GetMapping("/sign-up")
+    public String register(){
+        return "Registration";
+    }
+
+    @GetMapping("/sign-in")
+    public String login(){
+        return "Signin";
     }
 
  

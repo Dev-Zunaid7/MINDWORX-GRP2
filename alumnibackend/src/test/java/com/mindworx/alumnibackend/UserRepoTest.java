@@ -36,11 +36,13 @@ public class UserRepoTest {
         alumni.setFirstName("Dollie");
         alumni.setIntials("KL");
         alumni.setLastName("Lane");
+        alumni.setUserName("Dolliee");
         alumni.setGender('F');
         alumni.setDateofBirth(LocalDate.of(1505, Month.JUNE, 02));
         alumni.setPsw("ffack");
         alumni.setEmail("Elo@Mnd.co.za");
-        alumni.setTypeofuser("Alumni");
+        alumni.setTypeofuser("alumni");
+        alumni.setActive(true);
 
         //add inserts to data
        User savedUser = repo.save(alumni);

@@ -18,9 +18,10 @@ import com.mindworx.alumnibackend.model.users.UserServices;
 public class AlumniController {
     
     //access to alumni serivces from client/alumni side. 
+    @Autowired
     private final UserServices alumniServices;
 
-    @Autowired
+   
     public AlumniController(UserServices alumniServices) {
         this.alumniServices = alumniServices;
     }
