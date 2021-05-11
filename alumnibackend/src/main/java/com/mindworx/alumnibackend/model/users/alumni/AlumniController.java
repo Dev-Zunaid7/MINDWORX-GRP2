@@ -18,10 +18,10 @@ import com.mindworx.alumnibackend.model.users.UserServices;
 public class AlumniController {
     
     //access to alumni serivces from client/alumni side. 
-    private final UserServices<AlumniServices> alumniServices;
+    private final UserServices alumniServices;
 
     @Autowired
-    public AlumniController(UserServices<AlumniServices> alumniServices) {
+    public AlumniController(UserServices alumniServices) {
         this.alumniServices = alumniServices;
     }
 
@@ -30,7 +30,7 @@ public class AlumniController {
     @GetMapping
     protected List<Alumni> getAlumniDetail(){   
         //Redirect this to our View level architecture.
-        return  alumniServices.getUserDetails();
+        return  null;
     }
 
     /**

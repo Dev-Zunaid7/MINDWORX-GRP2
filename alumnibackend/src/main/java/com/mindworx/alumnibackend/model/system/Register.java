@@ -10,13 +10,13 @@ import java.util.List;
 
 import com.mindworx.alumnibackend.model.users.User;
 
-public class Register<T> {
+public class Register {
     
     //attributes to register user
-    private User<T> userProfile;
-    T   usertype;
+    private User userProfile;
+    private String   usertype;
 
-    public Register(User<T> userProfile) {
+    public Register(User userProfile) {
         this.userProfile = userProfile;
     }
     
@@ -29,7 +29,7 @@ public class Register<T> {
      * @param int for taking the choice Catelog option.
      * @return type of user(ALUMNI - COACH - ADMINSTRATOR)
      */
-    public T registerUserType(int choice){
+    public String registerUserType(int choice){
 
         return null;
 
@@ -38,14 +38,14 @@ public class Register<T> {
     /**
      * This method serves to register a user.
      */
-    public void registerUser(List<T> userlist){
+    public void registerUser(List userlist){
         
-        userProfile.setsSID((Long)userlist.get(1));
-        userProfile.setFirstName(userlist.get(2).toString());
-        userProfile.setLastName(userlist.get(3).toString());
-        userProfile.setDateofBirth((LocalDate)userlist.get(4));
-        userProfile.setEmail(userlist.get(5).toString());
-        userProfile.setPsw(userlist.get(6).toString());
+        // userProfile.setsSID((Long)userlist.get(1));
+        // userProfile.setFirstName(userlist.get(2).toString());
+        // userProfile.setLastName(userlist.get(3).toString());
+        // userProfile.setDateofBirth((LocalDate)userlist.get(4));
+        // userProfile.setEmail(userlist.get(5).toString());
+        // userProfile.setPsw(userlist.get(6).toString());
         
     }
 

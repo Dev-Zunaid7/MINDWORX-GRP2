@@ -9,18 +9,8 @@ import com.mindworx.alumnibackend.model.users.User;
 
 
 
-public class Alumni extends User<Alumni> {
+public class Alumni extends User {
 	
-
-	
-	public Alumni() {
-	}
-
-
-	public Alumni(Long sSID, String firstName, String lastName, LocalDate dateofBirth, String email, String psw) {
-		super(sSID, firstName, lastName, dateofBirth, email, psw);
-		//this.listUsers = new ArrayList<Alumni>();
-	}
 
 
 
