@@ -5,3 +5,4 @@ This will be the folder where our UI team will create:
  - CSS/
  - JAVASCRIP 
 files.
+

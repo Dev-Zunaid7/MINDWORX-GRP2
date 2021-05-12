@@ -21,16 +21,35 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+	<dependency>
+		<groupId>org.webjars</groupId>
+		<artifactId>bootstrap</artifactId>
+		<version>5.0.0</version>
+	</dependency>
+
+	<dependency>
+
+		<groupId>org.webjars</groupId>
+		<artifactId>webjars-locator-core</artifactId>
+		
+	</dependency>
 
 
-		<dependency>
+
+	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
 
-	
+	<!-- https://mvnrepository.com/artifact/org.webjars.bowergithub.jquery/jquery-dist -->
+	<dependency>
+		<groupId>org.webjars.bowergithub.jquery</groupId>
+		<artifactId>jquery-dist</artifactId>
+		<version>3.6.0</version>
+	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
