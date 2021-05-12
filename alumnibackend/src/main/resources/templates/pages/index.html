@@ -22,6 +22,7 @@
             user-select: none;
         }
         
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -47,7 +48,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/aboutus.html">About</a>
@@ -63,9 +64,9 @@
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="registration.html">Register</a></li>
+                                <a class="nav-link" th:href="@{/sign-up}">Register</a></li>
                             <li class="nav-item">
-                                <a class="nav-link" href="signin.html">Login</a></li>
+                                <a class="nav-link" th:href="@{/sign-in}">Login</a></li>
                         </ul>
                     </div>
                     <!-- .header-bar-menu -->
@@ -91,7 +92,7 @@
 
                             <h1>Welcome fellow Alum</h1>
                             <p> Mindworx Academy welcomes you. Time to Plug in. Prosper.</p>
-                            <p><a class="btn btn-lg btn-primary" href="/pages/registration.html">Sign up</a></p>
+                            <p><a class="btn btn-lg btn-primary" th:href="@{/pages/registration.html}">Sign up</a></p>
                         </div>
                     </div>
                 </div>

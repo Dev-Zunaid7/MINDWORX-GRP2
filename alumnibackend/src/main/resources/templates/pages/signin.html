@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" th:href="@{styles/css/font-awesome.min.css}">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -31,47 +32,46 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/signin.css" rel="stylesheet">
+
+    <link th:href="@{/styles/css/signin.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css">
 </head>
 
 <body class="text-center">
 
-    <main class="form-signin">
-        <form>
-            <div style="background-image:url('/static/img/bannerImg.jpg');">
-
-                <h2 style="color:#56575b; font-size:25px;">Login </h2><br>
-                <div class="login">
-                    <form id="login" method="get" action="login.php">
-
-                        <div>
-
-                            <img class="w-100 " style="margin-bottom:5% ;" src="/static/img/myImage.jpg" alt="centered image" height="135">
+    <div class="container px-4 py-5 mx-auto">
+        <div class="card card0">
+            <div class="d-flex flex-lg-row flex-column-reverse">
+                <div class="card card1">
+                    <div class="row justify-content-center my-auto">
+                        <div class="col-md-8 col-10 my-5">
+                            <div class="row justify-content-center px-3 mb-4">
+                                <a th:href="@{/}"><img id="logo" src="/img/theXlogo.jpg"></a>
+                            </div>
+                            <h3 class="mb-5 text-center heading">Alumni App</h3>
+                            <h6 class="msg-info">Please login to your account</h6>
+                            <div class="form-group"> <label class="form-control-label text-muted">Username</label> <input type="text" id="email" name="email" placeholder="username/email" class="form-control"> </div>
+                            <div class="form-group"> <label class="form-control-label text-muted">Password</label> <input type="password" id="psw" name="psw" placeholder="password" class="form-control"> </div>
+                            <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Login to Alumni App</button> </div>
+                            <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot Password?</small></a> </div>
                         </div>
-                        <div class="form-floating">
-                            <input type="user" class="form-control" id="floatingInput" placeholder="Username">
-                            <label for="floatingInput">Username</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="checkbox mb-3">
-                            <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-                        </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                    </div>
+                    <div class="bottom text-center mb-5">
+                        <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create new</button></p>
+                    </div>
+                </div>
+                <div class="card card2">
+                    <div class="my-auto mx-md-5 px-md-5 right">
+                        <h3 class="text-white">We are more than just an Academy</h3> <small class="text-white">We’re a people-focussed niche consultancy. Whether it’s business consulting, empowerment advisory or resourcing and training your teams, we will offer you a bespoke solution.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
 
-                    </form>
-
-                    <!-- FOOTER -->
-                    <footer class="container">
-                        <p class="mt-5 mb-3 text-muted">&copy; 2021–2022 Mindworx, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-                    </footer>
-
-                    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
-
+    <script src="/webjars/jquery/dist/jquery.min.js">
+    </script>
 
 </body>
 
