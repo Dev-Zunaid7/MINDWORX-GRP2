@@ -11,7 +11,7 @@ public class HomeController {
     
     @GetMapping("")
     public String home(){
-        return "index";
+        return "pages/index";
     }
 
     @GetMapping("/alumni")
@@ -31,12 +31,12 @@ public class HomeController {
 
     @GetMapping("/sign-up")
     public String register(){
-        return "Registration";
+        return "pages/registration";
     }
 
     @GetMapping("/sign-in")
     public String login(){
-        return "Signin";
+        return "pages/signin";
     }
 
  
