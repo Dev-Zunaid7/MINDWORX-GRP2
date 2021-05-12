@@ -39,5 +39,12 @@ public class HomeController {
         return "pages/signin";
     }
 
+
+    @GetMapping("/forgot-password")
+    public String passwordrest(){
+        return "pages/resetpassword";
+    }
+
+    
  
 }

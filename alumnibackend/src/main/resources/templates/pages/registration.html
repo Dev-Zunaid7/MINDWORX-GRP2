@@ -11,7 +11,7 @@
     <link type="text/css" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body style="background: #84889c;">
+<body>
 
     <div style="background-image:url('/static/img/mindx.jpg');">
         <div class="wrapper">
@@ -23,7 +23,6 @@
                 <form>
 
                     <div>
-
                         <img src="/img/myImage.jpg" alt="centered image" height="100" width="350">
                     </div>
                     <div class="form_wrap">
@@ -68,6 +67,7 @@
                         </div>
                         <div class="input_wrap">
                             <input type="submit" value="Register Now" class="submit_btn">
+                            <a th:href="@{/sign-in}">.</a>
                         </div>
                     </div>
                 </form>
