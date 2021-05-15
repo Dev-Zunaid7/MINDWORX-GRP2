@@ -7,9 +7,12 @@ package com.mindworx.alumnibackend.model.users;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 
-
-public interface UserRepo extends JpaRepository<User, Integer> {
-    Optional<User> findByUserName(String userName);
+@Repository
+@Transactional(readOnly = true)
+public interface UserRepo extends JpaRepository<AUserDetail, Integer> {
+    Optional<AUserDetail> findByUserName(String userName);
 }

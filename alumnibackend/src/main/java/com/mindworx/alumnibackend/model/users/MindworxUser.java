@@ -7,52 +7,97 @@ package com.mindworx.alumnibackend.model.users;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-@Entity
-@Table(name = "mindworxUser")
-public class User {
+
+@Entity(name = "MindworxUser")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class MindworxUser {
 
 //These are attributes/data of a typical user.
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+        strategy = GenerationType.IDENTITY
+
+    )
+    @Column(
+        name = "id",
+        updatable = false
+    )
     private int sSID;
 
-   // @Column(nullable = false)
+    @Column(
+        name = "Name",
+        nullable = false
+    )
     private String  firstName;
 
-   // @Column(nullable = false)
+    @Column(
+        name = "Surname",
+        nullable = false
+    )
     private String  lastName;
 
+    @Column(
+        name = "Username",
+        nullable = false
+    )
     private String userName;
 
+    @Column(
+        name = "Initials",
+        columnDefinition = "CHAR",
+        length = 5,
+        nullable = false
+
+    )
     private String initials;
 
-   // @Column(nullable = false)
+   @Column(
+        name = "DOB",
+        columnDefinition = "DATE",
+        nullable = false
+   )
     private LocalDate dateofBirth;
+    
+    @Column(
+        name = "Gender",
+        nullable = true
+    )
+    private boolean gender;
 
-    private char gender;
-
- //   @Column(nullable = false, unique = true, length = 255)
+    @Column(
+        name = "Email",
+        nullable = false,
+        unique = true, 
+        length = 255
+    )
     private String  email;
 
- //   @Column(nullable = false, length = 30)
+    @Column(
+        name = "Password",
+        nullable = false, 
+        length = 255
+    )
     private String  password;
 
- //   @Column(nullable = false, length = 50)
+
     private String typeofuser;
+
 
     private boolean active;
 
 
 //constructors to initialize the variables.
     
-    public User(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
-                char gender, String email, String password, String typeofuser, boolean active) {
+    public MindworxUser(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
+                boolean gender, String email, String password, String typeofuser, boolean active) {
         this.sSID = sSID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -67,7 +112,7 @@ public class User {
     }
 
     
-    public User() {
+    public MindworxUser() {
     }
 
     //accessor methods and store each into databae/retrieve each from database
@@ -98,11 +143,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public char getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
