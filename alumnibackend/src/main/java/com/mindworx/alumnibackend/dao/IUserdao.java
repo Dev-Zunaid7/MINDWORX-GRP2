@@ -1,7 +1,5 @@
 package com.mindworx.alumnibackend.dao;
 
-import java.util.Collection;
-
 
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
