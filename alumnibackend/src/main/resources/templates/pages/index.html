@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link type="text/css" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="icon" type="image/png" th:href="@{/img/theXlogo.jpg}" />
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -22,7 +22,6 @@
             user-select: none;
         }
         
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -38,6 +37,12 @@
 
 <body>
 
+    <div class="preloader-wrap">
+        <div class="bounceball"></div>
+        <div class="preloader-text">Alumni <span style="color:#f37521;font-weight:bold">App</span></div>
+    </div>
+
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -48,25 +53,22 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/aboutus.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="/webinars.html" tabindex="-1" aria-disabled="true">Webinars</a>
+                            <a class="nav-link" href="/faq.html">FAQ</a>
                         </li>
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success" type="submit">SEARCH</button>
                     </form>
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/sign-up}">Register</a></li>
+                                <a class="nav-link" th:href="@{/sign-up}">REGISTER</a></li>
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/sign-in}">Login</a></li>
+                                <a class="nav-link" th:href="@{/sign-in}">LOGIN</a></li>
                         </ul>
                     </div>
                     <!-- .header-bar-menu -->
@@ -221,10 +223,11 @@
         </footer>
     </main>
 
-
+    ]
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
-
+    <script th:src="@{/styles/js/preloader.js}"></script>
 </body>
 
 </html>

@@ -1,6 +1,11 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('/styles/fonts/montserrat/Montserrat-Light.ttf');
+}
+
 
 /* Padding below the footer and lighter body text */
 
@@ -8,6 +13,7 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     color: #5a5a5a;
+    font-family: Montserrat-Light, sans-serif;
 }
 
 

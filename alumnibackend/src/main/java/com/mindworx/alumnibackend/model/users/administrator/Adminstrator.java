@@ -5,28 +5,28 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+
 
 import com.mindworx.alumnibackend.model.users.MindworxUser;
+import com.mindworx.alumnibackend.model.users.Usertype;
 
 @Entity(name = "Adminstrator")
 public class Adminstrator extends MindworxUser {
 
     //Known fields for an Administrator
-
-    private Long    adminCode;
     
-
+    @Column(
+        name = "Admin Dept. "
+    )
     private String  adminDept;
 
 
     //Constructors to initialize the fields
     public Adminstrator(int sSID, String firstName, String lastName, String userName, String initials,
-            LocalDate dateofBirth, boolean gender, String email, String password, String typeofuser, boolean active,
-            Long adminCode, String adminDept) {
+            LocalDate dateofBirth, boolean gender, String email, String password, Usertype typeofuser, boolean active,
+             String adminDept) {
         super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, typeofuser, active);
    
-        this.adminCode = adminCode;
         this.adminDept = adminDept;
     }
 
@@ -35,14 +35,6 @@ public class Adminstrator extends MindworxUser {
 
 
     //Accessor methods
-
-    public Long getAdminCode() {
-        return adminCode;
-    }
-
-    public void setAdminCode(Long adminCode) {
-        this.adminCode = adminCode;
-    }
 
     public String getAdminDept() {
         return adminDept;
@@ -55,7 +47,7 @@ public class Adminstrator extends MindworxUser {
     //string for admin details
     @Override
     public String toString() {
-        return "Adminstrator [adminCode=" + adminCode + ", adminDept=" + adminDept + "]";
+        return "Adminstrator [ adminDept=" + adminDept + "]";
     }
 
     

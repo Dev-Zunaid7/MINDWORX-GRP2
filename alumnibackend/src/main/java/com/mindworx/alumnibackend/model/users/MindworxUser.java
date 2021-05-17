@@ -12,13 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 
-@Entity(name = "MindworxUser")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class MindworxUser {
+
+@Entity(name = "Mindworxuser")
+public  class MindworxUser {
 
 //These are attributes/data of a typical user.
     @Id
@@ -87,8 +85,12 @@ public class MindworxUser {
     )
     private String  password;
 
-
-    private String typeofuser;
+    @Column(
+        name = "User Type",
+        nullable = false
+    )
+    
+    private Usertype typeofuser;
 
 
     private boolean active;
@@ -97,7 +99,7 @@ public class MindworxUser {
 //constructors to initialize the variables.
     
     public MindworxUser(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
-                boolean gender, String email, String password, String typeofuser, boolean active) {
+                boolean gender, String email, String password, Usertype typeofuser, boolean active) {
         this.sSID = sSID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -194,11 +196,11 @@ public class MindworxUser {
     }
 
 
-    public String getTypeofuser() {
+    public Usertype getTypeofuser() {
         return typeofuser;
     }
 
-    public void setTypeofuser(String typeofuser) {
+    public void setTypeofuser(Usertype typeofuser) {
         this.typeofuser = typeofuser;
     }
     

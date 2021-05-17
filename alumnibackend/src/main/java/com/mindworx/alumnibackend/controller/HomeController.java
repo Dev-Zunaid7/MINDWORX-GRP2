@@ -31,12 +31,12 @@ public class HomeController {
 
     @GetMapping("/sign-up")
     public String register(){
-        return "pages/registration";
+        return "pages/register";
     }
 
     @GetMapping("/sign-in")
     public String login(){
-        return "pages/signin";
+        return "pages/sign";
     }
 
 
