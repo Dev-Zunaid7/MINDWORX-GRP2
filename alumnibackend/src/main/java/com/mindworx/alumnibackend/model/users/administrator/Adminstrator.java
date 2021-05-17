@@ -6,26 +6,26 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mindworx.alumnibackend.model.users.Mindworxuser;
+import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
-import com.mindworx.alumnibackend.model.users.MindworxUser;
-import com.mindworx.alumnibackend.model.users.Usertype;
-
-@Entity(name = "Adminstrator")
-public class Adminstrator extends MindworxUser {
+//@Entity(name = "Adminstrator")
+public class Adminstrator extends Mindworxuser {
 
     //Known fields for an Administrator
     
-    @Column(
-        name = "Admin Dept. "
-    )
+    // @Column(
+    //     name = "Admin Dept. "
+    // )
     private String  adminDept;
 
 
     //Constructors to initialize the fields
-    public Adminstrator(int sSID, String firstName, String lastName, String userName, String initials,
-            LocalDate dateofBirth, boolean gender, String email, String password, Usertype typeofuser, boolean active,
-             String adminDept) {
-        super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, typeofuser, active);
+    public Adminstrator(@JsonProperty("sSID")int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
+                       @JsonProperty("dateofBirth") LocalDate dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("active") boolean active,
+                       @JsonProperty("adminDept")  String adminDept) {
+        super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ADMIN, active);
    
         this.adminDept = adminDept;
     }

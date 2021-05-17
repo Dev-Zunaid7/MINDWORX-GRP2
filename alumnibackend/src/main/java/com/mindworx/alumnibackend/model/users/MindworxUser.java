@@ -13,84 +13,86 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@Entity(name = "Mindworxuser")
-public  class MindworxUser {
+
+// @Entity(name = "Mindworxuser")
+public class Mindworxuser{
 
 //These are attributes/data of a typical user.
-    @Id
-    @GeneratedValue(
-        strategy = GenerationType.IDENTITY
+    // @Id
+    // @GeneratedValue(
+    //     strategy = GenerationType.IDENTITY
 
-    )
-    @Column(
-        name = "id",
-        updatable = false
-    )
+    // )
+    // @Column(
+    //     name = "id",
+    //     updatable = false
+    // )
     private int sSID;
 
-    @Column(
-        name = "Name",
-        nullable = false
-    )
+    // @Column(
+    //     name = "Name",
+    //     nullable = false
+    // )
     private String  firstName;
 
-    @Column(
-        name = "Surname",
-        nullable = false
-    )
+    // @Column(
+    //     name = "Surname",
+    //     nullable = false
+    // )
     private String  lastName;
 
-    @Column(
-        name = "Username",
-        nullable = false
-    )
+    // @Column(
+    //     name = "Username",
+    //     nullable = false
+    // )
     private String userName;
 
-    @Column(
-        name = "Initials",
-        columnDefinition = "CHAR",
-        length = 5,
-        nullable = false
+    // @Column(
+    //     name = "Initials",
+    //     columnDefinition = "CHAR",
+    //     length = 5,
+    //     nullable = false
 
-    )
+    // )
     private String initials;
 
-   @Column(
-        name = "DOB",
-        columnDefinition = "DATE",
-        nullable = false
-   )
+//    @Column(
+//         name = "DOB",
+//         columnDefinition = "DATE",
+//         nullable = false
+//    )
     private LocalDate dateofBirth;
     
-    @Column(
-        name = "Gender",
-        nullable = true
-    )
+    // @Column(
+    //     name = "Gender",
+    //     nullable = true
+    // )
     private boolean gender;
 
-    @Column(
-        name = "Email",
-        nullable = false,
-        unique = true, 
-        length = 255
-    )
+    // @Column(
+    //     name = "Email",
+    //     nullable = false,
+    //     unique = true, 
+    //     length = 255
+    // )
     private String  email;
 
-    @Column(
-        name = "Password",
-        nullable = false, 
-        length = 255
-    )
+    // @Column(
+    //     name = "Password",
+    //     nullable = false, 
+    //     length = 255
+    // )
     private String  password;
 
-    @Column(
-        name = "User Type",
-        nullable = false
-    )
+    // @Column(
+    //     name = "User Type",
+    //     nullable = false
+    // )
     
-    private Usertype typeofuser;
+    private MindworxuserType typeofuser;
 
 
     private boolean active;
@@ -98,8 +100,8 @@ public  class MindworxUser {
 
 //constructors to initialize the variables.
     
-    public MindworxUser(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
-                boolean gender, String email, String password, Usertype typeofuser, boolean active) {
+    public Mindworxuser(@JsonProperty("sSID") int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") LocalDate dateofBirth,
+                       @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser,@JsonProperty("active") boolean active) {
         this.sSID = sSID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -114,7 +116,7 @@ public  class MindworxUser {
     }
 
     
-    public MindworxUser() {
+    public Mindworxuser() {
     }
 
     //accessor methods and store each into databae/retrieve each from database
@@ -196,11 +198,11 @@ public  class MindworxUser {
     }
 
 
-    public Usertype getTypeofuser() {
+    public  MindworxuserType getTypeofuser() {
         return typeofuser;
     }
 
-    public void setTypeofuser(Usertype typeofuser) {
+    public void setTypeofuser( MindworxuserType typeofuser) {
         this.typeofuser = typeofuser;
     }
     

@@ -6,39 +6,39 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mindworx.alumnibackend.model.users.Mindworxuser;
+import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
-import com.mindworx.alumnibackend.model.users.MindworxUser;
-import com.mindworx.alumnibackend.model.users.Usertype;
-
-@Entity(name = "Coach")
-public class Coach extends MindworxUser {
+//@Entity(name = "Coach")
+public class Coach extends Mindworxuser {
 
 
     //Known fields of a coach user
-     @Column(
-         name = "Coach Qualif.",
-         nullable = false
-     )
+    //  @Column(
+    //      name = "Coach Qualif.",
+    //      nullable = false
+    //  )
     private String    coachQual;
 
-     @Column(
-         name = "Coach Profes. ",
-         nullable = false
-     )
+    //  @Column(
+    //      name = "Coach Profes. ",
+    //      nullable = false
+    //  )
     private String    coachProf;
 
-     @Column(
-         name = "Coach Organi.",
-         nullable = true
-     )
+    //  @Column(
+    //      name = "Coach Organi.",
+    //      nullable = true
+    //  )
     private String    coachOrg;
 
 
     //Constructor to initialize the fields
-    public Coach(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
-            boolean gender, String email, String password, Usertype typeofuser, boolean active,
-            String coachQual, String coachProf, String coachOrg) {
-        super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, typeofuser, active);
+    public Coach(@JsonProperty("sSID") int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") LocalDate dateofBirth,
+            @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("active") boolean active,
+            @JsonProperty("coachQual") String coachQual,@JsonProperty("coachProf") String coachProf,@JsonProperty("coachOrg") String coachOrg) {
+        super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.COACH, active);
 
         this.coachQual = coachQual;
         this.coachProf = coachProf;

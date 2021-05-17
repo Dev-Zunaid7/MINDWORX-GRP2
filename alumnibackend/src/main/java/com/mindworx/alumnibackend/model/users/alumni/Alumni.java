@@ -9,37 +9,38 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import com.mindworx.alumnibackend.model.users.MindworxUser;
-import com.mindworx.alumnibackend.model.users.Usertype;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mindworx.alumnibackend.model.users.Mindworxuser;
+import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
 
-@Entity(name = "Alumni")
-public class Alumni extends MindworxUser {
+//@Entity(name = "Alumni")
+public class Alumni extends Mindworxuser {
 	
 	//Known fields for an Alumni
 
-	 @Column(
-         name = "Alum Interest",
-         nullable = true
-    )
+	//  @Column(
+    //      name = "Alum Interest",
+    //      nullable = true
+    // )
 	private String	alumInterests;
 
-	 @Column(
-         name = "Alum Employed",
-         nullable = false
-     )
+	//  @Column(
+    //      name = "Alum Employed",
+    //      nullable = false
+    //  )
 	private boolean	alumEmployed;
 
-     @Column(
-         name = "Alum Workplace",
-         nullable = true
-     )
+    //  @Column(
+    //      name = "Alum Workplace",
+    //      nullable = true
+    //  )
 	private String	alumWorkplace;
 
-	 @Column(
-         name = "Alum Address",
-         nullable = true
-     )
+	//  @Column(
+    //      name = "Alum Address",
+    //      nullable = true
+    //  )
 	private String	alumAddress;
 
 	
@@ -48,10 +49,10 @@ public class Alumni extends MindworxUser {
 	}
 
 
-	public Alumni(int sSID, String firstName, String lastName, String userName, String initials, LocalDate dateofBirth,
-			boolean gender, String email, String password, Usertype typeofuser, boolean active,
-			String alumInterests, boolean alumEmployed, String alumWorkplace, String alumAddress) {
-		super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, typeofuser, active);
+	public Alumni(@JsonProperty("sSID")int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
+				@JsonProperty("dateofBirth") LocalDate dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("active") boolean active,
+				@JsonProperty("alumnInterests") String alumInterests,@JsonProperty("alumEmplyed") boolean alumEmployed,@JsonProperty("alumWorkpalce") String alumWorkplace,@JsonProperty("alumAddress") String alumAddress) {
+		super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ALUMNI, active);
 	
 		this.alumInterests = alumInterests;
 		this.alumEmployed = alumEmployed;
