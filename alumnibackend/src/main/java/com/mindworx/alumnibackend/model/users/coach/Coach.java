@@ -5,32 +5,35 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
-//@Entity(name = "Coach")
+
+@Entity
+@Table(name = "app_coach")
 public class Coach extends Mindworxuser {
 
 
     //Known fields of a coach user
-    //  @Column(
-    //      name = "Coach Qualif.",
-    //      nullable = false
-    //  )
+     @Column(
+         name = "Coach_Qualif",
+         nullable = false
+     )
     private String    coachQual;
 
-    //  @Column(
-    //      name = "Coach Profes. ",
-    //      nullable = false
-    //  )
+     @Column(
+         name = "Coach_Profes",
+         nullable = false
+     )
     private String    coachProf;
 
-    //  @Column(
-    //      name = "Coach Organi.",
-    //      nullable = true
-    //  )
+     @Column(
+         name = "Coach_Organi",
+         nullable = true
+     )
     private String    coachOrg;
 
 

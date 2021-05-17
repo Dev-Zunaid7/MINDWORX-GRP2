@@ -2,6 +2,7 @@ package com.mindworx.alumnibackend.controller;
 
 
 import java.util.Collection;
+import java.util.Optional;
 
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 import com.mindworx.alumnibackend.service.UserService;
@@ -35,7 +36,7 @@ public class HomeController {
 
     //testing getUser by id
     @GetMapping(value = "/{id}")
-    public Mindworxuser getMindworxUserById(@PathVariable int id){
+    public Optional<Mindworxuser> getMindworxUserById(@PathVariable int id){
         //check if the id exist first
         return userServices.getMindworxUserById(id);
     }

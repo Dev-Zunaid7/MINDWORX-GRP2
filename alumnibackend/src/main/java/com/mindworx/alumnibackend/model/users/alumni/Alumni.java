@@ -8,39 +8,41 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
 
-//@Entity(name = "Alumni")
+@Entity
+@Table(name = "app_alum")
 public class Alumni extends Mindworxuser {
 	
 	//Known fields for an Alumni
 
-	//  @Column(
-    //      name = "Alum Interest",
-    //      nullable = true
-    // )
+	 @Column(
+         name = "Alum_Interest",
+         nullable = true
+    )
 	private String	alumInterests;
 
-	//  @Column(
-    //      name = "Alum Employed",
-    //      nullable = false
-    //  )
+	 @Column(
+         name = "Alum_Employed",
+         nullable = false
+     )
 	private boolean	alumEmployed;
 
-    //  @Column(
-    //      name = "Alum Workplace",
-    //      nullable = true
-    //  )
+     @Column(
+         name = "Alum_Workplace",
+         nullable = true
+     )
 	private String	alumWorkplace;
 
-	//  @Column(
-    //      name = "Alum Address",
-    //      nullable = true
-    //  )
+	 @Column(
+         name = "Alum_Address",
+         nullable = true
+     )
 	private String	alumAddress;
 
 	

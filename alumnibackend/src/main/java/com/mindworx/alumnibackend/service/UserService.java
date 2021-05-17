@@ -1,8 +1,9 @@
 package com.mindworx.alumnibackend.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
-import com.mindworx.alumnibackend.dao.Userdaoimpl;
+import com.mindworx.alumnibackend.dao.IUserdao;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,33 +15,37 @@ public class UserService {
     
     //accessing the user dao
 
-    private final Userdaoimpl mindworxuserDao;
+    private final IUserdao mindworxuserDao;
 
     
     @Autowired
-    public UserService(@Qualifier("Fakedao") Userdaoimpl mindworxuserDao) {
+    public UserService(@Qualifier("AzureSqlDb") IUserdao mindworxuserDao) {
         this.mindworxuserDao = mindworxuserDao;
     }
 
+        //     //get all users in the database
     public Collection<Mindworxuser> getAllMindworxUsers(){
-        return mindworxuserDao.getAllMindworxUsers();
+        return mindworxuserDao.findAll();
     }
 
-    public Mindworxuser getMindworxUserById(int id){
+        //     //get a user by id in database
+    public Optional<Mindworxuser> getMindworxUserById(int id){
         //check if the id exist first
-        return mindworxuserDao.getMindworxUserById(id);
+        return mindworxuserDao.findById(id);
     }
 
+    //      //remove a user from database
     public void removeMindworxUserById(int id){
-         mindworxuserDao.removeMindworxUserById(id);
+         mindworxuserDao.deleteById(id);
     }
 
+    //      //update user details in database
     public void updateMindworxUser(int id, Mindworxuser mindworxuser){
        
-     this.mindworxuserDao.updateMindworxUserById(id,mindworxuser);
+     //this.mindworxuserDao.saveAndFlush(id,mindworxuser);
     }
 
     public void innsertMindworxuserToDb(Mindworxuser mindworxUser) {
-        this.mindworxuserDao.innsertMindworxuserToDb(mindworxUser);;
+        this.mindworxuserDao.save(mindworxUser);
     }
 }

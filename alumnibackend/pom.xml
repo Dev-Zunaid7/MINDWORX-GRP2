@@ -81,11 +81,12 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 	
-	    <dependency>
+		<!-- the internal database-->
+	    <!-- <dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>

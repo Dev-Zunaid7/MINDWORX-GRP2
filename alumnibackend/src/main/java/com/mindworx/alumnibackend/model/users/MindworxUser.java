@@ -9,92 +9,92 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 
-// @Entity(name = "Mindworxuser")
+
+@Entity
+@Table(name = "app_user")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Mindworxuser{
 
 //These are attributes/data of a typical user.
-    // @Id
-    // @GeneratedValue(
-    //     strategy = GenerationType.IDENTITY
-
-    // )
-    // @Column(
-    //     name = "id",
-    //     updatable = false
-    // )
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column(name = "id")
     private int sSID;
 
-    // @Column(
-    //     name = "Name",
-    //     nullable = false
-    // )
+    @Column(
+        name = "Name",
+        nullable = false
+    )
     private String  firstName;
 
-    // @Column(
-    //     name = "Surname",
-    //     nullable = false
-    // )
+    @Column(
+        name = "Surname",
+        nullable = false
+    )
     private String  lastName;
 
-    // @Column(
-    //     name = "Username",
-    //     nullable = false
-    // )
+    @Column(
+        name = "Username",
+        nullable = false
+    )
     private String userName;
 
-    // @Column(
-    //     name = "Initials",
-    //     columnDefinition = "CHAR",
-    //     length = 5,
-    //     nullable = false
-
-    // )
+    @Column(
+        name = "Initials",
+        nullable = false
+    )
     private String initials;
 
-//    @Column(
-//         name = "DOB",
-//         columnDefinition = "DATE",
-//         nullable = false
-//    )
+   @Column(
+        name = "DOB",
+        nullable = false
+   )
     private LocalDate dateofBirth;
     
-    // @Column(
-    //     name = "Gender",
-    //     nullable = true
-    // )
+    @Column(
+        name = "Gender",
+        nullable = true
+    )
     private boolean gender;
 
-    // @Column(
-    //     name = "Email",
-    //     nullable = false,
-    //     unique = true, 
-    //     length = 255
-    // )
+    @Column(
+        name = "Email",
+        nullable = false,
+        unique = true, 
+        length = 255
+    )
     private String  email;
 
-    // @Column(
-    //     name = "Password",
-    //     nullable = false, 
-    //     length = 255
-    // )
+    @Column(
+        name = "Password",
+        nullable = false, 
+        length = 255
+    )
     private String  password;
 
-    // @Column(
-    //     name = "User Type",
-    //     nullable = false
-    // )
-    
+    @Column(
+        name = "User_Type",
+        nullable = false
+    )
+
+    @Enumerated(EnumType.STRING)
     private MindworxuserType typeofuser;
 
-
+    @Column(name = "Blocked")
     private boolean active;
 
 

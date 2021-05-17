@@ -5,19 +5,21 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
-//@Entity(name = "Adminstrator")
+@Entity
+@Table(name = "app_admin")
 public class Adminstrator extends Mindworxuser {
 
     //Known fields for an Administrator
     
-    // @Column(
-    //     name = "Admin Dept. "
-    // )
+    @Column(
+        name = "Admin_Dept"
+    )
     private String  adminDept;
 
 
