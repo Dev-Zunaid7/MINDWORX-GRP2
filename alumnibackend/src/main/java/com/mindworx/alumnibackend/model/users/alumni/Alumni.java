@@ -4,6 +4,7 @@
  */
 package com.mindworx.alumnibackend.model.users.alumni;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -51,10 +52,10 @@ public class Alumni extends Mindworxuser {
 	}
 
 
-	public Alumni(@JsonProperty("sSID")int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
-				@JsonProperty("dateofBirth") LocalDate dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("active") boolean active,
+	public Alumni(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
+				@JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,
 				@JsonProperty("alumnInterests") String alumInterests,@JsonProperty("alumEmplyed") boolean alumEmployed,@JsonProperty("alumWorkpalce") String alumWorkplace,@JsonProperty("alumAddress") String alumAddress) {
-		super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ALUMNI, active);
+		super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ALUMNI);
 	
 		this.alumInterests = alumInterests;
 		this.alumEmployed = alumEmployed;

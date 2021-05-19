@@ -5,7 +5,9 @@
 
 package com.mindworx.alumnibackend.model.users;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,12 +22,17 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
 
 
 @Entity
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Mindworxuser{
+public class Mindworxuser implements UserDetails{
 
     
 //These are attributes/data of a typical user.
@@ -60,9 +67,10 @@ public class Mindworxuser{
 
    @Column(
         name = "DOB",
+        columnDefinition = "DATE",
         nullable = false
    )
-    private LocalDate dateofBirth;
+    private Date dateofBirth;
     
     @Column(
         name = "Gender",
@@ -94,14 +102,16 @@ public class Mindworxuser{
     private MindworxuserType typeofuser;
 
     @Column(name = "Blocked")
-    private boolean active;
+    private boolean active = false;
+
+    @Column(name = "Enabled")
+    private boolean Enabled = true;
 
 
 //constructors to initialize the variables.
     
-    public Mindworxuser(@JsonProperty("sSID") int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") LocalDate dateofBirth,
-                       @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser,@JsonProperty("active") boolean active) {
-        this.sSID = sSID;
+    public Mindworxuser(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") Date dateofBirth,
+                       @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -111,7 +121,6 @@ public class Mindworxuser{
         this.email = email;
         this.password = password;
         this.typeofuser = typeofuser;
-        this.active = active;
     }
 
     
@@ -155,11 +164,11 @@ public class Mindworxuser{
     }
 
 
-    public LocalDate getDateofBirth() {
+    public Date getDateofBirth() {
         return dateofBirth;
     }
 
-    public void setDateofBirth(LocalDate dateofBirth) {
+    public void setDateofBirth(Date dateofBirth) {
         this.dateofBirth = dateofBirth;
     }
 
@@ -212,6 +221,56 @@ public class Mindworxuser{
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+
+    //methods for user security verification.
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(this.getTypeofuser().name());
+        return Collections.singletonList(authority);
+    }
+
+
+    @Override
+    public String getPassword() {
+       
+        return password;
+    }
+
+
+    @Override
+    public String getUsername() {
+  
+        return email;
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+  
+        return true;
+    }
+
+
+    @Override
+    public boolean isAccountNonLocked() {
+  
+        return !active;
+    }
+
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+ 
+        return true;
+    }
+
+
+    @Override
+    public boolean isEnabled() {
+   
+        return Enabled;
     }
 
 }

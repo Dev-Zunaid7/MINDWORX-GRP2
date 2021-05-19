@@ -1,6 +1,7 @@
 package com.mindworx.alumnibackend.model.users.coach;
 
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -38,10 +39,9 @@ public class Coach extends Mindworxuser {
 
 
     //Constructor to initialize the fields
-    public Coach(@JsonProperty("sSID") int sSID,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") LocalDate dateofBirth,
-            @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("active") boolean active,
-            @JsonProperty("coachQual") String coachQual,@JsonProperty("coachProf") String coachProf,@JsonProperty("coachOrg") String coachOrg) {
-        super(sSID, firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.COACH, active);
+    public Coach(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") Date dateofBirth,
+            @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("coachQual") String coachQual,@JsonProperty("coachProf") String coachProf,@JsonProperty("coachOrg") String coachOrg) {
+        super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.COACH);
 
         this.coachQual = coachQual;
         this.coachProf = coachProf;
