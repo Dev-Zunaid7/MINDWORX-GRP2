@@ -40,8 +40,8 @@ public class RegistrationService {
     public String register(RegistrationRequest request) {
 
                 //TODO: Redex to validate email at Javascript level
-        boolean isValidEmail = emailValidator.test(request.getEmail());
-        if(!isValidEmail){
+        boolean isValidEmail = emailValidator.test(request.getEmail()); //regex is not being done yet
+        if(!isValidEmail){ ///for now return true. for validation of email structure (ashdjhdja@.consd) or (adasdasdas.com)
             throw new IllegalStateException("email not vaild");
         }
         
@@ -59,7 +59,7 @@ public class RegistrationService {
     
         
         String token = userService.signUpUser(new Alumni( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofbirDate(),
-                                                  request.isGender(), request.getEmail(), request.getPassword(), "Robotics, A.I, Software", true, null, "34 Revae Str. Ackland Park, 2004"));
+                                                  request.isGender(), request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(), request.getAlumWorkplace(), request.getAlumAddress()));
     
         // String link = "";
         // emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));

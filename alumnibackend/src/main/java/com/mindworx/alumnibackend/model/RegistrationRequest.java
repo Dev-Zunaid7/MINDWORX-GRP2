@@ -3,6 +3,9 @@ package com.mindworx.alumnibackend.model;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mindworx.alumnibackend.model.users.alumni.Alumni;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.EqualsAndHashCode;
 
@@ -17,11 +20,18 @@ public class RegistrationRequest {
     private final boolean gender;
     private final String  password;
     private final String initials;
+    //alumni registration only
+    private String	alumInterests;
+    private boolean	alumEmployed;
+    private String	alumWorkplace;
+    private String	alumAddress;
+    
 
 
- 
+    //REGISTER AN ALUMNI CONSTRUCTOR.
     public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
-    @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password) {
+                              @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("alumInterests") String alumInterests,
+                              @JsonProperty("alumEmployed") boolean alumEmployed,@JsonProperty("alumWorkplace") String alumWorkplace,@JsonProperty("alumAddress") String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -30,6 +40,63 @@ public class RegistrationRequest {
         this.gender = gender;
         this.password = password;
         this.initials = initials;
+        this.alumInterests = alumInterests;
+        this.alumEmployed = alumEmployed;
+        this.alumWorkplace = alumWorkplace;
+        this.alumAddress = alumAddress;
+    }
+
+    
+//ACCESSOR METHODS
+    public Date getDateofBirth() {
+        return dateofBirth;
+    }
+
+
+    public String getAlumInterests() {
+        return alumInterests;
+    }
+
+
+
+    public void setAlumInterests(String alumInterests) {
+        this.alumInterests = alumInterests;
+    }
+
+
+
+    public boolean isAlumEmployed() {
+        return alumEmployed;
+    }
+
+
+
+    public void setAlumEmployed(boolean alumEmployed) {
+        this.alumEmployed = alumEmployed;
+    }
+
+
+
+    public String getAlumWorkplace() {
+        return alumWorkplace;
+    }
+
+
+
+    public void setAlumWorkplace(String alumWorkplace) {
+        this.alumWorkplace = alumWorkplace;
+    }
+
+
+
+    public String getAlumAddress() {
+        return alumAddress;
+    }
+
+
+
+    public void setAlumAddress(String alumAddress) {
+        this.alumAddress = alumAddress;
     }
 
 
@@ -79,12 +146,6 @@ public class RegistrationRequest {
     }
 
 
-    @Override
-    public String toString() {
-        return "RegistrationRequest [dateofbirDate=" + dateofBirth + ", email=" + email + ", firstName="
-                + firstName + ", gender=" + gender + ", lastName=" + lastName + ", password=" + password + ", userName="
-                + userName  + ", intials=" + initials +"]";
-    }
-    
+
     
 }

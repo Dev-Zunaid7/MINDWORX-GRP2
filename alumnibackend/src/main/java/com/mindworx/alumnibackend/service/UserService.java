@@ -72,7 +72,7 @@ public class UserService implements UserDetailsService {
       boolean userEmailExists=  mindworxuserDao.findByEmail(mindworxuser.getEmail())
                         .isPresent();
         if(userEmailExists){
-            throw new IllegalStateException("email already taken.");
+            return ("email already taken.");
         }
 
         String encodedPassword = passwordEncoder.encode(mindworxuser.getPassword());
