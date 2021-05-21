@@ -17,7 +17,7 @@ public class RegistrationRequest {
     private final String  userName;
     private final String  email;
     private final Date    dateofBirth;
-    private final boolean gender;
+    private final String gender;
     private final String  password;
     private final String initials;
     //alumni registration only
@@ -30,7 +30,7 @@ public class RegistrationRequest {
 
     //REGISTER AN ALUMNI CONSTRUCTOR.
     public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
-                              @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("alumInterests") String alumInterests,
+                              @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender") String gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("alumInterests") String alumInterests,
                               @JsonProperty("alumEmployed") boolean alumEmployed,@JsonProperty("alumWorkplace") String alumWorkplace,@JsonProperty("alumAddress") String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,11 +46,54 @@ public class RegistrationRequest {
         this.alumAddress = alumAddress;
     }
 
-    
-//ACCESSOR METHODS
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+
+
+    public String getEmail() {
+        return email;
+    }
+
+
+
     public Date getDateofBirth() {
         return dateofBirth;
     }
+
+
+
+    public String getGender() {
+        return gender;
+    }
+
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
+
+    public String getInitials() {
+        return initials;
+    }
+
 
 
     public String getAlumInterests() {
@@ -99,53 +142,9 @@ public class RegistrationRequest {
         this.alumAddress = alumAddress;
     }
 
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-
-
-    public String getLastName() {
-        return lastName;
-    }
-
-
-
-    public String getUserName() {
-        return userName;
-    }
-
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-
-    public Date getDateofbirDate() {
-        return dateofBirth;
-    }
-
-
-
-    public boolean isGender() {
-        return gender;
-    }
-
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getInitials() {
-        return initials;
-    }
-
-
-
     
+//ACCESSOR METHODS
+
+
+
 }

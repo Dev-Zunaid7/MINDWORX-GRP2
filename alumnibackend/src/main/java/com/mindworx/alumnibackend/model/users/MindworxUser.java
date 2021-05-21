@@ -55,6 +55,7 @@ public class Mindworxuser implements UserDetails{
 
     @Column(
         name = "Username",
+        unique = true, 
         nullable = false
     )
     private String userName;
@@ -76,7 +77,7 @@ public class Mindworxuser implements UserDetails{
         name = "Gender",
         nullable = true
     )
-    private boolean gender;
+    private String gender;
 
     @Column(
         name = "Email",
@@ -111,7 +112,7 @@ public class Mindworxuser implements UserDetails{
 //constructors to initialize the variables.
     
     public Mindworxuser(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") Date dateofBirth,
-                       @JsonProperty("gender") boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser) {
+                       @JsonProperty("gender") String gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -155,11 +156,11 @@ public class Mindworxuser implements UserDetails{
         this.lastName = lastName;
     }
 
-    public boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

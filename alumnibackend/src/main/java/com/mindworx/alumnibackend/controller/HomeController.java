@@ -2,30 +2,42 @@ package com.mindworx.alumnibackend.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 
 @Controller
-@RequestMapping(path = "/home")
 public class HomeController {
     
-     @GetMapping("/index")
+     @GetMapping("/")
     public String home(){
         return "pages/index";
     }
 
-    @GetMapping("/sign-up")
-    public String register(){
-        return "pages/register";
-    }
-
-    @GetMapping("")
-    public String login(){
+    @GetMapping("/login")
+    public String login(Model model){
         return "pages/sign";
     }
 
+    @GetMapping("/user")
+    public String user(){
+        return ("<h1>Welcome to feed page<h1>");
+    }
+
+    //only by admin
+    @GetMapping("/admin")
+    public String admin(){
+        return ("<h1>Welcome to the administrator dashboard<h1>");
+    }
+    
+    //only by coach
+    @GetMapping("/coach")
+    public String coach(){
+        return ("<h1>Welcome to the coach dashboard<h1>");
+    }
 
     @GetMapping("/forgot-password")
     public String passwordrest(){

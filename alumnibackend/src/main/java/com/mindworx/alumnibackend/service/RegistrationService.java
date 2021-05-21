@@ -58,8 +58,8 @@ public class RegistrationService {
             
     
         
-        String token = userService.signUpUser(new Alumni( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofbirDate(),
-                                                  request.isGender(), request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(), request.getAlumWorkplace(), request.getAlumAddress()));
+        String token = userService.signUpUser(new Alumni( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofBirth(),
+                                                  request.getGender(), request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(), request.getAlumWorkplace(), request.getAlumAddress()));
     
         // String link = "";
         // emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));

@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
       //verify user by email
-        return mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("user email %s not found"));
+        return mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("username or password incorrect."));
     }
 
     //function to sendback suer
@@ -89,7 +89,7 @@ public class UserService implements UserDetailsService {
 
         //send a user an email to confirm registration.
 
-        return "confirmed";
+        return "Successfully Registered. Redirecting to Login.";
     }
 
     public void enableMindworxUser(String email) {

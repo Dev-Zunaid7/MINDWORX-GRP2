@@ -6,6 +6,12 @@
     src: url('/styles/fonts/poppins/Poppins-Regular.ttf');
 }
 
+
+/* @font-face {
+    font-family: FontAwesome;
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css');
+} */
+
 @font-face {
     font-family: Poppins-Bold;
     src: url('/styles/fonts/poppins/Poppins-Bold.ttf');
@@ -31,79 +37,6 @@
 *THE PRELOADER
 */
 
-.preloader-wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s ease;
-}
-
-.preloader-text {
-    display: inline-block;
-    margin-left: 5px;
-}
-
-.bounceball {
-    position: relative;
-    display: inline-block;
-    height: 37px;
-    width: 15px;
-}
-
-.bounceball:before {
-    position: absolute;
-    content: "";
-    display: block;
-    top: 0;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #fbae17;
-    transform-origin: 50%;
-    -webkit-animation: bounce 500ms alternate infinite ease;
-    animation: bounce 500ms alternate infinite ease;
-}
-
-@-webkit-keyframes bounce {
-    0% {
-        top: 30px;
-        height: 5px;
-        border-radius: 60px 60px 20px 20px;
-        transform: scaleX(2);
-    }
-    35% {
-        height: 15px;
-        border-radius: 50%;
-        transform: scaleX(1);
-    }
-    100% {
-        top: 0;
-    }
-}
-
-@keyframes bounce {
-    0% {
-        top: 30px;
-        height: 5px;
-        border-radius: 60px 60px 20px 20px;
-        transform: scaleX(2);
-    }
-    35% {
-        height: 15px;
-        border-radius: 50%;
-        transform: scaleX(1);
-    }
-    100% {
-        top: 0;
-    }
-}
-
-.preloader-finish {
-    opacity: 0;
-    pointer-events: none;
-}
-
 
 /*//////////////////////////////////////////////////////////////////
   [ RESTYLE TAG ]*/
@@ -124,10 +57,20 @@ html {
 }
 
 
+/*
+THE login style
+*/
+
+
+/*//////////////////////////////////////////////////////////////////
+  [ RESTYLE TAG ]*/
+
+
 /*---------------------------------------------*/
 
 a {
     font-family: Poppins-Regular;
+    text-decoration: none;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -144,7 +87,7 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #57b846;
+    color: #f37521;
 }
 
 
@@ -290,6 +233,10 @@ iframe {
     color: #666666;
 }
 
+.fa {
+    font-family: FontAwesome !important;
+}
+
 
 /*//////////////////////////////////////////////////////////////////
   [ login ]*/
@@ -310,6 +257,7 @@ iframe {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 .wrap-login100 {
@@ -324,7 +272,28 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 60px 130px 33px 95px;
+    padding: 50px 130px 33px 95px;
+}
+
+.resetpassword {
+    width: 960px;
+    background: #fff;
+    padding: 50px 130px 33px 95px;
+}
+
+.register-view {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 130px 33px 95px;
 }
 
 
@@ -344,7 +313,7 @@ iframe {
   [  ]*/
 
 .login100-form {
-    width: 290px;
+    width: fit-content;
 }
 
 .login100-form-title {
@@ -395,7 +364,7 @@ iframe {
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 0px 0px;
-    color: rgba(243, 117, 33, 0.8);
+    color: rgba(241, 226, 15, 0.8);
 }
 
 .input100:focus+.focus-input100 {
@@ -418,6 +387,7 @@ iframe {
 }
 
 .symbol-input100 {
+    font-family: FontAwesome;
     font-size: 15px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -495,7 +465,7 @@ iframe {
 
 @media (max-width: 992px) {
     .wrap-login100 {
-        padding: 177px 90px 33px 85px;
+        padding: 50px 90px 33px 85px;
     }
     .login100-pic {
         width: 35%;
@@ -507,7 +477,7 @@ iframe {
 
 @media (max-width: 768px) {
     .wrap-login100 {
-        padding: 100px 80px 33px 80px;
+        padding: 50px 80px 33px 80px;
     }
     .login100-pic {
         display: none;
@@ -519,7 +489,7 @@ iframe {
 
 @media (max-width: 576px) {
     .wrap-login100 {
-        padding: 100px 15px 33px 15px;
+        padding: 50px 15px 33px 15px;
     }
 }
 

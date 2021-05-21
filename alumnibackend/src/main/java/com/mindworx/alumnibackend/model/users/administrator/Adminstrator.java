@@ -26,7 +26,7 @@ public class Adminstrator extends Mindworxuser {
 
     //Constructors to initialize the fields
     public Adminstrator(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,
-                       @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	boolean gender,@JsonProperty("email") String email,@JsonProperty("password") String password,
+                       @JsonProperty("dateofBirth") Date dateofBirth, @JsonProperty("gender")	String gender,@JsonProperty("email") String email,@JsonProperty("password") String password,
                         @JsonProperty("adminDept")  String adminDept) {
         super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ADMIN);
    
