@@ -1,32 +1,30 @@
 package com.mindworx.alumnibackend.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
 
 @Controller
 public class HomeController {
     
      @GetMapping("/")
-    public String home(){
+    public String home(Model model){
+        
         return "pages/index";
     }
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(){
         return "pages/sign";
     }
 
-    @GetMapping("/user")
-    public String user(){
-        return ("<h1>Welcome to feed page<h1>");
+    //only by user
+    @GetMapping("/home")
+    public String feed(){
+        return ("<h1>Welcome to the feeds page<h1>");
     }
-
+        
     //only by admin
     @GetMapping("/admin")
     public String admin(){
@@ -41,49 +39,10 @@ public class HomeController {
 
     @GetMapping("/forgot-password")
     public String passwordrest(){
-        return "pages/resetpassword";
+        return "pages/resetpassword.jsp";
     }
 
 
 }
 
-
-
-
-    
-    //get all the services for home/ 
-    //get all services for testing
-    // @Autowired
-    // private UserService userServices;
-    
-    // //testing method
-    // @GetMapping("/user")
-    // public Collection<Mindworxuser> getAllMindworxUsers(){
-    //     return userServices.getAllMindworxUsers();
-    // }
-
-    // //testing getUser by id
-    // @GetMapping(value = "/user/{id}")
-    // public Optional<Mindworxuser> getMindworxUserById(@PathVariable int id){
-    //     //check if the id exist first
-    //     return userServices.getMindworxUserById(id);
-    // }
-
-    // //update user details
-    // @PutMapping(value = "/user/{id}")
-    // public void updateMindworxUser(@PathVariable int id, @RequestBody Mindworxuser mindworxuser){
-       
-    //     userServices.updateMindworxUser(id,mindworxuser);
-    // }
-    // //testing removeUser by id
-    // @DeleteMapping(value = "/user/{id}")
-    // public void removeMindworxUserById(@PathVariable int id){
-    //     userServices.removeMindworxUserById(id);
-                        
-    // }
-
-    // //create new user
-    // @PostMapping("/user")
-    //  public void innsertMindworxuserToDb(@RequestBody Mindworxuser mindworxUser) {
-    //      this.userServices.innsertMindworxuserToDb(mindworxUser);
-    //  }
+   

@@ -6,8 +6,6 @@
 package com.mindworx.alumnibackend.model.users;
 
 import java.sql.Date;
-import java.util.Collection;
-import java.util.Collections;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,17 +20,10 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-
-
-
 @Entity
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Mindworxuser implements UserDetails{
+public class Mindworxuser {
 
     
 //These are attributes/data of a typical user.
@@ -111,8 +102,8 @@ public class Mindworxuser implements UserDetails{
 
 //constructors to initialize the variables.
     
-    public Mindworxuser(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") Date dateofBirth,
-                       @JsonProperty("gender") String gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("typeofuser") MindworxuserType typeofuser) {
+    public Mindworxuser(String firstName, String lastName, String userName,String initials, Date dateofBirth,
+                      String gender,String email, String password,MindworxuserType typeofuser) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -189,14 +180,6 @@ public class Mindworxuser implements UserDetails{
         this.sSID = sSID;
     }
 
-    public String getPsw() {
-        return password;
-    }
-
-    public void setPsw(String psw) {
-        this.password = psw;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -225,53 +208,34 @@ public class Mindworxuser implements UserDetails{
     }
 
 
-    //methods for user security verification.
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(this.getTypeofuser().name());
-        return Collections.singletonList(authority);
+    public String getInitials() {
+        return initials;
     }
 
 
-    @Override
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
+
+
     public String getPassword() {
-       
         return password;
     }
 
 
-    @Override
-    public String getUsername() {
-  
-        return email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
-    @Override
-    public boolean isAccountNonExpired() {
-  
-        return true;
-    }
-
-
-    @Override
-    public boolean isAccountNonLocked() {
-  
-        return !active;
-    }
-
-
-    @Override
-    public boolean isCredentialsNonExpired() {
- 
-        return true;
-    }
-
-
-    @Override
     public boolean isEnabled() {
-   
         return Enabled;
     }
+
+
+    public void setEnabled(boolean enabled) {
+        Enabled = enabled;
+    }
+
 
 }

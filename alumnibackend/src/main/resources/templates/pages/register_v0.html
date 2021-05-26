@@ -26,39 +26,39 @@
 </head>
 
 <body>
+    <div th:if="${param.success}">
+        <div class="alert valid-feedback">
+            Successfully registered dumbass! welcome!
+        </div>
+
+    </div>
     <div class="limiter">
         <div class="container-login100">
-            <div th:if="${param.success}">
-                <div class="alert valid-feedback">
-                    Successfully registered dumbass! welcome!
-                </div>
-
-            </div>
             <div class="register-view">
                 <span class="login100-form-title">
                     Alumni Sign-up
                 </span>
 
-                <form class="needs-validation" method="POST" th:action="@{/registration}" th:object="${alumni}" novalidate>
+                <form id="registerform" th:action="@{/registration}" class="needs-validation" novalidate>
 
                     <div class="form-row">
                         <div class=" col-md-4 mb-3">
                             <label for="validationCustom01">First name</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" value="Mark" th:field="*{firstName}" required></input>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" value="Mark" required></input>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom02">Last name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" value="Otto" th:field="*{lastName}" required></input>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" value="Otto" required></input>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom02">initials</label>
-                            <input type="text" class="form-control" id="lastName" name="initials" placeholder="initials" value="Otto" required th:field="*{initials}"></input>
+                            <input type="text" class="form-control" id="initials" name="initials" placeholder="initials" value="Otto" required></input>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -69,7 +69,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                                 </div>
-                                <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
+                                <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required></input>
                                 <div class="invalid-feedback">
                                     Please choose a username.
                                 </div>
@@ -79,14 +79,14 @@
                     <div class="form-row">
                         <div class=" col-md-4 mb-3">
                             <label for="validationCustom01">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required th:field="*{email}"></input>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required></input>
                             <div class="invalid-feedback">
                                 Please provide a valid email.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom02">Date of Birth</label>
-                            <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Birthdate" required th:field="*{dateofBirth}"></input>
+                            <input type="date" class="form-control" id="dateofbirth" name="dateofBirth" placeholder="Birthdate" required></input>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">*</span>
                                 </div>
-                                <input type="password" class="form-control" id="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required></input>
                                 <div class="invalid-feedback">
                                     Must enter password.
                                 </div>
@@ -109,13 +109,13 @@
                             <label for="gender">Specify Gender</label>
                             <div class="col-sm-10">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="Male" th:field="*{gender}"></input>
+                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="Male"></input>
                                     <label class="form-check-label" for="gridRadios1">
                                 Male
                               </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="Female" th:field="*{gender}"></input>
+                                    <input class="form-check-input" type="radio" name="gender" id="genderf" value="Female"></input>
                                     <label class="form-check-label" for="gridRadios2">
                                 Female
                               </label>
@@ -127,7 +127,7 @@
                         <div class="col-sm-2">Employment</div>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed" th:checked="*{alumEmployed}"></input>
+                                <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed"></input>
                                 <label class="form-check-label" for="gridCheck1">
                               Are you employed?
                             </label>
@@ -137,7 +137,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom03">Current Address</label>
-                            <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required th:field="*{alumAddress}"> </input>
+                            <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required> </input>
                             <div class="invalid-feedback">
                                 Please provide a valid address.
                             </div>
@@ -146,7 +146,7 @@
                     <div class="form-row">
                         <div class=" col-md-4 mb-3">
                             <label for="validationCustom01">Your interests</label>
-                            <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required th:field="*{alumInterests}"></input>
+                            <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required></input>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -177,35 +177,16 @@
             </div>
         </div>
     </div>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
 
 
-    <!-- Login Script files-->
+
+    <!-- register Script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
-
+    <script src="/styles/js/register.js"></script>
 
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>

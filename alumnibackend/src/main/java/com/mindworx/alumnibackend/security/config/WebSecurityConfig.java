@@ -35,9 +35,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                 //temporary disable the rejection of postmapping //form based must be enabled.
-                .authorizeRequests()
-                    .antMatchers("/registration**",
+                 //temporary disable the rejection of postmapping for postman testing //form based must be enabled.
+                 .authorizeRequests()
+                    .antMatchers("/",
+                                 "/registration**",
                                  "/forgot-password**",
                                  "/styles/js/**",
                                  "/styles/fonts/**",
@@ -45,6 +46,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
+                    .antMatchers("/home")
+                        .hasAuthority("ALUMNI")
+                    .antMatchers("/admin")
+                        .hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and().formLogin()
@@ -68,6 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.authenticationProvider(daoAuthenticationProvider());
         
+        
     }
     
     @Bean
@@ -75,7 +81,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(bEncoder);
         provider.setUserDetailsService(userService);
-        
         return provider;
     }
 }

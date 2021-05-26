@@ -6,10 +6,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.mindworx.alumnibackend.dao.IUserdao;
+import com.mindworx.alumnibackend.model.MindworxUserDetails;
 import com.mindworx.alumnibackend.model.token.ConfirmationToken;
 import com.mindworx.alumnibackend.model.token.ConfirmationTokenService;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,13 +26,15 @@ public class UserService implements UserDetailsService {
 
     private final IUserdao mindworxuserDao;
     private final PasswordEncoder passwordEncoder;
+    private final AcademyEmailService academyEmailService;
     private final ConfirmationTokenService confirmationTokenService;
 
     @Autowired
-    public UserService(IUserdao mindworxuserDao, PasswordEncoder passwordEncoder,ConfirmationTokenService confirmationTokenService) {
+    public UserService(IUserdao mindworxuserDao, PasswordEncoder passwordEncoder,ConfirmationTokenService confirmationTokenService,AcademyEmailService academyEmailService) {
         this.mindworxuserDao = mindworxuserDao;
         this.passwordEncoder = passwordEncoder;
         this.confirmationTokenService= confirmationTokenService;
+        this.academyEmailService=academyEmailService;
     }
 
         //     //get all users in the database
@@ -63,23 +67,38 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
       //verify user by email
-        return mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("username or password incorrect."));
+        Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("ERROR: User was not Found"));
+        return new MindworxUserDetails(mindworxuser);
     }
 
-    //function to sendback suer
+    //methond to Register the user into databasw
     public String signUpUser(Mindworxuser mindworxuser){
-        //verify user by email if already exists
-      boolean userEmailExists=  mindworxuserDao.findByEmail(mindworxuser.getEmail())
+
+        //verify user by email if already exists on the App's database. 
+        boolean userEmailExists=  mindworxuserDao.findByEmail(mindworxuser.getEmail())
                         .isPresent();
         if(userEmailExists){
-            return ("email already taken.");
+            throw new IllegalStateException("This user already exists");
         }
-
+        
+        //validate if the the email exists on the Academy's database.
+        boolean isWithAcademy = academyEmailService.IsWithAcademy(mindworxuser.getEmail());
+             if(!isWithAcademy){
+                 throw new IllegalStateException("You are not one of our Alumni canidates.");
+            }
+         //validate if email is allowed to register- if email is enabled to register.
+        boolean isAllowed = academyEmailService.isAllowed(mindworxuser.getEmail());
+            if(!isAllowed){
+                throw new IllegalStateException("This email " + mindworxuser.getEmail() + " is not allowed/enabled to register.");
+            }
+            
+        
         String encodedPassword = passwordEncoder.encode(mindworxuser.getPassword());
 
-        mindworxuser.setPsw(encodedPassword);
+        mindworxuser.setPassword(encodedPassword);
         
-        mindworxuserDao.save(mindworxuser);
+        //saving user to the database.
+        innsertMindworxuserToDb(mindworxuser);
         
         String token = UUID.randomUUID().toString();
         //Send confirmation of user
@@ -88,7 +107,7 @@ public class UserService implements UserDetailsService {
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
         //send a user an email to confirm registration.
-
+        
         return "Successfully Registered. Redirecting to Login.";
     }
 
@@ -96,4 +115,6 @@ public class UserService implements UserDetailsService {
         //iterate or filter to find the email passed
         //update the enable of the passed user.
     }
+
+    
 }

@@ -22,42 +22,22 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
-    private final AcademyEmailService academyEmailService;
+
 
     
 
     @Autowired
     public RegistrationService(UserService userService, EmailValidator emailValidator,
-            ConfirmationTokenService confirmationTokenService, EmailSender emailSender,AcademyEmailService academyEmailService) {
+            ConfirmationTokenService confirmationTokenService, EmailSender emailSender) {
         this.userService = userService;
         this.emailValidator = emailValidator;
         this.confirmationTokenService = confirmationTokenService;
         this.emailSender = emailSender;
-        this.academyEmailService=academyEmailService;
     }
 
 
     public String register(RegistrationRequest request) {
 
-                //TODO: Redex to validate email at Javascript level
-        boolean isValidEmail = emailValidator.test(request.getEmail()); //regex is not being done yet
-        if(!isValidEmail){ ///for now return true. for validation of email structure (ashdjhdja@.consd) or (adasdasdas.com)
-            throw new IllegalStateException("email not vaild");
-        }
-        
-         //validate user email if exist in database
-         boolean isWithAcademy = academyEmailService.IsWithAcademy(request.getEmail());
-         if(!isWithAcademy){
-             return ("You are not one of our Alumni canidates.");
-         }
-            //validate if email is allowed to register- if email is enabled to register.
-            boolean isAllowed = academyEmailService.isAllowed(request.getEmail());
-            if(!isAllowed){
-                return ("This email " + request.getEmail() + " is not allowed/enabled to register.");
-            }
-            
-    
-        
         String token = userService.signUpUser(new Alumni( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofBirth(),
                                                   request.getGender(), request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(), request.getAlumWorkplace(), request.getAlumAddress()));
     

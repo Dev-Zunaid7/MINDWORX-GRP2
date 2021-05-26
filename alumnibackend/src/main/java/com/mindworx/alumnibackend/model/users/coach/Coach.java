@@ -39,8 +39,8 @@ public class Coach extends Mindworxuser {
 
 
     //Constructor to initialize the fields
-    public Coach(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("dateofBirth") Date dateofBirth,
-            @JsonProperty("gender") String gender,@JsonProperty("email") String email,@JsonProperty("password") String password,@JsonProperty("coachQual") String coachQual,@JsonProperty("coachProf") String coachProf,@JsonProperty("coachOrg") String coachOrg) {
+    public Coach(String firstName, String lastName, String userName,String initials, Date dateofBirth,
+                String gender,String email, String password,String coachQual,String coachProf,String coachOrg) {
         super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.COACH);
 
         this.coachQual = coachQual;
