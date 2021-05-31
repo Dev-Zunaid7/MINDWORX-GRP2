@@ -25,8 +25,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Mindworxuser {
 
+
     
-//These are attributes/data of a typical user.
+//These are attributes data of a typical user.
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column(name = "id")
