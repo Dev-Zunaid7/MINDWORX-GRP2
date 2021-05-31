@@ -7,7 +7,6 @@ import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface IUserdao extends JpaRepository<Mindworxuser,Integer> {

@@ -4,7 +4,6 @@ package com.mindworx.alumnibackend.controller;
 import com.mindworx.alumnibackend.model.RegistrationRequest;
 import com.mindworx.alumnibackend.service.RegistrationService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

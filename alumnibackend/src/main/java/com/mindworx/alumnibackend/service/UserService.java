@@ -11,7 +11,7 @@ import com.mindworx.alumnibackend.model.token.ConfirmationToken;
 import com.mindworx.alumnibackend.model.token.ConfirmationTokenService;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
-import org.apache.catalina.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

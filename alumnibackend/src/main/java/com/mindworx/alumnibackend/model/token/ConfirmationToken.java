@@ -1,6 +1,6 @@
 package com.mindworx.alumnibackend.model.token;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
