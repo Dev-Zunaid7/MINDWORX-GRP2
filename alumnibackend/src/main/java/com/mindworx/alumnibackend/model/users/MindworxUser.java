@@ -24,8 +24,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Mindworxuser {
-
-
     
 //These are attributes data of a typical user.
     @Id
