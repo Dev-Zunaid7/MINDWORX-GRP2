@@ -1,22 +1,20 @@
 package com.mindworx.alumnibackend.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
     
      @GetMapping("/")
-    public String home(Model model){
+    public String home(){
         
         return "pages/index";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "pages/sign";
+        return "pages/login";
     }
 
     //only by user
@@ -39,7 +37,7 @@ public class HomeController {
 
     @GetMapping("/forgot-password")
     public String passwordrest(){
-        return "pages/resetpassword.jsp";
+        return "pages/resetpassword";
     }
 
 

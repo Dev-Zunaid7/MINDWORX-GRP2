@@ -2,7 +2,6 @@ package com.mindworx.alumnibackend.model;
 
 import java.sql.Date;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
@@ -26,15 +25,15 @@ public class RegistrationRequest {
 
     //REGISTER AN ALUMNI CONSTRUCTOR.
     public RegistrationRequest(String firstName, String lastName, String userName,String initials, Date dateofBirth,String gender,
-                                String email, String password,String alumInterests,boolean alumEmployed,String alumWorkplace,String alumAddress) {
+                               String email, String password,String alumInterests,boolean alumEmployed,String alumWorkplace,String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
-        this.email = email;
+        this.initials = initials;
         this.dateofBirth = dateofBirth;
         this.gender = gender;
+        this.email = email;
         this.password = password;
-        this.initials = initials;
         this.alumInterests = alumInterests;
         this.alumEmployed = alumEmployed;
         this.alumWorkplace = alumWorkplace;
@@ -51,11 +50,19 @@ public class RegistrationRequest {
     }
 
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
 
     public String getLastName() {
         return lastName;
     }
 
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
 
     public String getUserName() {
@@ -63,11 +70,19 @@ public class RegistrationRequest {
     }
 
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 
     public String getEmail() {
         return email;
     }
 
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 
     public Date getDateofBirth() {
@@ -75,11 +90,19 @@ public class RegistrationRequest {
     }
 
 
+    public void setDateofBirth(Date dateofBirth) {
+        this.dateofBirth = dateofBirth;
+    }
+
 
     public String getGender() {
         return gender;
     }
 
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
 
     public String getPassword() {
@@ -87,11 +110,19 @@ public class RegistrationRequest {
     }
 
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     public String getInitials() {
         return initials;
     }
 
+
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
 
 
     public String getAlumInterests() {
@@ -99,11 +130,9 @@ public class RegistrationRequest {
     }
 
 
-
     public void setAlumInterests(String alumInterests) {
         this.alumInterests = alumInterests;
     }
-
 
 
     public boolean isAlumEmployed() {
@@ -111,11 +140,9 @@ public class RegistrationRequest {
     }
 
 
-
     public void setAlumEmployed(boolean alumEmployed) {
         this.alumEmployed = alumEmployed;
     }
-
 
 
     public String getAlumWorkplace() {
@@ -123,11 +150,9 @@ public class RegistrationRequest {
     }
 
 
-
     public void setAlumWorkplace(String alumWorkplace) {
         this.alumWorkplace = alumWorkplace;
     }
-
 
 
     public String getAlumAddress() {
@@ -135,12 +160,10 @@ public class RegistrationRequest {
     }
 
 
-
     public void setAlumAddress(String alumAddress) {
         this.alumAddress = alumAddress;
     }
 
-    
 //ACCESSOR METHODS
 
 

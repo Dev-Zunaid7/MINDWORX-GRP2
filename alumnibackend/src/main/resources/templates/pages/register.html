@@ -26,157 +26,201 @@
 </head>
 
 <body>
-    <div class="limiter">
-        <div class="container-login100">
-            <div th:if="${param.success}">
-                <div class="alert valid-feedback">
-                    Successfully registered dumbass! welcome!
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <span sec:authentication="principal.username"></span>
+                    </form>
+                    <div class="header-bar-menu">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/registration}">REGISTER</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">LOGIN</a></li>
+                        </ul>
+                    </div>
+                    <!-- .header-bar-menu -->
                 </div>
-
             </div>
-            <div class="register-view">
-                <span class="login100-form-title">
-                    Alumni Sign-up
-                </span>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <div th:if="${param.success}">
+        <div class="alert valid-feedback">
+            Successfully registered dumbass! welcome!
+        </div>
 
-                <form class="needs-validation" method="POST" th:action="@{/registration}" th:object="${alumni}" novalidate>
+    </div>
 
-                    <div class="form-row">
-                        <div class=" col-md-4 mb-3">
-                            <label for="validationCustom01">First name</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" value="Mark" th:field="*{firstName}" required></input>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationCustom02">Last name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" value="Otto" th:field="*{lastName}" required></input>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationCustom02">initials</label>
-                            <input type="text" class="form-control" id="lastName" name="initials" placeholder="initials" value="Otto" required th:field="*{initials}"></input>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationCustomUsername">Username</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                </div>
-                                <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
-                                <div class="invalid-feedback">
-                                    Please choose a username.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class=" col-md-4 mb-3">
-                            <label for="validationCustom01">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required th:field="*{email}"></input>
-                            <div class="invalid-feedback">
-                                Please provide a valid email.
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationCustom02">Date of Birth</label>
-                            <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Birthdate" required th:field="*{dateofBirth}"></input>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationCustomUsername">Password</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrepend">*</span>
-                                </div>
-                                <input type="password" class="form-control" id="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
-                                <div class="invalid-feedback">
-                                    Must enter password.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <fieldset class="form-group">
-                        <div class="row">
-                            <label for="gender">Specify Gender</label>
-                            <div class="col-sm-10">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="Male" th:field="*{gender}"></input>
-                                    <label class="form-check-label" for="gridRadios1">
-                                Male
-                              </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="Female" th:field="*{gender}"></input>
-                                    <label class="form-check-label" for="gridRadios2">
-                                Female
-                              </label>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <div class="form-group row">
-                        <div class="col-sm-2">Employment</div>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed" th:checked="*{alumEmployed}"></input>
-                                <label class="form-check-label" for="gridCheck1">
-                              Are you employed?
-                            </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="validationCustom03">Current Address</label>
-                            <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required th:field="*{alumAddress}"> </input>
-                            <div class="invalid-feedback">
-                                Please provide a valid address.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class=" col-md-4 mb-3">
-                            <label for="validationCustom01">Your interests</label>
-                            <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required th:field="*{alumInterests}"></input>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required></input>
-                            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-                            <div class="invalid-feedback">
-                                You must agree before submitting.
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Sign-up</button>
-
-                    <div class="text-center p-t-50">
-                        <span class="txt1">
-                            Already have an Account?
-                        </span>
-                        <a class="txt2" th:href="@{/login}">
-                             Sign-in
-                        </a>
-                    </div>
-                </form>
+    <form class="row g-3 mx-auto form-signup needs-validation" method="POST" th:action="@{/registration}" th:object="${registrationRequest}" novalidate>
+        <div class="form-group row mt-4">
+            <div class="col-md-6">
+                <label for="validationCustom01">First name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" th:field="*{firstName}" required></input>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom02">Last name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" th:field="*{lastName}" required></input>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="form-group mt-3 row">
+            <div class="col-md-6">
+                <label for="validationCustom02">Initials</label>
+                <input type="text" class="form-control" id="lastName" name="initials" placeholder="initials" required th:field="*{initials}"></input>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustomUsername">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
+                    <div class="invalid-feedback">
+                        Please choose a username.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+            <div class=" col-md-6">
+                <label for="validationCustom01">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required th:field="*{email}"></input>
+                <div class="invalid-feedback">
+                    Please provide a valid email.
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom02">Date of Birth</label>
+                <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Birthdate" required th:field="*{dateofBirth}"></input>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+            <div class="col-md-6">
+                <label for="validationCustomUsername">Password</label>
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">*</span>
+                    </div>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
+                    <div class="invalid-feedback">
+                        Must enter password.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustomUsername">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">*</span>
+                    </div>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
+                    <div class="invalid-feedback">
+                        Must enter password.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="input-group">
+                <label class="input-group-text" for="gender">Specify Gender</label>
+                <select name="gender" id="gender" class="form-select">
+                            <option  value="Male" th:field="*{gender}">Male</option>
+                            <option  value="Female" th:field="*{gender}">Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            Employment
+            <div class="form-check col-md-12 mb-2">
+                <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed" th:checked="*{alumEmployed}"></input>
+                <label class="form-check-label" for="gridCheck1">
+                              Are you employed?
+                            </label>
+            </div>
+
+            <label for="validationCustom01">Workplace if employed</label>
+            <input type="text" class="form-control" id="alumWorkplace" name="alumWorkplace" placeholder="Works at" required th:field="*{alumWorkplace}"></input>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="form-group row mt-3">
+            <div class="col-md-6">
+                <label for="validationCustom03">Home Address</label>
+                <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required th:field="*{alumAddress}"> </input>
+                <div class="invalid-feedback">
+                    Please provide a valid address.
+                </div>
+            </div>
+
+
+            <div class="col-md-6 ">
+                <label for="validationCustom01">Your interests</label>
+                <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required th:field="*{alumInterests}"></input>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="form-check col-md-12">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required></input>
+                <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+            <button class="btn btn-primary   col-md-6" type="submit">Sign-up</button>
+        </div>
+
+
+        <div class="text-center p-t-15">
+            <span class="txt1">
+                            Already have an Account?
+                        </span>
+            <a class="txt2" th:href="@{/login}">
+                             Sign-in
+                        </a>
+        </div>
+    </form>
+
+
+
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function() {

@@ -22,14 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
     private final UserService userService;
     private final PasswordEncoder bEncoder;
-    private final IUserdao iUserdao;
 
 
     @Autowired
-    public WebSecurityConfig(UserService userService, PasswordEncoder bEncoder,IUserdao iUserdao) {
+    public WebSecurityConfig(UserService userService, PasswordEncoder bEncoder) {
         this.userService = userService;
         this.bEncoder = bEncoder;
-        this.iUserdao = iUserdao;
+ 
     }
 
     @Override
@@ -38,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  //temporary disable the rejection of postmapping for postman testing //form based must be enabled.
                  .authorizeRequests()
                     .antMatchers("/",
-                                 "/registration**",
+                                "/registration**",
                                  "/forgot-password**",
                                  "/styles/js/**",
                                  "/styles/fonts/**",
@@ -46,15 +45,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    .antMatchers("/home")
-                        .hasAuthority("ALUMNI")
-                    .antMatchers("/admin")
-                        .hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
-                .and().formLogin()
+                .and()
+                    .formLogin()
                         .loginPage("/login")
-                            .permitAll()
+                        .permitAll()
                 .and()
                     .logout()
                         .invalidateHttpSession(true)
