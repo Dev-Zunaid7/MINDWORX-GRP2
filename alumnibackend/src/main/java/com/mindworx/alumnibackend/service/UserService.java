@@ -68,10 +68,12 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
       //verify user by email
+       System.out.println(email);
         Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
         //update the userdetails to set up login.
-        MindworxUserDetails  mindworxUserDetails = new MindworxUserDetails(mindworxuser);
-        return new org.springframework.security.core.userdetails.User(mindworxUserDetails.getUsername(),mindworxUserDetails.getPassword(), mindworxUserDetails.getAuthorities());
+        System.out.println(mindworxuser.getPassword());
+        System.out.println(mindworxuser.getTypeofuser().name());
+        return new MindworxUserDetails(mindworxuser);
     }
 
     //methond to Register the user into databasw

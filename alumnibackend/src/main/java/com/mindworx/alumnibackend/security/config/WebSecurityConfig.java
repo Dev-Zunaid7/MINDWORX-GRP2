@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                  //temporary disable the rejection of postmapping for postman testing //form based must be enabled.
+                
                  .authorizeRequests()
                     .antMatchers("/",
                                 "/registration**",
@@ -44,11 +45,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
+                    // .antMatchers("/home").hasAuthority("ALUMNI")
+                    // .antMatchers("/admin","/home").hasRole("ADMIN")
+                    // .antMatchers("/coach","/home").hasRole("COACH")
                 .anyRequest()
                 .authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/login")
+                        .defaultSuccessUrl("/home")
                         .permitAll()
                 .and()
                     .logout()
@@ -56,8 +61,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout").permitAll();
-
-        
         }
 
         /**
