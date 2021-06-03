@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.mindworx.alumnibackend.dao.IAcademyEmaildao;
 import com.mindworx.alumnibackend.model.AcademyEmail;
-import com.mindworx.alumnibackend.model.RegistrationRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

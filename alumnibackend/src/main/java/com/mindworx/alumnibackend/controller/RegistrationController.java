@@ -4,7 +4,6 @@ package com.mindworx.alumnibackend.controller;
 import com.mindworx.alumnibackend.model.RegistrationRequest;
 import com.mindworx.alumnibackend.service.RegistrationService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,9 +40,32 @@ public class RegistrationController {
         //return response to client side.
                             
        
-         String response = registrationService.register(registrationRequest);
+         String response = registrationService.registerAlumni(registrationRequest);
      
        System.out.println("Response messsage: " + response);
+        return "redirect:/registration?success";
+
+    }
+
+    @PostMapping("/admin/new")
+    public String registerAdmin(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
+        //return response to client side.
+                            
+       
+        String response = registrationService.registerAdministrator(registrationRequest);
+     
+        System.out.println("Response messsage: " + response);
+        return "redirect:/registration?success";
+
+    }
+
+    @PostMapping("/coach/new")
+    public String registerCoach(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
+        //return response to client side.
+                            
+        String response = registrationService.registerCoach(registrationRequest);
+     
+        System.out.println("Response messsage: " + response);
         return "redirect:/registration?success";
 
     }

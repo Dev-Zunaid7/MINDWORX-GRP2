@@ -11,7 +11,6 @@ import com.mindworx.alumnibackend.model.token.ConfirmationToken;
 import com.mindworx.alumnibackend.model.token.ConfirmationTokenService;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,29 +37,30 @@ public class UserService implements UserDetailsService {
  
     }
 
-        //     //get all users in the database
+    //ADMINISTATOR LEVEL: get all users in the database
     public Collection<Mindworxuser> getAllMindworxUsers(){
         return mindworxuserDao.findAll();
     }
 
-        //     //get a user by id in database
+     //     //get a user by id in database
     public Optional<Mindworxuser> getMindworxUserById(int id){
         //check if the id exist first
         return mindworxuserDao.findById(id);
     }
 
-    //      //remove a user from database
+    //ADMINISTATOR LEVEL: remove a user from database
     public void removeMindworxUserById(int id){
          mindworxuserDao.deleteById(id);
     }
 
-    //      //update user details in database
+    // USER ALUMNI LEVEL: Update user details in database
     public void updateMindworxUser(int id, Mindworxuser mindworxuser){
        
      //this.mindworxuserDao.saveAndFlush(id,mindworxuser);
     }
 
-    public void innsertMindworxuserToDb(Mindworxuser mindworxUser) {
+    //SYSTEM LEVEL
+    private void innsertMindworxuserToDb(Mindworxuser mindworxUser) {
         this.mindworxuserDao.save(mindworxUser);
     }
 
@@ -68,10 +68,30 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
       //verify user by email
+       System.out.println(email);
         Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
         //update the userdetails to set up login.
-        MindworxUserDetails  mindworxUserDetails = new MindworxUserDetails(mindworxuser);
-        return new org.springframework.security.core.userdetails.User(mindworxUserDetails.getUsername(),mindworxUserDetails.getPassword(), mindworxUserDetails.getAuthorities());
+        System.out.println(mindworxuser.getPassword());
+        System.out.println(mindworxuser.getTypeofuser().name());
+        return new MindworxUserDetails(mindworxuser);
+    }
+
+    //methond to add an administratior into database
+    public String addAdministrator(Mindworxuser adminstrator){
+               //verify user by email if already exists on the App's database. 
+               boolean adminEmailExists=  mindworxuserDao.findByEmail(adminstrator.getEmail()).isPresent();
+                if(adminEmailExists){
+                        throw new IllegalStateException("This admin already exists");
+                    }  
+
+                    String encodedPassword = passwordEncoder.encode(adminstrator.getPassword());
+
+                    adminstrator.setPassword(encodedPassword);
+                    
+                    //saving user to the database.
+                    innsertMindworxuserToDb(adminstrator);
+
+        return "new administrator added";
     }
 
     //methond to Register the user into databasw
@@ -117,6 +137,23 @@ public class UserService implements UserDetailsService {
     public void enableMindworxUser(String email) {
         //iterate or filter to find the email passed
         //update the enable of the passed user.
+    }
+
+    //methond to add an administratior into database
+    public String addCoach(Mindworxuser coach) {
+        //verify user by email if already exists on the App's database. 
+        boolean coachEmailExists=  mindworxuserDao.findByEmail(coach.getEmail()).isPresent();
+        if(coachEmailExists){
+                throw new IllegalStateException("This facilitator already exists");
+            }  
+
+            String encodedPassword = passwordEncoder.encode(coach.getPassword());
+
+            coach.setPassword(encodedPassword);
+            
+            //saving user to the database.
+            innsertMindworxuserToDb(coach);
+        return "new facilitator added";
     }
 
     

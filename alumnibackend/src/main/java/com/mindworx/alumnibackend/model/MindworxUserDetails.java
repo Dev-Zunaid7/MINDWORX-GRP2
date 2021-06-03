@@ -25,7 +25,7 @@ public class MindworxUserDetails implements UserDetails {
    //methods for user security verification.
    @Override
    public Collection<? extends GrantedAuthority> getAuthorities() {
-       SimpleGrantedAuthority authority = new SimpleGrantedAuthority(mindworxuser.getTypeofuser().toString());
+       SimpleGrantedAuthority authority = new SimpleGrantedAuthority(mindworxuser.getTypeofuser().name());
        return Collections.singletonList(authority);
    }
 
