@@ -6,7 +6,9 @@ import com.mindworx.alumnibackend.email.EmailSender;
 import com.mindworx.alumnibackend.model.RegistrationRequest;
 
 import com.mindworx.alumnibackend.model.token.ConfirmationTokenService;
+import com.mindworx.alumnibackend.model.users.administrator.Adminstrator;
 import com.mindworx.alumnibackend.model.users.alumni.Alumni;
+import com.mindworx.alumnibackend.model.users.coach.Coach;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,8 +36,8 @@ public class RegistrationService {
         this.emailSender = emailSender;
     }
 
-
-    public String register(RegistrationRequest request) {
+    //register a user/alumni
+    public String registerAlumni(RegistrationRequest request) {
 
         String token = userService.signUpUser(new Alumni( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofBirth(),
                                                   request.getGender(), request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(), request.getAlumWorkplace(), request.getAlumAddress()));
@@ -44,6 +46,30 @@ public class RegistrationService {
         // emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));
          return token;
     }
+
+    //register/add an administrator/course coordinator
+    public String registerAdministrator(RegistrationRequest request) {
+
+        String token = userService.addAdministrator(new Adminstrator( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofBirth(),
+                                                  request.getGender(), request.getEmail(), request.getPassword(), request.getAdminDept()));
+    
+        // String link = "";
+        // emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));
+         return token;
+    }
+
+    //register/add a coach/ course facilitator
+    public String registerCoach(RegistrationRequest request) {
+
+        String token = userService.addCoach(new Coach( request.getFirstName(),request.getLastName(),request.getUserName(), request.getInitials(), request.getDateofBirth(),
+                                                  request.getGender(), request.getEmail(), request.getPassword(), request.getCoachQual(), request.getCoachProf(),request.getCoachOrg()));
+    
+        // String link = "";
+        // emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));
+         return token;
+    }
+
+
 
 
 }

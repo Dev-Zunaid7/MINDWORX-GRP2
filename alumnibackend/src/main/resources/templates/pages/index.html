@@ -26,6 +26,12 @@
                 font-size: 3.5rem;
             }
         }
+        
+        .container {
+            width: auto;
+            max-width: 680px;
+            padding: 0 15px;
+        }
     </style>
 
 
@@ -51,9 +57,6 @@
                             <a class="nav-link" href="/faq.html">FAQ</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <span sec:authentication="principal.username"></span>
-                    </form>
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
@@ -67,6 +70,22 @@
             </div>
         </nav>
     </header>
+
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">Home page. Guest</h1>
+            <p class="lead">landing page for app about, FAQ, download link, etc.</p>
+        </div>
+    </main>
+
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
 
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>

@@ -21,19 +21,19 @@ public class HomeController {
     //only by user
     @GetMapping("/home")
     public String feed(Model model){
-        return ("<h1>Welcome to the feeds page<h1>");
+        return "pages/feeds";
     }
         
     //only by admin
     @GetMapping("/admin")
     public String admin(){
-        return ("<h1>Welcome to the administrator dashboard<h1>");
+        return "pages/adminboard";
     }
     
     //only by coach
     @GetMapping("/coach")
     public String coach(){
-        return ("<h1>Welcome to the coach dashboard<h1>");
+        return "pages/coachboard";
     }
 
     @GetMapping("/forgot-password")

@@ -1,5 +1,6 @@
 package com.mindworx.alumnibackend.security.config;
 
+import com.mindworx.alumnibackend.model.DenialAccessHandle;
 import com.mindworx.alumnibackend.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  .authorizeRequests()
                     .antMatchers("/",
                                 "/registration**",
-                                 "/forgot-password**",
+             //                    "/forgot-password**",
                                  "/styles/js/**",
                                  "/styles/fonts/**",
                                  "/styles/css/**",
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    // .antMatchers("/home").hasAuthority("ALUMNI")
-                    // .antMatchers("/admin","/home").hasRole("ADMIN")
-                    // .antMatchers("/coach","/home").hasRole("COACH")
+                    .antMatchers("/home").hasAuthority("ALUMNI")
+                    .antMatchers("/admin").hasAuthority("ADMIN")
+                    .antMatchers("/coach").hasAuthority("COACH")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -60,7 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout").permitAll();
+                        .logoutSuccessUrl("/login?logout").permitAll()
+                .and()
+                   .exceptionHandling().accessDeniedHandler(denialAccessHandle()).accessDeniedPage("/access-denied");
         }
 
         /**
@@ -81,4 +84,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(userService);
         return provider;
     }
+
+
+    @Bean
+    public DenialAccessHandle denialAccessHandle() {
+        return new DenialAccessHandle();
+    }
+    
 }

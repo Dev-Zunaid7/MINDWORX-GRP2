@@ -34,7 +34,13 @@
         </symbol>
       </svg>
 
-
+    <style>
+        .container {
+            width: auto;
+            max-width: 680px;
+            padding: 0 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,9 +60,6 @@
                             <a class="nav-link" href="/faq.html">FAQ</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <span sec:authentication="principal.username"></span>
-                    </form>
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
@@ -223,7 +226,11 @@
         </div>
     </form>
 
-
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -245,6 +252,7 @@
             }, false);
         })();
     </script>
+
 
 
     <!-- Login Script files-->

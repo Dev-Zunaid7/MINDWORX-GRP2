@@ -34,6 +34,12 @@
                 font-size: 3.5rem;
             }
         }
+        
+        .container {
+            width: auto;
+            max-width: 680px;
+            padding: 0 15px;
+        }
     </style>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -69,9 +75,6 @@
                             <a class="nav-link" href="/faq.html">FAQ</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <span sec:authentication="principal.username"></span>
-                    </form>
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
@@ -132,7 +135,13 @@
             </a>
         </div>
     </form>
-    <p class="mt-5 mb-3 text-center text-muted">&copy; 2021-</p>
+
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">&copy; 2021</span>
+        </div>
+    </footer>
 
 
 
@@ -156,6 +165,17 @@
             }, false);
         })();
     </script>
+    <!-- Login Script files-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>
+    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+
+
+
+    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+
 </body>
 
 </html>

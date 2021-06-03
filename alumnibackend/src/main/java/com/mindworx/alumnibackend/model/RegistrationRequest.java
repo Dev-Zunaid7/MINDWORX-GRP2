@@ -15,17 +15,23 @@ public class RegistrationRequest {
     private  String gender;
     private  String  password;
     private  String initials;
-    //alumni registration only
+    //ALUMNI registration 
     private String	alumInterests;
     private boolean	alumEmployed;
     private String	alumWorkplace;
     private String	alumAddress;
+    //ADMINISTRATOR/COORDINATOR registration
+    private String  adminDept;
+    //COACH/FACILITATOR registration
+    private String    coachQual;
+    private String    coachProf;
+    private String    coachOrg;
     
 
 
     //REGISTER AN ALUMNI CONSTRUCTOR.
     public RegistrationRequest(String firstName, String lastName, String userName,String initials, Date dateofBirth,String gender,
-                               String email, String password,String alumInterests,boolean alumEmployed,String alumWorkplace,String alumAddress) {
+            String email, String password,String alumInterests,boolean alumEmployed,String alumWorkplace,String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -40,15 +46,76 @@ public class RegistrationRequest {
         this.alumAddress = alumAddress;
     }
 
-
+    //for
     public RegistrationRequest() {
     }
 
+    //REGISTER AN ADMINISTRATOR CONSTRUCTOR.
+    public RegistrationRequest(String firstName, String lastName, String userName, String email, Date dateofBirth,
+            String gender, String password, String initials, String adminDept) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.dateofBirth = dateofBirth;
+        this.gender = gender;
+        this.password = password;
+        this.initials = initials;
+        this.adminDept = adminDept;
+    }
+
+
+    //REGISTER A COACH CONSTRUCTOR.
+    public RegistrationRequest(String firstName, String lastName, String userName, String email, Date dateofBirth,
+            String gender, String password, String initials, String coachQual, String coachProf, String coachOrg) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.dateofBirth = dateofBirth;
+        this.gender = gender;
+        this.password = password;
+        this.initials = initials;
+        this.coachQual = coachQual;
+        this.coachProf = coachProf;
+        this.coachOrg = coachOrg;
+    }
 
     public String getFirstName() {
         return firstName;
     }
 
+    public String getAdminDept() {
+        return adminDept;
+    }
+
+    public void setAdminDept(String adminDept) {
+        this.adminDept = adminDept;
+    }
+
+    public String getCoachQual() {
+        return coachQual;
+    }
+
+    public void setCoachQual(String coachQual) {
+        this.coachQual = coachQual;
+    }
+
+    public String getCoachProf() {
+        return coachProf;
+    }
+
+    public void setCoachProf(String coachProf) {
+        this.coachProf = coachProf;
+    }
+
+    public String getCoachOrg() {
+        return coachOrg;
+    }
+
+    public void setCoachOrg(String coachOrg) {
+        this.coachOrg = coachOrg;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
