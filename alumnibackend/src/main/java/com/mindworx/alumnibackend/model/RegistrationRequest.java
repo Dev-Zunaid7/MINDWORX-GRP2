@@ -2,6 +2,8 @@ package com.mindworx.alumnibackend.model;
 
 import java.sql.Date;
 
+import com.mindworx.alumnibackend.security.ValidPassword;
+
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode

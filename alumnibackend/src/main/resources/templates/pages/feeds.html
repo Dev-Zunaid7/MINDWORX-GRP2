@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="undefined" crossorigin="anonymous">
     <link rel="stylesheet" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css">
     <style>
         .bd-placeholder-img {
@@ -36,6 +35,7 @@
         }
     </style>
 
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -50,6 +50,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/styles/css/signin.css" rel="stylesheet">
+    <link href="/styles/css/sidebars.css" rel="stylesheet">
 </head>
 
 <body>
@@ -57,6 +58,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -88,17 +90,67 @@
             </div>
         </nav>
     </header>
-    <br>
-    <br>
 
-    <!-- Begin page content -->
-    <main class="flex-shrink-0">
-        <div class="container">
-            <h1 class="mt-5">Feeds page. Alumni's main page</h1>
-            <p class="lead">page to post on timeline, see other's feeds and courses suggested.</p>
+    <br>
+    <div id="outer-container">
+        <div id="sidebar">
+            <!---------------------- Sidebar Start ---------------->
+            <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            <i class="fas fa-home"></i><span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fas fa-desktop"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/courses}" class="nav-link text-white">
+                            <i class="fas fa-laptop-code"></i><span>Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fas fa-award"></i><span>Achievements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fas fa-comments"></i><span>Discussion</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
+                        <i alt="" width="32" height="32" class="rounded-circle me-2 "></i>
+                        <strong><span sec:authentication="name">Username</span></strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" th:href="@{/userprofile}">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!---------------------- Sidebar End ------------------>
         </div>
-    </main>
+        <div id="content">
+            <div class="container">
+                <h1 class="mt-5">Feeds page. Alumni's main page</h1>
 
+                <p class="lead">page to post on timeline, see other's feeds and courses suggested.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Begin page content -->
 
     <!-- Login Script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -107,15 +159,10 @@
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
 
-
+    <script src="/styles/js/sidebars.js"></script>
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
 
 
 </body>

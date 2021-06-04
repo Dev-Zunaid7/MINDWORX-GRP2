@@ -88,8 +88,10 @@
             </div>
         </nav>
     </header>
+    <hr>
     <br>
     <br>
+
     <form class="form-signin needs-validation  g-3" th:action="@{/login}" method="POST">
         <div class="text-center">
             <img class="mb-4" src="/img/theXlogo.jpg" alt="" width="80" height="80">
@@ -116,33 +118,37 @@
         </div>
         <div class="col-md-12 mb-3">
             <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="password">
-        </div>
-        <div class="text-center mt-4">
-            <span class="txt1">
+            <div class="input-group">
+                <input type="password" class="form-control " name="password" id="password">
+
+            </div>
+            <input type="checkbox" name="password" onclick="showPassword()"> Show Password
+            <div class="text-center mt-4">
+                <span class="txt1">
                 Forgot
             </span>
-            <a class="txt2" href="/forgot-password">
+                <a class="txt2" href="/forgot-password">
                 Username / Password?
             </a>
-        </div>
-        <button class="w-100 btn btn-lg mt-4 btn-primary" type="submit">Sign in</button>
+            </div>
+            <button class="w-100 btn btn-lg mt-4 btn-primary" type="submit">Sign in</button>
 
-        <div class="text-center mt-4">
-            <a class="txt2" href="/registration">
+            <div class="text-center mt-4">
+                <a class="txt2" href="/registration">
                 Create your Account
-                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                <i class="fas fas-long-arrow-right m-l-5" aria-hidden="true"></i>
             </a>
+            </div>
         </div>
     </form>
 
-
+    <br>
+    <br>
     <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">&copy; 2021</span>
+        <div class="container text-center">
+            <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
-
 
 
     <script>
@@ -165,6 +171,7 @@
             }, false);
         })();
     </script>
+
     <!-- Login Script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>
@@ -175,6 +182,18 @@
 
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
+
+
+    <script>
+        function showPassword() {
+            var pass = document.getElementById("password");
+            if (pass.type === "password") {
+                pass.type = "text";
+            } else {
+                pass.type = "password";
+            }
+        }
+    </script>
 
 </body>
 

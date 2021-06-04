@@ -75,159 +75,169 @@
     </header>
     <br>
     <br>
-
-    <div th:if="${param.success}" class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <div>
-            Successfully registered dumbass! welcome!
-        </div>
-    </div>
-
-    <form class="row g-3 mx-auto form-signup needs-validation" method="POST" th:action="@{/registration}" th:object="${registrationRequest}" novalidate>
-        <div class="form-group row mt-4">
-            <div class="col-md-6">
-                <label for="validationCustom01">First name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" th:field="*{firstName}" required></input>
-                <div class="valid-feedback">
-                    Looks good!
+    <div class="container mt-4">
+        <form class="row g-3 mx-auto form-signup needs-validation" method="POST" th:action="@{/registration}" th:object="${registrationRequest}" novalidate>
+            <div th:if="${param.success}" class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                    Successfully registered, Click Login if not redirected.
                 </div>
             </div>
-            <div class="col-md-6">
-                <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" th:field="*{lastName}" required></input>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group mt-3 row">
-            <div class="col-md-6">
-                <label for="validationCustom02">Initials</label>
-                <input type="text" class="form-control" id="lastName" name="initials" placeholder="initials" required th:field="*{initials}"></input>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustomUsername">Username</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <div class="form-group row mt-4">
+                <div class="col-md-6">
+                    <label for="validationCustom01">First name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" th:field="*{firstName}" required></input>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
-                    <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" th:field="*{lastName}" required></input>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3 row">
+                <div class="col-md-6">
+                    <label for="validationCustom02">Initials</label>
+                    <input type="text" class="form-control" id="lastName" name="initials" placeholder="initials" required th:field="*{initials}"></input>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustomUsername">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
+                        <div class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3 row">
+                <div class=" col-md-6">
+                    <label for="validationCustom01">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required th:field="*{email}"></input>
                     <div class="invalid-feedback">
-                        Please choose a username.
+                        Please provide a valid email.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Birthdate" required th:field="*{dateofBirth}"></input>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group mt-3 row">
-            <div class=" col-md-6">
-                <label for="validationCustom01">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required th:field="*{email}"></input>
-                <div class="invalid-feedback">
-                    Please provide a valid email.
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationCustom02">Date of Birth</label>
-                <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Birthdate" required th:field="*{dateofBirth}"></input>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-        </div>
+            <div class="form-group mt-3 row">
+                <div class="col-md-6">
+                    <label for="validationCustomUsername">Password</label>
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend"><input type="checkbox" name="password" onclick="showPassword()">show</span>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
 
-        <div class="form-group mt-3 row">
-            <div class="col-md-6">
-                <label for="validationCustomUsername">Password</label>
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">*</span>
+                        <div id="errors" class="well"></div>
+                        <div class="invalid-feedback">
+                            Must enter password.
+                        </div>
                     </div>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required th:field="*{password}"></input>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustomUsername">Password confirmation</label>
+                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" aria-describedby="inputGroupPrepend" required></input>
                     <div class="invalid-feedback">
                         Must enter password.
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label for="validationCustomUsername">Password confirmation box</label>
-            </div>
-        </div>
-        <div class="form-group mt-3">
-            <div class="input-group">
-                <label class="input-group-text" for="gender">Specify Gender</label>
-                <select name="gender" id="gender" class="form-select">
-                            <option  value="Male" th:field="*{gender}">Male</option>
-                            <option  value="Female" th:field="*{gender}">Female</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            Employment
-            <div class="form-check col-md-12 mb-2">
-                <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed" th:checked="*{alumEmployed}"></input>
-                <label class="form-check-label" for="gridCheck1">
-                              Are you employed?
-                            </label>
-            </div>
-
-            <label for="validationCustom01">Workplace if employed</label>
-            <input type="text" class="form-control" id="alumWorkplace" name="alumWorkplace" placeholder="Works at" required th:field="*{alumWorkplace}"></input>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-
-        <div class="form-group row mt-3">
-            <div class="col-md-6">
-                <label for="validationCustom03">Home Address</label>
-                <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required th:field="*{alumAddress}"> </input>
-                <div class="invalid-feedback">
-                    Please provide a valid address.
+            <div class="form-group mt-3">
+                <div class="input-group">
+                    <label class="input-group-text" for="gender">Specify Gender</label>
+                    <select name="gender" id="gender" class="form-select">
+                                <option  value="Male" th:field="*{gender}">Male</option>
+                                <option  value="Female" th:field="*{gender}">Female</option>
+                    </select>
                 </div>
             </div>
 
+            <div class="form-group">
+                Employment
+                <div class="form-check col-md-12 mb-2">
+                    <input class="form-check-input" type="checkbox" id="alumEmployed" name="alumEmployed" th:checked="*{alumEmployed}"></input>
+                    <label class="form-check-label" for="gridCheck1">
+                                  Are you employed?
+                                </label>
+                </div>
 
-            <div class="col-md-6 ">
-                <label for="validationCustom01">Your interests</label>
-                <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required th:field="*{alumInterests}"></input>
+                <label for="validationCustom01">Workplace if employed</label>
+                <input type="text" class="form-control" id="alumWorkplace" name="alumWorkplace" placeholder="Works at" required th:field="*{alumWorkplace}"></input>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
 
-        </div>
-        <div class="form-group">
-            <div class="form-check col-md-12">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required></input>
-                <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-                <div class="invalid-feedback">
-                    You must agree before submitting.
+            <div class="form-group row mt-3">
+                <div class="col-md-6">
+                    <label for="validationCustom03">Home Address</label>
+                    <input type="text" class="form-control" id="alumAddress" name="alumAddress" placeholder="Address" required th:field="*{alumAddress}"> </input>
+                    <div class="invalid-feedback">
+                        Please provide a valid address.
+                    </div>
                 </div>
+
+
+                <div class="col-md-6 ">
+                    <label for="validationCustom01">Your interests</label>
+                    <input type="text" class="form-control" id="alumInterests" name="alumInterests" placeholder="Your interests" required th:field="*{alumInterests}"></input>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
             </div>
-            <button class="btn btn-primary   col-md-6" type="submit">Sign-up</button>
-        </div>
+            <div class="form-group">
+                <div class="form-check col-md-12">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required></input>
+                    <label class="form-check-label" for="invalidCheck">
+                  Agree to terms and conditions
+                </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary   col-md-6" type="submit">Sign-up</button>
+                </div>
+
+            </div>
 
 
-        <div class="text-center p-t-15">
-            <span class="txt1">
-                            Already have an Account?
-                        </span>
-            <a class="txt2" th:href="@{/login}">
-                             Sign-in
-                        </a>
-        </div>
-    </form>
+            <div class="text-center p-t-10 p-b-10">
+                <span class="txt1">
+                                Already have an Account?
+                            </span>
+                <a class="txt2" th:href="@{/login}">
+                                 Sign-in
+                            </a>
+            </div>
+        </form>
+    </div>
+
 
     <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
+        <div class="container text-center">
             <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
@@ -261,10 +271,75 @@
     <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
+    <script type="text/javascript" src="/styles/js/jquery.password-validation.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#password").passwordValidation({
+                "confirmField": "#confirmpassword"
+            }, function(element, valid, match, failedCases) {
 
+                $("#errors").html("<pre>" + failedCases.join("\n") + "</pre>");
 
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+                if (valid) $(element).css("border", "2px solid green");
+                if (!valid) $(element).css("border", "2px solid red");
+                if (valid && match) $("#confirmpassword").css("border", "2px solid green");
+                if (!valid || !match) $("#confirmpassword").css("border", "2px solid red");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script>
+        function showPassword() {
+            var pass = document.getElementById("password");
+            var confirmpass = document.getElementById("confirmpassword");
+            if (pass.type === "password" || confirmpass.type === "password") {
+                pass.type = "text";
+                confirmpass.type = "text";
+            } else {
+                pass.type = "password";
+                confirmpass.type = "password";
+            }
+        }
+    </script>
+
+    <!-- <script type="text/javascript" src="/styles/js/pwstrength-bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            options = {
+                common: {
+                    minChar: 8
+                },
+                ui: {
+                    showVerdictsInsideProgressBar: true,
+                    showErrors: true,
+                    errorMessages: {
+                        wordLength: '<spring:message code="error.wordLength"/>',
+                        wordNotEmail: '<spring:message code="error.wordNotEmail"/>',
+                        wordLowercase: '<spring:message code="error.wordLowercase"/>',
+                        wordUppercase: '<spring:message code="error.wordUppercase"/>',
+                        wordOneNumber: '<spring:message code="error.wordOneNumber"/>',
+                        wordOneSpecialChar: '<spring:message code="error.wordOneSpecialChar"/>'
+                    }
+                }
+            };
+            $('#password').pwstrength(options);
+        });
+    </script> -->
+
 </body>
 
 </html>

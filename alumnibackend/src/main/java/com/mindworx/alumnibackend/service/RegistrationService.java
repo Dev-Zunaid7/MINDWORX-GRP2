@@ -20,9 +20,9 @@ import org.springframework.stereotype.Service;
 public class RegistrationService {
 
     private final UserService userService;
-    private final EmailValidator emailValidator;
-    private final ConfirmationTokenService confirmationTokenService;
-    private final EmailSender emailSender;
+   // private final EmailValidator emailValidator;
+   // private final ConfirmationTokenService confirmationTokenService;
+   // private final EmailSender emailSender;
 
 
     
@@ -31,9 +31,9 @@ public class RegistrationService {
     public RegistrationService(UserService userService, EmailValidator emailValidator,
             ConfirmationTokenService confirmationTokenService, EmailSender emailSender) {
         this.userService = userService;
-        this.emailValidator = emailValidator;
-        this.confirmationTokenService = confirmationTokenService;
-        this.emailSender = emailSender;
+     //   this.emailValidator = emailValidator;
+     //   this.confirmationTokenService = confirmationTokenService;
+     //   this.emailSender = emailSender;
     }
 
     //register a user/alumni

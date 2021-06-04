@@ -39,14 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  .authorizeRequests()
                     .antMatchers("/",
                                 "/registration**",
-             //                    "/forgot-password**",
+                                "/forgot-password**",
                                  "/styles/js/**",
                                  "/styles/fonts/**",
                                  "/styles/css/**",
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    .antMatchers("/home").hasAuthority("ALUMNI")
+                    .antMatchers("/home", "/courses").hasAuthority("ALUMNI")
                     .antMatchers("/admin").hasAuthority("ADMIN")
                     .antMatchers("/coach").hasAuthority("COACH")
                 .anyRequest()

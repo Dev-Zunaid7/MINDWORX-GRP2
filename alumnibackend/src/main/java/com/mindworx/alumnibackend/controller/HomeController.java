@@ -40,6 +40,11 @@ public class HomeController {
     public String passwordrest(){
         return "pages/resetpassword";
     }
+    
+    @GetMapping("/courses")
+    public String getCoursePage(){
+        return "pages/imBuildingCourses";
+    }
 
 
 }
