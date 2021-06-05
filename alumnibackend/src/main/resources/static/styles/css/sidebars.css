@@ -12,10 +12,6 @@ main {
     overflow-y: hidden;
 }
 
-.fas {
-    font-family: 'FontAwesome' !important;
-}
-
 main>* {
     flex-shrink: 0;
     min-height: -webkit-fill-available;

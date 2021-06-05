@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="undefined" crossorigin="anonymous">
-    <link rel="stylesheet" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/styles/fontawesome/css/all.css}" integrity="undefined" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -49,8 +49,8 @@
   </svg>
 
     <!-- Custom styles for this template -->
-    <link href="/styles/css/signin.css" rel="stylesheet">
-    <link href="/styles/css/sidebars.css" rel="stylesheet">
+    <link th:href="@{/styles/css/signin.css}" rel="stylesheet">
+    <link th:href="@{/styles/css/sidebars.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -99,28 +99,28 @@
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                            <i class="fas fa-home"></i><span>Home</span>
+                        <a href="#" class="nav-link mb-4 active" aria-current="page">
+                            <i class="fas fa-home fa-2x fa-fw"></i><span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
-                            <i class="fas fa-desktop"></i><span>Dashboard</span>
+                        <a href="#" class="nav-link mb-4 text-white">
+                            <i class="fas fa-desktop fa-2x fa-fw"></i><span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/courses}" class="nav-link text-white">
-                            <i class="fas fa-laptop-code"></i><span>Courses</span>
+                        <a th:href="@{/courses}" class="nav-link mb-4  text-white">
+                            <i class="fas fa-laptop fa-2x fa-fw"></i><span>Courses</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
-                            <i class="fas fa-award"></i><span>Achievements</span>
+                        <a href="#" class="nav-link mb-4 text-white">
+                            <i class="fas fa-award fa-2x fa-fw"></i><span>Achievements</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
-                            <i class="fas fa-comments"></i><span>Discussion</span>
+                        <a href="#" class="nav-link mb-3 text-white">
+                            <i class="fas fa-comments fa-2x fa-fw"></i><span>Discussion</span>
                         </a>
                     </li>
                 </ul>
@@ -154,14 +154,10 @@
 
     <!-- Login Script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
-
-
-    <script src="/styles/js/sidebars.js"></script>
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script th:src="@{/webjars/popper.js/2.9.2/cjs/popper.js}"></script>
+    <script th:src="@{/styles/js/sidebars.js}"></script>
+    <script th:src="{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
 
 
 
