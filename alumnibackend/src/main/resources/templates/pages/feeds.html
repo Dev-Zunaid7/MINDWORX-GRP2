@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Leon Ndaba">
-    <title>Sign-in · Alumni App</title>
+    <title>Home · Alumni App</title>
 
 
     <!-- Bootstrap core CSS -->
     <link rel="icon" type="image/png" href="/img/theXlogo.jpg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css" integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css}" integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css}" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css}" />
     <link rel="stylesheet" th:href="@{/styles/fontawesome/css/all.css}" integrity="undefined" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}">
     <style>
@@ -92,7 +92,7 @@
     </header>
 
     <br>
-    <div id="outer-container">
+    <div id="outer-container mt-1">
         <div id="sidebar">
             <!---------------------- Sidebar Start ---------------->
             <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
@@ -126,8 +126,8 @@
                 </ul>
                 <hr>
                 <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
-                        <i alt="" width="32" height="32" class="rounded-circle me-2 "></i>
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i alt="" width="32" height="32" class="rounded-circle fas fa-user-circle fa-fw"></i>
                         <strong><span sec:authentication="name">Username</span></strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -153,10 +153,10 @@
     <!-- Begin page content -->
 
     <!-- Login Script files-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script th:src="@{/webjars/popper.js/2.9.2/cjs/popper.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.9.2/umd/popper.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script th:src="@{/styles/js/sidebars.js}"></script>
-    <script th:src="{/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js}"></script>
     <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
 
 

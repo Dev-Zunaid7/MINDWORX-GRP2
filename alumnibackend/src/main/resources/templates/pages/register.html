@@ -44,6 +44,13 @@
 </head>
 
 <body>
+
+    <div class="wrap">
+        <div class="loading">
+            <div class="bounceball"></div>
+            <div class="text">NOW LOADING</div>
+        </div>
+    </div>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -114,7 +121,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend">@</span>
                         </div>
-                        <input type="text" class="form-control" id="Username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
+                        <input type="text" class="form-control" id="username" name="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required th:field="*{userName}"></input>
                         <div class="invalid-feedback">
                             Please choose a username.
                         </div>
@@ -264,7 +271,12 @@
     </script>
 
 
-
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".wrap");
+            loader.className += " hidden";
+        })
+    </script>
     <!-- Login Script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>

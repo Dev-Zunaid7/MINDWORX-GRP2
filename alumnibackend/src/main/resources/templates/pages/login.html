@@ -59,6 +59,13 @@
 </head>
 
 <body>
+
+    <div class="wrap">
+        <div class="loading">
+            <div class="bounceball"></div>
+            <div class="text">NOW LOADING</div>
+        </div>
+    </div>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -118,10 +125,8 @@
         </div>
         <div class="col-md-12 mb-3">
             <label for="inputPassword4" class="form-label">Password</label>
-            <div class="input-group">
-                <input type="password" class="form-control " name="password" id="password">
+            <input type="password" class="form-control " name="password" id="password">
 
-            </div>
             <input type="checkbox" name="password" onclick="showPassword()"> Show Password
             <div class="text-center mt-4">
                 <span class="txt1">
@@ -172,15 +177,17 @@
         })();
     </script>
 
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".wrap");
+            loader.className += " hidden";
+            console.log(loader);
+        })
+    </script>
     <!-- Login Script files-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/webjars/popper.js/2.9.2/cjs/popper.js"></script>
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
-
-
-
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/webjars/popper.js/2.9.2/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/dist/jquery.min.js"></script>
 
 
