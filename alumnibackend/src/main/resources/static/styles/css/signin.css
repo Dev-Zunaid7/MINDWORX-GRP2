@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 html,
 body {
-    position: relative;
     width: 100%;
     height: 100vh;
     font-family: Montserrat;
+    /* Hide scrollbars */
 }
 
 .form-signin {
@@ -16,7 +16,10 @@ body {
 
 .form-signup {
     width: 100%;
-    max-width: 830px;
+    max-width: 630px;
+    padding: 15px;
+    margin: auto;
+    justify-content: space-between;
 }
 
 
@@ -30,7 +33,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: beige;
+    background: beige;
     justify-content: center;
     align-items: center;
 }
@@ -45,6 +48,14 @@ body {
         opacity: 0;
         visibility: hidden;
     }
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
 }
 
 .text {

@@ -7,3 +7,4 @@ public enum MindworxuserType {
     ADMIN,
     COACH
 }
+

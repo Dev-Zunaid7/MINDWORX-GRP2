@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
-import com.mindworx.alumnibackend.model.users.MindworxuserType;
 
 
 @Entity
@@ -52,7 +51,7 @@ public class Alumni extends Mindworxuser {
 
 	public Alumni(String firstName, String lastName, String userName,String initials, Date dateofBirth,
 				  String gender,String email, String password,String alumInterests,boolean alumEmployed,String alumWorkplace,String alumAddress) {
-		super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.ALUMNI);
+		super(firstName, lastName, userName, initials, dateofBirth, gender, email, password);
 	
 		this.alumInterests = alumInterests;
 		this.alumEmployed = alumEmployed;

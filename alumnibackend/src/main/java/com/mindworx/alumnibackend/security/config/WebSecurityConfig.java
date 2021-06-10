@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
@@ -49,21 +50,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/home", "/courses").hasAuthority("ALUMNI")
                     .antMatchers("/admin").hasAuthority("ADMIN")
                     .antMatchers("/coach").hasAuthority("COACH")
-                .anyRequest()
-                .authenticated()
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
                     .formLogin()
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .defaultSuccessUrl("/home", true)
                         .permitAll()
                 .and()
                     .logout()
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout").permitAll()
-                .and()
-                   .exceptionHandling().accessDeniedHandler(denialAccessHandle()).accessDeniedPage("/access-denied");
+                        .logoutSuccessUrl("/login?logout").permitAll();
         }
 
         /**
@@ -87,8 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public DenialAccessHandle denialAccessHandle() {
+    public AccessDeniedHandler  accessDeniedHandler(){
         return new DenialAccessHandle();
     }
-    
 }

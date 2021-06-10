@@ -7,10 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
-import com.mindworx.alumnibackend.model.users.MindworxuserType;
-
 
 @Entity
 @Table(name = "app_coach")
@@ -40,13 +37,12 @@ public class Coach extends Mindworxuser {
     //Constructor to initialize the fields
     public Coach(String firstName, String lastName, String userName,String initials, Date dateofBirth,
                 String gender,String email, String password,String coachQual,String coachProf,String coachOrg) {
-        super(firstName, lastName, userName, initials, dateofBirth, gender, email, password, MindworxuserType.COACH);
+        super(firstName, lastName, userName, initials, dateofBirth, gender, email, password);
 
         this.coachQual = coachQual;
         this.coachProf = coachProf;
         this.coachOrg = coachOrg;
     }
-
 
     public Coach() {
     }    

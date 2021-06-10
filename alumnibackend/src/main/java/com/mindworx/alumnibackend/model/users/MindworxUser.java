@@ -6,92 +6,63 @@
 package com.mindworx.alumnibackend.model.users;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.mindworx.alumnibackend.security.ValidPassword;
-
 
 @Entity
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Mindworxuser {
-    
-//These are attributes data of a typical user.
+
+    // These are attributes data of a typical user.
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int sSID;
+    private Long sSID;
 
-    @Column(
-        name = "Name",
-        nullable = false
-    )
-    private String  firstName;
+    @Column(name = "Name", nullable = false)
+    private String firstName;
 
-    @Column(
-        name = "Surname",
-        nullable = false
-    )
-    private String  lastName;
+    @Column(name = "Surname", nullable = false)
+    private String lastName;
 
-    @Column(
-        name = "Username",
-        unique = true, 
-        nullable = false
-    )
+    @Column(name = "Username", nullable = false)
     private String userName;
 
-    @Column(
-        name = "Initials",
-        nullable = false
-    )
+    @Column(name = "Initials", nullable = false)
     private String initials;
 
-   @Column(
-        name = "DOB",
-        columnDefinition = "DATE",
-        nullable = false
-   )
+    @Column(name = "DOB", columnDefinition = "DATE", nullable = false)
     private Date dateofBirth;
-    
-    @Column(
-        name = "Gender",
-        nullable = true
+
+    @Column(name = "Gender"
+
     )
     private String gender;
 
-    @Column(
-        name = "Email",
-        nullable = false,
-        unique = true, 
-        length = 255
-    )
-    private String  email;
+    @Column(name = "Email", nullable = false, unique = true, length = 255)
+    private String email;
 
-    @Column(
-        name = "Password",
-        nullable = false, 
-        length = 255
-    )
-    private String  password;
+    @Column(name = "Password", nullable = false, length = 255)
+    private String password;
 
-    @Column(
-        name = "User_Type",
-        nullable = false
-    )
-
-    @Enumerated(EnumType.STRING)
-    private MindworxuserType typeofuser;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.EAGER) //fetchtype causes performance problem
+    @JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<MindworxGroup> userGroups = new HashSet<>();
 
     @Column(name = "Blocked")
     private boolean active = false;
@@ -99,11 +70,13 @@ public class Mindworxuser {
     @Column(name = "Enabled")
     private boolean Enabled = true;
 
+    // constructors to initialize the variables.
 
-//constructors to initialize the variables.
-    
-    public Mindworxuser(String firstName, String lastName, String userName,String initials, Date dateofBirth,
-                      String gender,String email, String password,MindworxuserType typeofuser) {
+    public Mindworxuser() {
+    }
+
+    public Mindworxuser(String firstName, String lastName, String userName, String initials, Date dateofBirth,
+            String gender, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -112,20 +85,32 @@ public class Mindworxuser {
         this.gender = gender;
         this.email = email;
         this.password = password;
-        this.typeofuser = typeofuser;
     }
 
-    
-    public Mindworxuser() {
+    // accessor methods and store each into databae/retrieve each from database
+
+    public void addUserGroups(MindworxGroup mindworxGroup) {
+        userGroups.add(mindworxGroup);
+        mindworxGroup.getUsers().add(this);
     }
 
-    //accessor methods and store each into databae/retrieve each from database
+    public void RemoveUserGroups(MindworxGroup mindworxGroup) {
+        userGroups.remove(mindworxGroup);
+        mindworxGroup.getUsers().remove(this);
+    }
 
+    public Set<MindworxGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Set<MindworxGroup> userGroups) {
+        this.userGroups = userGroups;
+    }
 
     public String getFirstName() {
         return firstName;
     }
-    
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -138,11 +123,10 @@ public class Mindworxuser {
         this.initials = intials;
     }
 
-
     public String getLastName() {
         return lastName;
     }
-    
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -154,7 +138,6 @@ public class Mindworxuser {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
 
     public Date getDateofBirth() {
         return dateofBirth;
@@ -172,11 +155,11 @@ public class Mindworxuser {
         this.email = email;
     }
 
-    public int getsSID() {
+    public Long getsSID() {
         return sSID;
     }
 
-    public void setsSID(int sSID) {
+    public void setsSID(Long sSID) {
         this.sSID = sSID;
     }
 
@@ -184,20 +167,9 @@ public class Mindworxuser {
         return userName;
     }
 
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-
-    public  MindworxuserType getTypeofuser() {
-        return typeofuser;
-    }
-
-    public void setTypeofuser( MindworxuserType typeofuser) {
-        this.typeofuser = typeofuser;
-    }
-    
 
     public boolean isActive() {
         return active;
@@ -207,35 +179,28 @@ public class Mindworxuser {
         this.active = active;
     }
 
-
     public String getInitials() {
         return initials;
     }
-
 
     public void setInitials(String initials) {
         this.initials = initials;
     }
 
-
     public String getPassword() {
         return password;
     }
-
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-
     public boolean isEnabled() {
         return Enabled;
     }
 
-
     public void setEnabled(boolean enabled) {
         Enabled = enabled;
     }
-
 
 }
