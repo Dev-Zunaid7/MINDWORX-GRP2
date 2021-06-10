@@ -29,13 +29,14 @@ main>* {
 
 #sidebar {
     display: table-cell;
-    width: 15%;
+    width: 10%;
+    height: 0vh;
     vertical-align: top;
 }
 
 #content {
     display: table-cell;
-    width: 85%;
+    width: 90%;
     vertical-align: top;
 }
 
