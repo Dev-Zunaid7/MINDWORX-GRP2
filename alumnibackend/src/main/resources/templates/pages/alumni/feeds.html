@@ -20,22 +20,6 @@
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css}" />
     <link rel="stylesheet" th:href="@{/styles/fontawesome/css/all.css}">
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-        
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -109,27 +93,22 @@
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="#" class="nav-link mb-4 active" aria-current="page">
-                            <i class="fas fa-home fa-2x fa-fw"></i><span>Home</span>
+                            <i class="fas fa-home fa-1x fa-fw"></i><span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/account/courses}" class="nav-link mb-4  text-white">
+                            <i class="fas fa-laptop fa-1x fa-fw"></i><span>Courses</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link mb-4 text-white">
-                            <i class="fas fa-desktop fa-2x fa-fw"></i><span>Dashboard</span>
+                            <i class="fas fa-award fa-1x fa-fw"></i><span>Achievements</span>
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/courses}" class="nav-link mb-4  text-white">
-                            <i class="fas fa-laptop fa-2x fa-fw"></i><span>Courses</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link mb-4 text-white">
-                            <i class="fas fa-award fa-2x fa-fw"></i><span>Achievements</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link mb-3 text-white">
-                            <i class="fas fa-comments fa-2x fa-fw"></i><span>Discussion</span>
+                        <a th:href="@{/account/discuss}" class="nav-link mb-3 text-white">
+                            <i class="fas fa-comments fa-1x fa-fw"></i><span>Discussion</span>
                         </a>
                     </li>
                 </ul>
@@ -141,7 +120,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" th:href="@{/userprofile}">Profile</a></li>
+                        <li><a class="dropdown-item" th:href="@{/account/userprofile}">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -238,9 +217,6 @@
                     </div>
 
 
-
-
-
                     <div class="post_item">
                         <div class="post_item_header">
                             <div class="post_item_info">
@@ -259,7 +235,7 @@
                             </p>
                         </div>
 
-                        <video width="100%" controls class="post_iten_body_video" style="outline:none;">
+                        <video width="100%" muted controls autoplay loop class="post_iten_body_video" style="outline:none;">
                         <source src="/video/ozow_ad.mp4" type="video/mp4">
                     </video>
 
@@ -299,7 +275,7 @@
                     <div class="post_item">
                         <div class="post_item_header">
                             <div class="post_item_info">
-                                <img src="/img/good-faces.jpg " alt="no image " class="post_profile " style="height:60px ">
+                                <img src="/img/good-faces.jpg " alt="no image " width="32" height="32" class="rounded-circle me-2" style="height:60px ">
                                 <div class="post_item_owner " style="margin-left:8px; ">
                                     <a href="# " class="act_title ">Techniczoid </a>
                                     <p class="account_name ">10 Million - Followers</p>
@@ -310,13 +286,9 @@
                         </div>
 
                         <div class="post_item_body_info ">
-                            <p style="font-size: 0.95rem; ">Published new video on CSS Property Box model. this video will run through few more properties that make up the box-model , Margin, Border, Padding, Content-Height & Width
+                            <p style="font-size: 0.95rem; ">I want to intern at CRED. Here's my application. I figured that if I was going to apply, I'd make something worth it. It pays to be good. Cc: Kunal Shah Harish Sivaramakrishnan
                             </p>
                         </div>
-
-                        <video width="100% " controls class="post_iten_body_video " style="outline:none; ">
-                        <source src="box_model.mp4 " type="video/mp4 ">
-                    </video>
 
                         <div class="post_item_comment_info ">
                             <img src="1.svg " alt=" ">

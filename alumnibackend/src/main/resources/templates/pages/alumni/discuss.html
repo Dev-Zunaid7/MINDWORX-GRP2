@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+
+    <title>Online discussion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1 maximum-scale=1">
+    <meta charset="utf-8">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <!-- DATABASE -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        
+        #wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f3f3f3;
+            overflow-x: hidden;
+            color: #333;
+        }
+        /* ------ */
+        
+        .salon {
+            display: none;
+        }
+        
+        .salon input[type=text] {
+            background: #fafafa;
+            width: 100vw;
+            padding: 20px 10px;
+            border: none;
+            border-top: 1px solid rgba(33, 33, 33, 0.2);
+            position: fixed;
+            bottom: 0;
+            color: #333;
+            z-index: 30;
+            outline: none;
+            overflow: hidden;
+        }
+        
+        .discu {
+            width: 100vw;
+            padding: 20px 10px 5px 10px;
+            height: 80vh;
+            z-index: 20;
+            margin-top: 46px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .nav {
+            width: 100vw;
+            background: #fafafa;
+            height: 45px;
+            position: fixed;
+            z-index: 50;
+            border-bottom: 1px solid rgba(33, 33, 33, 0.2);
+            text-align: center;
+            font-weight: bold;
+            top: 0;
+            left: 0;
+            user-select: none;
+        }
+        
+        .nav svg {
+            position: fixed;
+            top: 0;
+            transition-duration: .4s;
+            cursor: pointer;
+        }
+        
+        .username {
+            transform: translateX(-50%);
+            top: 13px;
+            position: fixed;
+            display: inline-block;
+            left: 50%;
+        }
+        
+        .goBack {
+            left: 0;
+        }
+        
+        .openMenu {
+            right: 0;
+        }
+        
+        .outerMsg {
+            width: 100vw;
+            display: block;
+            max-width: 95%;
+        }
+        
+        .message {
+            background: #ebebeb;
+            max-width: 200px;
+            padding: 7px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+        
+        .recu {
+            border-radius: 1px 6px 6px 6px;
+            border-color: #dbdada;
+        }
+        
+        .envoye {
+            border-radius: 6px 1px 6px 6px;
+            background: #f1e2be;
+            border-color: #e0d1ad;
+            color: #333;
+            float: right;
+        }
+        
+        .send {
+            border-radius: 8px;
+            background: #f1e2be;
+            color: #eee;
+            position: fixed;
+            right: 10px;
+            bottom: 11px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 40;
+        }
+        /* ------ */
+        
+        .title {
+            background: #fafafa;
+            height: 50px;
+        }
+        
+        .title-inner {
+            text-align: center;
+            font-weight: bold;
+            padding: 6px 0;
+            font-size: .8em;
+            font-family: 'Raleway';
+            border: 1px solid #b2b2b2;
+            background: #f5f5f5;
+            color: #b2b2b2;
+            width: 80%;
+            margin: 10px 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            user-select: none;
+            cursor: pointer;
+        }
+        
+        .tabC {
+            background: #fafafa;
+            border-bottom: 1px solid #CCC;
+            border-color: rgba(44, 44, 44, 0.1);
+        }
+        
+        .tab {
+            display: inline-block;
+            padding: 10px 0;
+            width: 40%;
+            font-size: .9em;
+            text-align: center;
+            box-sizing: border-box;
+            border-bottom: 3px solid transparent;
+            color: #b2b2b2;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .tab:nth-child(1) {
+            border-color: #f79743;
+            color: #f79743;
+            margin-left: 40px;
+        }
+        /* //////00////// */
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fafafa;
+            user-select: none;
+            color: grey;
+        }
+        
+        tr:hover {
+            background: #F6F6F6;
+        }
+        
+        .user {
+            border-bottom: 1px solid #CCC;
+            width: 100%;
+            height: 60px;
+            cursor: pointer;
+            transition-duration: .4s;
+        }
+        
+        .name span {
+            font-weight: bold;
+            color: #444;
+        }
+        
+        .pic {
+            width: 60px;
+            height: 60px;
+            padding: 2px 10px;
+            font-family: 'Raleway';
+            text-align: center;
+        }
+        
+        .pic-I {
+            width: 40px;
+            height: 40px;
+            border-radius: 5em;
+            border: 2px solid #BBB;
+            color: #BBB;
+        }
+        
+        .pic .letter {
+            transform: translateY(53%);
+            font-weight: bold;
+        }
+        /* POPUP */
+        
+        .over {
+            position: fixed;
+            z-index: 60;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .popup {
+            position: fixed;
+            background: white;
+            border-radius: 6px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            z-index: 80;
+            overflow: hidden;
+            color: #444;
+            text-align: center;
+            width: 300px;
+        }
+        
+        .pres {
+            padding: 20px 10px;
+        }
+        
+        .popup input {
+            width: 80%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            background: #fafafa;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(33, 33, 33, 0.2);
+            color: #333;
+            outline: none;
+            overflow: hidden;
+        }
+        
+        .button {
+            padding: 10px 0;
+            width: 75px;
+            background: #007CFF;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 40px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        txt {
+            font-size: 8px;
+            float: right;
+            margin-right: 5px;
+        }
+        
+        .message hr,
+        td hr {
+            margin: 0px;
+        }
+        
+        hr {
+            margin: 18px;
+            border: none;
+        }
+        
+        cal {
+            display: block;
+        }
+        
+        .roundl {
+            height: 10px;
+            width: 10px;
+            border-radius: 100%;
+            position: absolute;
+            margin-left: 29px;
+        }
+        
+        .true {
+            background: #63aa4a;
+            border: 2px solid #fafafa;
+        }
+        
+        .newme .pic-I div:nth-child(1) {
+            background: orange;
+            border: 2px solid #fafafa;
+        }
+        
+        .outerMsg img {
+            width: 100%;
+        }
+        
+        .disconnected {
+            display: none;
+        }
+        
+        .about {
+            width: 100vw;
+            height: 90vh;
+        }
+        
+        .inner {
+            text-align: justify;
+            padding-bottom: 50px;
+        }
+        
+        h2,
+        h3 {
+            cursor: default;
+            user-select: none;
+            font-family: "Raleway";
+            text-align: center;
+        }
+        
+        h2 {
+            font-weight: 200;
+            color: #444;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        h3 {
+            font-weight: normal;
+            color: #f8a91f;
+            font-size: 1em;
+            margin-top: 0;
+        }
+        
+        .about p {
+            color: #444;
+            font-family: "Raleway", sans-serif;
+            padding: 0 20px;
+        }
+        /**TUTO**/
+        
+        .plus-user {
+            border-top: 1px solid #CCC;
+            cursor: default !important;
+            user-select: none !important;
+        }
+        
+        .plus-user:hover {
+            background: transparent !important;
+        }
+        
+        .true2 {
+            background: #63aa4a;
+            border: 2px solid #fafafa;
+        }
+        
+        .true3 {
+            background: #f79743;
+            border: 2px solid #fafafa;
+        }
+        
+        .peopleOn {
+            display: none;
+            margin-bottom: 40px;
+        }
+        
+        ::selection {
+            background: #f79743;
+        }
+        
+        ::scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        
+        ::scrollbar-thumb {
+            background: transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- LIST OF ONLINE PEOPLE -->
+        <div class="listOnline">
+            <div class="title">
+                <div class="title-inner deco">Tap to disconnect</div>
+            </div>
+            <div class="tabC">
+                <div class="tabD">
+                    <div class="tab">ABOUT</div>
+                    <div class="tab">CONTACT</div>
+                </div>
+            </div>
+            <table class="peopleOn">
+            </table>
+            <div class="about">
+                <div class="inner">
+                    <h2>Welcome</h2>
+                    <h3>to Academy Messenger</h3>
+                    <br/>
+                    <p>When you select your username, you are automatically arranged as online. To see if someone is online, you just need to see if he have a little green circle :</p>
+                    <table>
+                        <tr class="user plus-user">
+                            <td class="pic">
+                                <div class="pic-I">
+                                    <div class="roundl true2"></div>
+                                    <div class="letter">M</div>
+                            </td>
+                            <td class="name">
+                                <span>Mindworx Academy</span><br/>
+                                <hr>
+                                <txt>12:0/02/23/2018</txt>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>If you have a new message from a user, his circle will be orange :</p>
+                    <table>
+                        <tr class="user plus-user">
+                            <td class="pic">
+                                <div class="pic-I">
+                                    <div class="roundl true3"></div>
+                                    <div class="letter">M</div>
+                            </td>
+                            <td class="name">
+                                <span>Mindworx Academy</span><br/>
+                                <hr>
+                                <txt>12:0/02/23/2018</txt>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>And if this user isn't online, the circle will disappear :</p>
+                    <table>
+                        <tr class="user plus-user">
+                            <td class="pic">
+                                <div class="pic-I">
+                                    <div class="roundl"></div>
+                                    <div class="letter">M</div>
+                            </td>
+                            <td class="name">
+                                <span>Mindworx Academy</span><br/>
+                                <hr>
+                                <txt>12:0/02/23/2018</txt>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>Mindworx Academy is special, when you stop execute the program, I can't see it. So if you are online and you quit the program, you will even be online.</p>
+                    <p>To be disconnected, please press the button in your up screen : "Tap to disconnect".</p>
+                    <p>If you stop execute the program or if you are disconnected, your messages are saved. So when you will restart the app with your same username, you will find your older messages.</p>
+                    <p>The application is not finished, for example, you need to restart this one to see if a new person is online, and there are some bugs. Sorry for this.</p>
+                    <p>If you see a big bug, please contact me.</p>
+                    <p>Remember you ! I can manage your username, your messages and all other. I will not expect your discussions but please don't write something wrong etc... thanks</p>
+                    <p>Don't forget to like !</p>
+                    <p>By Alumni Academy</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- DISCUSSION PEOPLE -->
+                    <div class="salon">
+                        <div class="nav">
+                            <svg class="goBack" width="50" height="45" fill="none">
+                <polyline fill="none" stroke="#efa05b" stroke-width="1px" points="18,15 12,22 18,29 12,22 18,29"/>
+            </svg>
+                            <div class="username"></div>
+                            <svg class="openMenu" width='50' height="45">
+            <line x1='20' y1='14' x2='35' y2='14' stroke='#efa05b' stroke-width='1px'></line>
+            <line x1='20' y1='20' x2='35' y2='20' stroke='#efa05b' stroke-width='1px'></line>
+            <line x1='20' y1='26' x2='35' y2='26' stroke='#efa05b' stroke-width='1px'></line>
+            </svg>
+                        </div>
+
+                        <div class="discu">
+                        </div>
+                        <input type="text" placeholder="Send message" />
+                        <div class="send">send</div>
+                    </div>
+                </div>
+
+                <!-- POPUP CONNEXION USERNAME -->
+
+                <div class="over"></div>
+                <div class="popup">
+                    <div class="pres">You must enter your username before use this app :</div>
+                    <input type="text" placeholder="Enter your username" class="selectUsername" />
+                    <div class="button done">done</div>
+                </div>
+
+                <div class="title-inner disconnected">disconnected</div>
+
+                <script>
+                    // Initialize Firebase
+                    var config = {
+                        apiKey: "AIzaSyAkJCLxpYUKwin9rwghmmhMy9FtB3avoXk",
+                        authDomain: "online-discussion.firebaseapp.com",
+                        databaseURL: "https://online-discussion.firebaseio.com",
+                        projectId: "online-discussion",
+                        storageBucket: "online-discussion.appspot.com",
+                        messagingSenderId: "1010091271936"
+                    };
+                    firebase.initializeApp(config);
+
+                    var ref = firebase.database().ref('msg'),
+                        ldate = new Date(),
+                        ndate,
+                        typeMsg,
+                        lname,
+                        secondUserName;
+
+                    $(document).ready(function() {
+                        var reg = /[^\s]/,
+                            text;
+
+                        // SEND A MSG
+                        $('.salon input[type=text]').keypress(function(e) {
+                            text = $(this).val();
+                            if (e.which == 13) {
+                                if (reg.test(text)) {
+                                    send(text);
+                                }
+                            }
+                        });
+
+                        // HEARD WHEN TYPING
+                        $('.salon input[type=text]').on('keyup', function() {
+                            text = $(this).val();
+                            reg.test(text) ?
+                                $('.send').css({
+                                    color: '#fff',
+                                    background: '#f8a91f'
+                                }) :
+                                $('.send').css({
+                                    color: '#eee',
+                                    background: '#f1e2be'
+                                });
+                        });
+
+                        // WHEN SENDING A MSG
+                        $('.send').click(function() {
+                            if ($(this).css('backgroundColor') == 'rgb(248, 169, 31)') {
+                                send(text, ordre);
+                                $('.send').css({
+                                    color: '#eee',
+                                    background: '#f1e2be'
+                                });
+                                $('.salon input[type=text]').focus();
+                            }
+                        });
+
+                        // SOME CSS ANIMATION
+                        $('svg, .user').on('touchstart', function() {
+                            $(this).css({
+                                background: '#ebebeb'
+                            });
+                        });
+
+                        $('svg, .user').on('touchend', function() {
+                            $(this).css({
+                                background: 'transparent'
+                            });
+                        });
+
+                        // WHEN YOU STOP CHATING WITH SOMEONE
+                        $('.goBack').click(function() {
+                            $('.salon').fadeOut(0);
+                            $('.listOnline').fadeIn(0);
+                        });
+
+                        // ABOUT / CONTACT ANIMATION
+                        $('.tab:nth-child(1)').click(function() {
+                            $(this).css({
+                                borderColor: '#f79743',
+                                color: '#f79743'
+                            });
+                            $('.tab:nth-child(2)').css({
+                                borderColor: 'transparent',
+                                color: '#b2b2b2'
+                            });
+                            $('.about').fadeIn(0);
+                            $('.peopleOn').fadeOut(0);
+                            $('.true').css({
+                                background: '#f79743'
+                            });
+                        });
+
+                        $('.tab:nth-child(2)').click(function() {
+                            $(this).css({
+                                borderColor: '#63aa4a',
+                                color: '#63aa4a'
+                            });
+                            $('.tab:nth-child(1)').css({
+                                borderColor: 'transparent',
+                                color: '#b2b2b2'
+                            });
+                            $('.peopleOn').fadeIn(0);
+                            $('.about').fadeOut(0);
+                            $('.true').css({
+                                background: '#63aa4a'
+                            });
+                        });
+
+                        // WHEN YOU CREATE YOUR PROFILE
+                        function addUser() {
+                            $('.peopleOn').html('');
+                            ref = firebase.database().ref('msg/profiles');
+                            ref.on('child_added', function(data) {
+                                var unda = data.val();
+
+                                if (unda.profile !== undefined && unda.profile != us) {
+                                    var uname = (String(unda.profile)).substring(0, 1);
+                                    $('.peopleOn').append('<tr class="user"><td class="pic" data-name="' + unda.profile + '"><div class="pic-I"><div class="roundl ' + unda.online + '"></div><div class="letter">' + uname + '</div></div></td><td class="name" data-name="' + unda.profile + '"><span>' + unda.profile + '</span><br /><hr><txt>' + unda.prodate + '</txt></td></tr>');
+
+                                    $('table td').click(function() {
+                                        var monCode = 0,
+                                            secondCode = 0;
+                                        for (i = 0; i < us.length; i++) {
+                                            monCode += Number(us.charCodeAt(i));
+                                        }
+                                        for (i = 0; i < ($(this).data('name')).length; i++) {
+                                            secondCode += Number($(this).data('name').charCodeAt(i));
+                                        }
+
+                                        $('.username').text($(this).data('name'));
+                                        $('.salon').fadeIn(0);
+                                        $('.listOnline').fadeOut(0);
+
+                                        var dll = 'td[data-name="' + $(this).data('name') + '"]';
+                                        $(dll).removeClass('newme');
+                                        charger($(this).data('name'), monCode, secondCode);
+                                    });
+
+                                }
+
+                            });
+                            redone();
+                        }
+
+                        // TYPING YOUR USERNAME
+                        $('.selectUsername').on('keyup', function() {
+                            us = $(this).val();
+                        });
+
+                        // OK FOR YOUR USERNAME
+                        $('.done').click(function() {
+                            $('.disconnected').fadeOut(0);
+                            $('#wrapper').fadeIn(0);
+                            us = $('.selectUsername').val();
+
+                            if (reg.test(us)) {
+                                us = us[0].toUpperCase() + us.substring(1);
+                                if (us && us != "Mindworx" && us != "Academy" && us != "Mathabo") {
+                                    ref = firebase.database().ref('msg/profiles');
+                                    var newRef = ref.child("profile" + us);
+                                    ndate = ldate.getHours() + ":" + ldate.getMinutes() + "/" + ldate.getDate() + "/" + (ldate.getMonth() + 1) + "/" + ldate.getFullYear();
+
+                                    newRef.set({
+                                        profile: us,
+                                        prodate: ndate,
+                                        online: true,
+                                        amis: {
+                                            na: 0
+                                        }
+                                    });
+
+
+                                    addUser();
+                                    $('.over').fadeOut(0);
+                                    $('.popup').fadeOut(0);
+                                    lname = us;
+                                }
+
+                            }
+
+                        });
+
+                        var ordre,
+                            lno;
+
+                        // TAKE ALL PROFILE CREATED
+                        function charger(aprofile, nm, na) {
+                            lno = 0;
+                            if (nm > na) {
+                                ordre = us + "||" + aprofile;
+                            } else {
+                                ordre = aprofile + "||" + us;
+                            }
+                            ref = firebase.database().ref('msg/server');
+
+                            firebase.database().ref('msg/server/' + ordre).on('child_added', function(data) {
+                                var unda = data.val();
+                                if (unda.msg) {
+                                    lno = 1;
+                                    bl(lno)
+                                }
+                            });
+
+                            setTimeout(function() {
+                                if (lno == 0) {
+                                    // NOUVELLE CONV
+
+                                    ref.set({
+                                        msl: ordre
+                                    });
+                                }
+                            }, 1000);
+                            load(ordre)
+                        }
+
+                        function send(msg, ordre) {
+                            var lcode = Date.now();
+
+                            ref = firebase.database().ref('msg/server/' + ordre);
+                            var newRef = ref.child("msg" + lcode);
+
+                            ndate = ldate.getHours() + ":" + ldate.getMinutes() + "/" + ldate.getDate() + "/" + (ldate.getMonth() + 1) + "/" + ldate.getFullYear();
+
+                            newRef.set({
+                                code: lcode,
+                                name: lname,
+                                date: ndate,
+                                msg: msg
+                            });
+                            $('.salon input').val('');
+                            load(ordre)
+                        }
+
+                        function bl(mn) {
+                            lno = mn;
+                        }
+
+                        function reload(ordre) {
+                            ref = firebase.database().ref('msg/server/' + ordre);
+
+                            $('.discu').text('');
+                            ref.on('child_added', function(data) {
+                                var unda = data.val();
+
+                                if (unda.name == us) {
+                                    typeMsg = "envoye";
+                                } else {
+                                    typeMsg = "recu";
+                                }
+                                if (unda.msg != undefined) {
+                                    $('.discu').append('<div class="outerMsg"><div class="message ' + typeMsg + '">' + unda.msg + '<hr><txt>' + unda.date + '</txt></div></div><br /><hr>');
+                                }
+                            });
+                            $('.discu').append('<h1><br /></h1>');
+                        }
+
+                        function load(ordre) {
+                            $('.discu').text('');
+                            setTimeout(reload(ordre), 400);
+                        }
+                        $('.deco').click(function() {
+                            ref = firebase.database().ref('msg/profiles/profile' + us);
+                            ref.update({
+                                online: false
+                            });
+
+                            $('.selectUsername').val('');
+                            $('#wrapper').fadeOut(100);
+                            $('.disconnected').fadeIn(100);
+                            $('.over').fadeIn(500);
+                            $('.popup').fadeIn(500);
+                        });
+
+                        function redone() {
+                            var ldpRef = firebase.database().ref('msg/server');
+
+                            ldpRef.on('child_added', function(data) {
+                                var unda = data.val();
+                                var recoMsg = unda.msl;
+                                var pl = 0;
+
+                                firebase.database().ref('msg/server/' + recoMsg).on('child_added', function(data) {
+                                    var ldnData = data.val();
+                                    ++pl
+                                    var lda = data.val();
+                                    if (pl > 0 && ldnData.name != us && ldnData.name != undefined) {
+                                        $(getUname(recoMsg)).addClass('newme');
+                                    } else if (pl > 1 && ldnData.name != undefined) {
+                                        $(getUname(recoMsg)).removeClass('newme');
+                                    }
+                                });
+                            });
+                        }
+                    });
+
+                    function getUname(recoMsg) {
+                        var ddn = new RegExp(us);
+                        if (ddn.test(recoMsg)) {
+                            if (recoMsg.substring(0, recoMsg.indexOf('||')) == us) {
+                                var atrp = recoMsg.substring(recoMsg.indexOf('||') + 2, recoMsg.length),
+                                    dll = 'td[data-name="' + atrp + '"]';
+                            } else {
+                                var atrp = recoMsg.substring(0, recoMsg.indexOf('||')),
+                                    dll = 'td[data-name="' + atrp + '"]';
+                            }
+                        }
+                        return (dll)
+                    }
+
+                    alert('like, it help me !\n(Messages don\'t really align on pc)\nCOTD ?');
+                </script>
+
+</body>
+
+</html>

@@ -19,31 +19,15 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <style>
-        body {
-            overflow: hidden;
-        }
-        
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-        
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-        
-        .container {
-            width: auto;
-            max-width: 680px;
-            padding: 0 15px;
-        }
-    </style>
+    <!--Scripts-->
+    <script src="/webjars/popper.js/2.9.2/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- Custom styles for this template -->
+    <link href="/styles/css/signin.css" rel="stylesheet">
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -57,11 +41,9 @@
     </symbol>
   </svg>
 
-    <!-- Custom styles for this template -->
-    <link href="/styles/css/signin.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="overflow: hidden;">
 
     <div class="wrap">
         <div class="loading">
@@ -74,8 +56,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <span class="navbar-toggler-icon"></span>
+          </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
@@ -189,11 +171,6 @@
         })
     </script>
     <!-- Login Script files-->
-    <script src="/webjars/popper.js/2.9.2/umd/popper.js"></script>
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 
 
     <script>

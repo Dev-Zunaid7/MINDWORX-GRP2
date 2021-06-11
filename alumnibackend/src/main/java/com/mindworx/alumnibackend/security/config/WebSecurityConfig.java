@@ -44,19 +44,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/styles/js/**",
                                  "/styles/fonts/**",
                                  "/styles/css/**",
+                                 "/pages/fragments",
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    .antMatchers("/home", "/courses").hasAuthority("ALUMNI")
-                    .antMatchers("/admin").hasAuthority("ADMIN")
-                    .antMatchers("/coach").hasAuthority("COACH")
+                    .antMatchers("/account/**").hasAuthority("ALUMNI")
+                    .antMatchers("/account/admin").hasAuthority("ADMIN")
+                    .antMatchers("/account/coach").hasAuthority("COACH")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
                     .formLogin()
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/account/home", true)
                         .permitAll()
                 .and()
                     .logout()

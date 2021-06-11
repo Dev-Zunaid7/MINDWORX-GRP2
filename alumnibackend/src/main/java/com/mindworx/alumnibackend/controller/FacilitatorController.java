@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class FacilitatorController {
     
     //only by coach
-    @GetMapping("/coach")
+    @GetMapping("/account/coach")
     public String coach(){
         return "pages/coachboard";
     }

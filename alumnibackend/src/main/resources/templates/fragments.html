@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div layout:fragements="preloader">
+        <div class="wrap">
+            <div class="loading">
+                <div class="bounceball"></div>
+                <div class="text">NOW LOADING</div>
+            </div>
+        </div>
+    </div>
+    <header layout:fragement="custom-header">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                    <div class="header-bar-menu">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/registration}">REGISTER</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">LOGIN</a></li>
+                        </ul>
+                    </div>
+                    <!-- .header-bar-menu -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section layout:fragement="custome-content">
+        <div class="container">
+            <h1 class="mt-5">Guest Landing page</h1>
+            <p class="lead">landing page for app about, FAQ, download link, etc.</p>
+        </div>
+    </section>
+
+    <footer layout:fragment="custom-footer" class="footer mt-auto py-3 bg-light">
+
+        <div class="container text-center">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+
+    </footer>
+
+    <th:blook layout:fragment="script"></th:blook>
+</body>
+
+</html>
