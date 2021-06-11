@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    .antMatchers("/account/**").hasAuthority("ALUMNI")
+                    .antMatchers("/account/home**").hasAuthority("ALUMNI")
                     .antMatchers("/account/admin").hasAuthority("ADMIN")
                     .antMatchers("/account/coach").hasAuthority("COACH")
                 .anyRequest().authenticated()
