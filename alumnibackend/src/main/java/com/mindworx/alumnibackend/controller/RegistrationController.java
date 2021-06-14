@@ -51,7 +51,7 @@ public class RegistrationController {
     public String registerAdmin(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
         //return response to client side.
                             
-       
+    
         String response = registrationService.registerAdministrator(registrationRequest);
      
         System.out.println("Response messsage: " + response);

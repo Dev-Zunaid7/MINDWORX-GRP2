@@ -76,7 +76,6 @@ public class UserService implements UserDetailsService {
         Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
         // update the userdetails to set up login.
-        System.out.println(mindworxuser.getUserGroups());
         return new MindworxUserDetails(mindworxuser);
     }
 

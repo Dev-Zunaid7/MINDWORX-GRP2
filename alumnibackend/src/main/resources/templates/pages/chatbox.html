@@ -7,170 +7,47 @@
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
 <title>FAQ</title>
-
-<style>
-    /* Created by oTARANo */
-    
-    * {
-        margin: 0px;
-        user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-    }
-    
-    body {
-        margin: 0px;
-    }
-    
-    #user {
-        width: 100vw;
-        position: fixed;
-        left: 0px;
-        bottom: 0px;
-        display: block;
-        background-color: gray;
-        white-space: nowrap;
-    }
-    
-    #msgbox {
-        width: calc(80% - 12px);
-        min-height: 25px;
-        max-height: 35px;
-        padding: 5px;
-        outline: none;
-        border: solid 1px #AAA;
-        display: inline-block;
-        vertical-align: center;
-        float: left;
-        background-color: orange;
-        border-radius: 25px;
-        resize: none;
-        margin: 0px;
-    }
-    
-    #send {
-        width: 20vw;
-        height: 35px;
-        display: inline-block;
-        outline: none;
-        border: none;
-        color: #FFF;
-        background-color: black;
-        float: left;
-        border-radius: 25px;
-        padding: 0px;
-        cursor: pointer;
-        margin: 0px;
-    }
-    
-    #send:active {
-        background-color: #00A;
-        outline: none;
-    }
-    
-    #header {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        width: calc(100% - 30px);
-        height: 20px;
-        padding: 15px;
-        color: #FFF;
-        font-size: 200%;
-        font-weight: bolder;
-        background-color: #00F;
-        position: fixed;
-        font-family: arial;
-    }
-    
-    #messages {
-        display: block;
-        width: 100vw;
-        height: calc(100% - 87px);
-        background-color: #EEE;
-        position: fixed;
-        top: 50px;
-        left: 0px;
-        overflow: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-    
-    .left {
-        text-align: left;
-        /*
-   display: block;
-   */
-    }
-    
-    .right {
-        text-align: right;
-        /*
-   display: block;
-   */
-    }
-    
-    .incoming {
-        background-color: #FFF;
-        color: #000;
-        border: solid 1px orange;
-    }
-    
-    .outgoing {
-        background-color: orange;
-        color: #FFF;
-    }
-    
-    .section {
-        display: block;
-        width: calc(100% - 30px);
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-top: 7.5px;
-        margin-bottom: 7.5px;
-    }
-    
-    .message {
-        display: inline-flex;
-        justify-content: left;
-        align-items: center;
-        border-radius: 25px;
-        padding: 10px;
-        font-size: 10pt;
-    }
-    
-    input:first {
-        color: #F00;
-    }
-    
-    .incoming:active {
-        background-color: #EEE;
-    }
-    
-    .outgoing:active {
-        background-color: #00A;
-    }
-    
-    * {
-        outline: none;
-        tap-highlight: none;
-        -webkit-tap-highlight: none;
-        -webkit-tap-highlight-color: none;
-        -moz-tap-highlight: none;
-        -moz-tap-highlight-color: none;
-        -khtml-tap-highlight: none;
-        -khtml-tap-highlight-color: none;
-    }
-    
-    a {
-        display: block;
-        text-align: center;
-    }
-</style>
+<link type="text/css" href="/webjars/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/styles/css/chatbot.css">
+<link rel="stylesheet" href="/styles/css/signin.css">
 </head>
 
 <body>
-
+    <div class="wrap">
+        <div class="loading">
+            <div class="bounceball"></div>
+            <div class="text">NOW LOADING</div>
+        </div>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/FAQ}">FAQ</a>
+                        </li>
+                    </ul>
+                    <div class="header-bar-menu">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/registration}">REGISTER</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">LOGIN</a></li>
+                        </ul>
+                    </div>
+                    <!-- .header-bar-menu -->
+                </div>
+            </div>
+        </nav>
+    </header>
     <div id="messages">
 
     </div>
@@ -195,7 +72,7 @@
             var responseSys = {
                 "hi": "Hello There!",
                 "bye": "GoodBye!",
-                "i need assitance": "yes Alumni Academy offers you opportunity to excel with more courses and blah blah",
+                "i need assistance": "yes Alumni Academy offers you opportunity to excel with more courses.",
                 "how do we Enroll with Alumin": "you need to be registered first",
                 "how many Courses do you offer": "here is our courses html, java, javaScripts, python, Machine Learning, C#, SQL, etc."
 
@@ -299,6 +176,20 @@
             responses("hello", "hello, how can we help you?")
         });
     </script>
+    <script th:src="@{/webjars/popper.js/2.9.2/umd/popper.min.js} "></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js} " integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+    <script th:src="@{/styles/js/sidebars.js} "></script>
+    <script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js} "></script>
+    <script th:src="@{/webjars/jquery/dist/jquery.min.js} "></script>
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".wrap ");
+            loader.className += " hidden ";
+            console.log(loader);
+        })
+    </script>
+
+
 </body>
 
 </html>
