@@ -79,6 +79,26 @@ public class UserService implements UserDetailsService {
         return new MindworxUserDetails(mindworxuser);
     }
 
+    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException{
+        Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email)
+        .orElseThrow(() -> new UsernameNotFoundException("We could not find any alumni with the email " + email));
+        mindworxuser.setResetPasswordToken(token);
+        innsertMindworxuserToDb(mindworxuser);
+    }
+
+    public Mindworxuser getByResetPasswordToken(String token){
+        return mindworxuserDao.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(Mindworxuser mindworxuser, String newPassword){
+        String encodedPassword = passwordEncoder.encode(newPassword);
+
+        mindworxuser.setPassword(encodedPassword);
+        mindworxuser.setResetPasswordToken(null);
+        innsertMindworxuserToDb(mindworxuser);
+    }
+
+
     
     // methond to add an administratior into database
     public String addAdministrator(Mindworxuser adminstrator) {

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("title", "Welcome");
         return "pages/index";
     }
 
@@ -21,8 +22,8 @@ public class HomeController {
     }
 
     @GetMapping("/FAQ")
-    public String getMethodName() {
-        
+    public String getMethodName(Model model) {
+        model.addAttribute("title", "FAQ");
         return "pages/chatbox";
     }
     

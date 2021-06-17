@@ -70,6 +70,10 @@ public class Mindworxuser {
     @Column(name = "Enabled")
     private boolean Enabled = true;
 
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+     
+
     // constructors to initialize the variables.
 
     public Mindworxuser() {
@@ -202,5 +206,15 @@ public class Mindworxuser {
     public void setEnabled(boolean enabled) {
         Enabled = enabled;
     }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+    
 
 }

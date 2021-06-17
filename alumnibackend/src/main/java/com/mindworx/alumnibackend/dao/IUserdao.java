@@ -13,5 +13,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public interface IUserdao extends JpaRepository<Mindworxuser,Long> {
     Optional<Mindworxuser> findByEmail(String email);
-
+    Mindworxuser findByResetPasswordToken(String token);
 }

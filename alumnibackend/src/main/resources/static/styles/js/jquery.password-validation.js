@@ -9,11 +9,11 @@
                 specialSet: "\\x20-\\x2F\\x3A-\\x40\\x5B-\\x60\\x7B-\\x7E\\x80-\\xFF", //All Other printable Ascii
             }
             var _defaults = {
-                minLength: 12, //Minimum Length of password 
-                minUpperCase: 2, //Minimum number of Upper Case Letters characters in password
-                minLowerCase: 2, //Minimum number of Lower Case Letters characters in password
-                minDigits: 2, //Minimum number of digits characters in password
-                minSpecial: 2, //Minimum number of special characters in password
+                minLength: 7, //Minimum Length of password 
+                minUpperCase: 1, //Minimum number of Upper Case Letters characters in password
+                minLowerCase: 1, //Minimum number of Lower Case Letters characters in password
+                minDigits: 1, //Minimum number of digits characters in password
+                minSpecial: 1, //Minimum number of special characters in password
                 maxRepeats: 5, //Maximum number of repeated alphanumeric characters in password dhgurAAAfjewd <- 3 A's
                 maxConsecutive: 3, //Maximum number of alphanumeric characters from one set back to back
                 noUpper: false, //Disallow Upper Case Lettera

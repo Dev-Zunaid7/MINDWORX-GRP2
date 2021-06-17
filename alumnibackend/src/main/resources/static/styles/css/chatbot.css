@@ -1,21 +1,20 @@
     /* Created by oTARANo */
     
-    * {
-        margin: 0px;
+    .chatbox_body {
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
-    }
-    
-    body {
-        margin: 0px;
+        width: 100vw;
+        height: calc(100% - 87px);
+        overflow-x: hidden;
+        overflow-y: auto;
     }
     
     #user {
         width: 100vw;
         position: fixed;
         left: 0px;
-        bottom: 0px;
+        bottom: 35px;
         display: block;
         background-color: gray;
         white-space: nowrap;
@@ -30,7 +29,6 @@
         border: solid 1px #AAA;
         display: inline-block;
         vertical-align: center;
-        float: left;
         background-color: orange;
         border-radius: 25px;
         resize: none;
@@ -45,7 +43,6 @@
         border: none;
         color: #FFF;
         background-color: black;
-        float: left;
         border-radius: 25px;
         padding: 0px;
         cursor: pointer;
@@ -57,30 +54,13 @@
         outline: none;
     }
     
-    #header {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        width: calc(100% - 30px);
-        height: 20px;
-        padding: 15px;
-        color: #FFF;
-        font-size: 200%;
-        font-weight: bolder;
-        background-color: #00F;
-        position: fixed;
-        font-family: arial;
-    }
-    
     #messages {
         display: block;
-        width: 100vw;
-        height: calc(100% - 87px);
+        height: inherit;
         background-color: #EEE;
         position: fixed;
-        top: 50px;
+        top: 60px;
         left: 0px;
-        overflow: auto;
         overflow-x: hidden;
         overflow-y: auto;
     }
