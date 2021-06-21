@@ -58,31 +58,41 @@ public class RegistrationController {
     @PostMapping("/admin/new")
     public String registerAdmin(Model model, @RequestBody RegistrationRequest registrationRequest) {
         //return response to client side.
-                            
-        String response = registrationService.registerAdministrator(registrationRequest);
-     
-        System.out.println("Response messsage: " + response);
-        return response;
+          try {
+            registrationService.registerAdministrator(registrationRequest);
+          } catch (IllegalStateException ex) {
+            model.addAttribute("error", ex.getMessage());
+          }                  
+
+        //return message in admin page for new admin user to confirm registration on their email.
+        return "redirect:/registration?success";
 
     }
 
     @PostMapping("/coach/new")
     public String registerCoach(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
-        //return response to client side.
      
+        try {
+            registrationService.registerCoach(registrationRequest);
+          } catch (IllegalStateException ex) {
+            model.addAttribute("error", ex.getMessage());
+          }                  
+
+        //return message in admin page for new coach user to confirm registration on their email.
         return "redirect:/registration?success";
 
     }
-
-    // @GetMapping()
-    // public String showRegistrationForm() {
-    //     return "pages/register";
-    // }
     
+    //confirmation link, redirect user to login page after clicked.
+    //notify adminstrator of the new confirmation.
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token, Model model){
-        registrationService.confirmToken(token);
         
+        try {
+            registrationService.confirmToken(token);
+          } catch (IllegalStateException ex) {
+            model.addAttribute("error", ex.getMessage());
+          }      
         return "redirect:/login" ;
     } 
 }

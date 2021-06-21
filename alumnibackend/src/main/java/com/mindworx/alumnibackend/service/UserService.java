@@ -79,18 +79,18 @@ public class UserService implements UserDetailsService {
         return new MindworxUserDetails(mindworxuser);
     }
 
-    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException{
-        Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email)
-        .orElseThrow(() -> new UsernameNotFoundException("We could not find any alumni with the email " + email));
+    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
+        Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email).orElseThrow(
+                () -> new UsernameNotFoundException("We could not find any alumni with the email " + email));
         mindworxuser.setResetPasswordToken(token);
         innsertMindworxuserToDb(mindworxuser);
     }
 
-    public Mindworxuser getByResetPasswordToken(String token){
+    public Mindworxuser getByResetPasswordToken(String token) {
         return mindworxuserDao.findByResetPasswordToken(token);
     }
 
-    public void updatePassword(Mindworxuser mindworxuser, String newPassword){
+    public void updatePassword(Mindworxuser mindworxuser, String newPassword) {
         String encodedPassword = passwordEncoder.encode(newPassword);
 
         mindworxuser.setPassword(encodedPassword);
@@ -98,8 +98,6 @@ public class UserService implements UserDetailsService {
         innsertMindworxuserToDb(mindworxuser);
     }
 
-
-    
     // methond to add an administratior into database
     public String addAdministrator(Mindworxuser adminstrator) {
 
@@ -120,14 +118,11 @@ public class UserService implements UserDetailsService {
         innsertMindworxuserToDb(adminstrator);
 
         String token = UUID.randomUUID().toString();
-        // Send confirmation of user
+        // create confirmation token
         ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(15), adminstrator);
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        // send a user an email to confirm registration.
-
 
         return token;
     }
@@ -164,13 +159,11 @@ public class UserService implements UserDetailsService {
         innsertMindworxuserToDb(mindworxuser);
 
         String token = UUID.randomUUID().toString();
-        // Send confirmation of user
+        // create confirmation token
         ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(15), mindworxuser);
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        // send a user an email to confirm registration.
 
         return token;
     }
@@ -194,13 +187,11 @@ public class UserService implements UserDetailsService {
         innsertMindworxuserToDb(coach);
 
         String token = UUID.randomUUID().toString();
-        // Send confirmation of user
+        // create confirmation token
         ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(15), coach);
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        // send a user an email to confirm registration.
 
         return token;
     }
@@ -208,7 +199,7 @@ public class UserService implements UserDetailsService {
     public void enableMindworxUser(String email) {
         // iterate or filter to find the email passed
         Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email)
-        .orElseThrow(() -> new UsernameNotFoundException("can not enable issuse"));
+                .orElseThrow(() -> new UsernameNotFoundException("can not enable issuse"));
         // update the enable of the passed user.
         mindworxuser.setEnabled(true);
     }

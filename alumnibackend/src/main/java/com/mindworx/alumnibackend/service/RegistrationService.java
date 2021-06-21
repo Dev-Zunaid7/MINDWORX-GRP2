@@ -33,43 +33,41 @@ public class RegistrationService {
     }
 
     // register a user/alumni
-    public String registerAlumni(RegistrationRequest request) {
+    public void registerAlumni(RegistrationRequest request) {
 
         String token = userService.signUpUser(new Alumni(request.getFirstName(), request.getLastName(),
                 request.getUserName(), request.getInitials(), request.getDateofBirth(), request.getGender(),
                 request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(),
                 request.getAlumWorkplace(), request.getAlumAddress()));
 
+        // send email confirmation link
         String link = "http://localhost:9090/registration/confirm?token=" + token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
-        return token;
     }
 
     // register/add an administrator/course coordinator
-    public String registerAdministrator(RegistrationRequest request) {
+    public void registerAdministrator(RegistrationRequest request) {
 
         String token = userService.addAdministrator(new Adminstrator(request.getFirstName(), request.getLastName(),
                 request.getUserName(), request.getInitials(), request.getDateofBirth(), request.getGender(),
                 request.getEmail(), request.getPassword(), request.getAdminDept()));
 
-        // send email confirmation token
+        // send email confirmation link
         String link = "http://localhost:9090/registration/confirm?token=" + token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
-        return token;
     }
 
     // register/add a coach/ course facilitator
-    public String registerCoach(RegistrationRequest request) {
+    public void registerCoach(RegistrationRequest request) {
 
         String token = userService
                 .addCoach(new Coach(request.getFirstName(), request.getLastName(), request.getUserName(),
                         request.getInitials(), request.getDateofBirth(), request.getGender(), request.getEmail(),
                         request.getPassword(), request.getCoachQual(), request.getCoachProf(), request.getCoachOrg()));
 
-        // send email confirmation token
+        // send email confirmation link
         String link = "http://localhost:9090/registration/confirm?token=" + token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
-        return token;
     }
 
     @Transactional
@@ -129,6 +127,3 @@ public class RegistrationService {
     }
 
 }
-
-// this is not logically working- checking of the token confirmation if it exist
-// and enable the user
