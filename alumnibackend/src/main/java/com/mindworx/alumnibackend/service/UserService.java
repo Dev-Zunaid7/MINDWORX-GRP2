@@ -134,7 +134,9 @@ public class UserService implements UserDetailsService {
         // verify user by email if already exists on the App's database.
         boolean userEmailExists = mindworxuserDao.findByEmail(mindworxuser.getEmail()).isPresent();
         if (userEmailExists) {
-            throw new IllegalStateException("This user already exists");
+            //TODO: check if user email has a confirmation token
+            //TODO: if not confirmed, send confirmation email again.
+            throw new IllegalStateException("This alumni already exists.");
         }
 
         // validate if the the email exists on the Academy's database.

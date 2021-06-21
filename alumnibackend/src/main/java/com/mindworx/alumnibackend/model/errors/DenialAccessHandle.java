@@ -1,4 +1,4 @@
-package com.mindworx.alumnibackend.model;
+package com.mindworx.alumnibackend.model.errors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

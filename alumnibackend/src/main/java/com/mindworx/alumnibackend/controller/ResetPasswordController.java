@@ -33,7 +33,8 @@ public class ResetPasswordController {
      
     //display page
     @GetMapping("/forgot-password")
-    public String passwordrest(){
+    public String passwordrest(Model model){
+        model.addAttribute("title", "Reset Password");
         return "pages/resetpassword";
     }
  
@@ -89,8 +90,10 @@ public class ResetPasswordController {
          
         if (customer == null) {
             model.addAttribute("message", "Invalid Token");
+            model.addAttribute("title", "Reset Password");
             return "message";
         }
+        model.addAttribute("title", "Reset Password");
          
         return "pages/newpassword";
     }

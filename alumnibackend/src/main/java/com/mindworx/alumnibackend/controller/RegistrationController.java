@@ -34,6 +34,7 @@ public class RegistrationController {
     @GetMapping()
     public String registrationRequest(Model model){
         model.addAttribute("registrationRequest", new RegistrationRequest());
+        model.addAttribute("title", "Registration");
         return "pages/register";
       }
 

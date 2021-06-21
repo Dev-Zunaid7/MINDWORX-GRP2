@@ -1,6 +1,6 @@
 package com.mindworx.alumnibackend.security.config;
 
-import com.mindworx.alumnibackend.model.DenialAccessHandle;
+import com.mindworx.alumnibackend.model.errors.DenialAccessHandle;
 import com.mindworx.alumnibackend.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

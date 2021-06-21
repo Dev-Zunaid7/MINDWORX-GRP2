@@ -19,15 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistrationService {
 
     private final UserService userService;
-    // private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
     @Autowired
-    public RegistrationService(UserService userService, EmailValidator emailValidator,
-            ConfirmationTokenService confirmationTokenService, EmailSender emailSender) {
+    public RegistrationService(UserService userService, ConfirmationTokenService confirmationTokenService, EmailSender emailSender) {
         this.userService = userService;
-        // this.emailValidator = emailValidator;
         this.confirmationTokenService = confirmationTokenService;
         this.emailSender = emailSender;
     }

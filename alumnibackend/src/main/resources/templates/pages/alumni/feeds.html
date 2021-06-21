@@ -41,12 +41,8 @@
 
 <body>
 
-    <div class="wrap">
-        <div class="loading">
-            <div class="bounceball"></div>
-            <div class="text">WELCOME HOME</div>
-        </div>
-    </div>
+    <div th:replace="~{page_layout/fragments :: preloader}"></div>
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -63,8 +59,8 @@
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" th:href="@{/account/courses}">Courses</a>
                         </li>
-                        <li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="nav-item">
-                            <a class="nav-link" th:href="@{/account/admin}">Admin</a>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/account/courses}">Admin</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/Webinars}">Webinars</a>
@@ -98,7 +94,7 @@
                     </li>
                     <li>
                         <a th:href="@{/account/courses}" class="nav-link mb-4  text-white">
-                            <i class="fas fa-laptop fa-1x fa-fw"></i><span>Courses</span>
+                            <i class="fas fa-laptop fa-1x fa-fw"></i><span>My Courses</span>
                         </a>
                     </li>
                     <li>
@@ -132,7 +128,6 @@
         </div>
         <!-- Begin page content -->
         <div id="content">
-            <!-- [[${content}]] -->
             <div class="mainbody">
                 <div class="posts">
                     <div class="post_box">
