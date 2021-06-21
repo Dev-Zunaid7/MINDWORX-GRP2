@@ -23,6 +23,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -68,7 +69,7 @@ public class Mindworxuser {
     private boolean active = false;
 
     @Column(name = "Enabled")
-    private boolean Enabled = true;
+    private boolean Enabled = false;
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
@@ -204,7 +205,7 @@ public class Mindworxuser {
     }
 
     public void setEnabled(boolean enabled) {
-        Enabled = enabled;
+        this.Enabled = enabled;
     }
 
     public String getResetPasswordToken() {

@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -39,33 +41,35 @@ public class RegistrationController {
     public String register(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
         //return response to client side.
                             
-       
-         String response = registrationService.registerAlumni(registrationRequest);
+        try {
+            registrationService.registerAlumni(registrationRequest);
+        } catch (IllegalStateException ex) {
+            model.addAttribute("error", ex.getMessage());
+            return "pages/register";
+        }   
+
+    
      
-       System.out.println("Response messsage: " + response);
+//       System.out.println("Response messsage: " + response);
         return "redirect:/registration?success";
 
     }
 
     @PostMapping("/admin/new")
-    public String registerAdmin(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
+    public String registerAdmin(Model model, @RequestBody RegistrationRequest registrationRequest) {
         //return response to client side.
                             
-    
         String response = registrationService.registerAdministrator(registrationRequest);
      
         System.out.println("Response messsage: " + response);
-        return "redirect:/registration?success";
+        return response;
 
     }
 
     @PostMapping("/coach/new")
     public String registerCoach(Model model, @ModelAttribute RegistrationRequest registrationRequest) {
         //return response to client side.
-                            
-        String response = registrationService.registerCoach(registrationRequest);
      
-        System.out.println("Response messsage: " + response);
         return "redirect:/registration?success";
 
     }
@@ -75,8 +79,10 @@ public class RegistrationController {
     //     return "pages/register";
     // }
     
-    // @GetMapping(path = "confirm")
-    // public String confirm(@RequestParam("token") String token){
-    //     return registrationService.confirmToken(token);
-    // } 
+    @GetMapping(path = "confirm")
+    public String confirm(@RequestParam("token") String token, Model model){
+        registrationService.confirmToken(token);
+        
+        return "redirect:/login" ;
+    } 
 }

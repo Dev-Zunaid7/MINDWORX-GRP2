@@ -37,6 +37,10 @@ public class ConfirmationToken {
     private Mindworxuser mindworxuser;
 
 
+    public ConfirmationToken() {
+    }
+
+
     public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt,
              Mindworxuser mindworxuser) {
         this.token = token;

@@ -1,0 +1,19 @@
+body {
+	
+	background-color: orange;
+}
+
+h1{
+	font-size:50px;
+	background-color:gray;
+  }	
+  
+#wrapper{width: 800px;
+         margin: auto;
+		 border: solid 8px;
+		 
+	
+}
+
+	
+	

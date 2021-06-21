@@ -102,6 +102,7 @@ public class UserService implements UserDetailsService {
     
     // methond to add an administratior into database
     public String addAdministrator(Mindworxuser adminstrator) {
+
         String userType = "admin";
         // verify user by email if already exists on the App's database.
         boolean adminEmailExists = mindworxuserDao.findByEmail(adminstrator.getEmail()).isPresent();
@@ -118,7 +119,17 @@ public class UserService implements UserDetailsService {
         // saving user to the database.
         innsertMindworxuserToDb(adminstrator);
 
-        return "new administrator added";
+        String token = UUID.randomUUID().toString();
+        // Send confirmation of user
+        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15), adminstrator);
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        // send a user an email to confirm registration.
+
+
+        return token;
     }
 
     // methond to Register the user into database
@@ -161,7 +172,7 @@ public class UserService implements UserDetailsService {
 
         // send a user an email to confirm registration.
 
-        return "Successfully Registered. Redirecting to Login.";
+        return token;
     }
 
     // methond to add an Facilitator/Coach into database
@@ -181,12 +192,25 @@ public class UserService implements UserDetailsService {
         updateCustomerGroup(coach, userType);
         // saving user to the database.
         innsertMindworxuserToDb(coach);
-        return "new facilitator added";
+
+        String token = UUID.randomUUID().toString();
+        // Send confirmation of user
+        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15), coach);
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        // send a user an email to confirm registration.
+
+        return token;
     }
 
     public void enableMindworxUser(String email) {
         // iterate or filter to find the email passed
+        Mindworxuser mindworxuser = mindworxuserDao.findByEmail(email)
+        .orElseThrow(() -> new UsernameNotFoundException("can not enable issuse"));
         // update the enable of the passed user.
+        mindworxuser.setEnabled(true);
     }
 
     // update the usertype/group

@@ -89,6 +89,10 @@
                     Successfully registered, Click Login if not redirected.
                 </div>
             </div>
+            <div th:if="${error != null}" class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <p>[[${error}]]</p>
+            </div>
             <div class="form-group row mt-4">
                 <div class="col-md-6">
                     <label for="validationCustom01">First name</label>

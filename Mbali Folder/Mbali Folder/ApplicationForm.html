@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" href="Style.CSS">
+
+<title>Application Form</title>
+</head>
+<body>
+<div id="wrapper">
+</div>
+<h1>Job Application Form</h1>
+
+
+<form action="response.html">
+<h3>Personal Information</h3>
+
+First Name: <input type="text" name="fname" placeholder="First Name"required>
+Last Name: <input type="text" name="lname" placeholder="Last Name"required>
+Middle Name: <input type="text" name="mname" placeholder="Middle Name"required>
+		
+<br></br>
+<table>
+<tr>
+<td>Current Address</td>
+<td>Permanant Address</td>
+</tr>
+
+<tr>
+<td><textarea rows="10" cols="30" name="currentaddress" placeholder="Type your address..."required></textarea></td>
+<td><textarea rows="10" cols="30" name="permanantaddress" placeholder="Type your address..."></textarea></td>
+</tr>
+</table>
+
+<br>
+
+<p><strong>Phone:</strong></p>
+
+Mobile Phone:<input type="number" name="phone number" size="30" maxlength="4" placeholder="countrycode"required>
+
+Home Phone:<input type="number" name="phone number" size="30" maxlength="4" placeholder="countrycode">
+<br></br>
+
+E-mail: <input type="E-mail" name="email"placeholder="email address"required>
+
+Upload CV: <input type="file" name="cv"required>
+
+<hr>
+
+<strong>Type of Employment Desired</strong>
+<br>
+
+<p><strong><Fulltime or Part-Time:</strong></P>
+
+Fulltime: <input type="checkbox" name="Fulltime">
+Part-Time: <input type="checkbox" name="Part-Time">
+
+<hr>
+
+<p><strong>Are you Currently employed?</strong></p>
+
+<br>
+
+Yes:<input type="checkbox" name="employment status">
+No:<input type="checkbox" name="emplyment status">
+
+<br><br>
+
+<strong>Start Date:</strong>
+<input type="date" name="start date">
+
+<br><br>
+
+<strong>Availability:</strong>
+<br><br>
+
+Immediately:<input type="checkbox" name="day"required>
+1 week notice:<input type="checkbox" name="day"required>
+2 weeks notice:<input type="checkbox" name="day"required>
+1 Month:<input type="checkbox" name="day"required>
+
+
+<hr>
+
+submit:<input type="submit" name="submit">
+
+
+
+</form>
+
+</body>
+</html>

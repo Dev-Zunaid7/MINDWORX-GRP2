@@ -38,7 +38,8 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo(to); //send to vaild user email.
             helper.setSubject("Confirm your email");
-            helper.setFrom("AlumniApp@Mindworx.co.za");
+            helper.setFrom("nonreply@AlumniApp.co.za");
+            mailSender.send(message);
         }catch (MessagingException e){
             LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");

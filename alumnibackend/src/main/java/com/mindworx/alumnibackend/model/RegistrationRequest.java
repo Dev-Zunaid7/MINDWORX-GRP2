@@ -2,6 +2,8 @@ package com.mindworx.alumnibackend.model;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
@@ -50,8 +52,8 @@ public class RegistrationRequest {
     }
 
     // REGISTER AN ADMINISTRATOR CONSTRUCTOR.
-    public RegistrationRequest(String firstName, String lastName, String userName, String email, Date dateofBirth,
-            String gender, String password, String initials, String adminDept) {
+    public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("email") String email,@JsonProperty("dateofBirth") Date dateofBirth,
+    @JsonProperty("gender") String gender,@JsonProperty("password") String password,@JsonProperty("initials") String initials,@JsonProperty("adminDept") String adminDept) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;

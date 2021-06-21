@@ -36,11 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                  //temporary disable the rejection of postmapping for postman testing //form based must be enabled.
-                
+                .csrf().disable()
                  .authorizeRequests()
                     .antMatchers("/",
                                 "/FAQ",
-                                "/registration**",
+                                "/registration/**",
                                 "/forgot-password**",
                                  "/styles/js/**",
                                  "/styles/fonts/**",
@@ -49,7 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  "/img/**",
                                  "/webjars/**") //control of client access. everyting from client test
                     .permitAll()
-                    .antMatchers("/account/home**").hasAuthority("ALUMNI")
                     .antMatchers("/account/admin").hasAuthority("ADMIN")
                     .antMatchers("/account/coach").hasAuthority("COACH")
                 .anyRequest().authenticated()
