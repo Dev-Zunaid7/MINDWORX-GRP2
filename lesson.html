@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>  
+<link rel="stylesheet" href="coo.css">	
+</head>
+<body>
+
+    <div id = "main">
+    <h1>Welcome to CSS Quiz.</h1>
+    <p>Here are 15 questions. Answer them and press the <b>check</b> button.</p>
+    </div>
+    
+    <div id = "btn">
+        <button onclick = "button_check()">Check</button>
+    </div>
+
+    <div id = "results">
+     
+    <p id = "results_text">You answered undefined questions correctly.</p>
+         <div id = "show_correct">
+        <button onclick = "show_all_correct()">Show answers</button>
+    </div>
+   
+    
+    </div>
+	
+	<script>
+	
+var result = 0
+
+class Question{
+    constructor(id, qtext, a1, a2, a3, a4, correct, type){
+        this.id = id
+        this.qtext = qtext
+        this.a1 = a1
+        this.a2 = a2
+        this.a3 = a3
+        this.a4 = a4
+        this.correct = correct 
+        this.type = type
+        
+        
+    }
+    
+    
+    show_question(){
+    if(this.type==1){
+        var insert ="<p>"+this.qtext+"</p>"+"<form><input type=\"radio\" name=\"q1\" id=\""+this.id+1+"\"value=\"a\">a. "+this.a1+"<br/><input type=\"radio\" name=\"q1\" value=\"b\" id=\""+this.id+2+"\" class=\"display-5 mx-1\">b. "+this.a2+"<br><input type=\"radio\" name=\"q1\"value=\"c\"  id=\""+this.id+3+"\" class=\"display-5 mx-1\">c. "+this.a3+"<br><input type=\"radio\" name=\"q1\"value=\"d\"  id=\""+this.id+4+"\" class=\"display-5 mx-1\">d. " +this.a4+"</form>"}
+        else if (this.type==2){
+            var insert ="<p>"+this.qtext+"</p>"+"<form><input type=\"radio\" name=\"q1\" id=\""+this.id+1+"\"value=\"a\">a. "+this.a1+"<br/><input type=\"radio\" name=\"q1\" value=\"b\" id=\""+this.id+2+"\" class=\"display-5 mx-1\">b. "+this.a2+"<br>"
+            
+            
+        }
+
+
+
+        var div = document.createElement("div");    div.style.width = "90%"; div.style.color = "white"; div.style.margin = "auto"; div.style.borderRadius = " 10px"; div.style.padding = "20px"; div.style.marginBottom = "10px"; div.style.textAlign = "left"; div.style.background = "linear-gradient(#287b2c, #489b4c)"; div.innerHTML = insert; document.getElementById("main").appendChild(div);
+        
+        }
+        
+        
+        
+    check_answers(){
+    var self_correct_id = this.id + this.correct
+    var x = document.getElementById(self_correct_id);
+    return(x.checked)
+    }
+    
+    show_correct_answer(){
+    if(this.correct == 1){
+        return("<b>" + this.qtext + "</b><br/> " + this.a1 + "<br/><br/><br/>")
+    }
+    if(this.correct == 2){
+         return("<b>" + this.qtext + "</b><br/> " + this.a2 + "<br/><br/><br/>")
+    }
+    if(this.correct == 3){
+         return("<b>" + this.qtext + "</b><br/> " + this.a3 + "<br/><br/><br/>")
+    }
+    if(this.correct == 4){
+         return("<b>" + this.qtext + "</b><br/> " + this.a4 + "<br/><br/><br/>")
+    }
+    
+    }
+} //class ends here
+
+
+window.onload = function(){
+    q1 = new Question("id1","1) What does CSS mean?", " Classic Style Sheets", "Cascading Style Sheets", "Cascading Style System", "Hyper Text Markup Language", 2, 1)
+    q1.show_question()
+    q2 = new Question("id2","2) Will the image be displayed? <br/> <xmp><іmg>src=\"myimg.png\" alt=\"alt\"</іmg> </xmp>", "Yes", "No", "noarg", "noarg", 2, 2)
+    q2.show_question()
+    q3 = new Question("id3", "3) Is this a valid way to connect an external CSS file? <xmp><link rel=\"stylesheet\"</xmp><xmp>type=\"text/css\" href=\"mystyle.css\"></xmp>","Yes", "No", "noarg", "noarg", 1, 2)
+    q3.show_question()
+    q4 = new Question("id4", "4) Is \"getElementByTag\" a valid function in JavaScript?","Yes", "No", "noarg", "noarg", 2, 2)
+    q4.show_question()
+    q5 = new Question("id5", "5) What is the biggest heading in HTMl?", "h0", "h6", "h7", "h1",4, 1)
+    q5.show_question()
+    
+    q6 = new Question("id6", "6) Which of these languages have variables?", "JavaScript", "HTML", "CSS and JavaScript", "HTML and JavaScript",3, 1)
+    q6.show_question()
+    q7 = new Question("id7", "7) What will the color of a paragraph? <xmp><p>Red paragraph</p></xmp><xmp><style>p {color: fff;}</style></xmp>", "Red", "Teal", "White", "Black",4, 1)
+    q7.show_question()
+    q8 = new Question("id8", "8) What is a valid way to give an id \"text1\" to a div object?","<xmp><div id=text1>Hello world!</div></xmp>", "<xmp><div id=text1()>Hello world!</div></xmp>","<xmp><div id=\"text1\">Hello world!</div></xmp>","<xmp><div> id = \"text1\" Hello world!</div></xmp>",3, 1)
+    q8.show_question()
+    q9 = new Question("id9", "9) How much CSS files can you add to your webpage?", "Only one", "Two", "Unlimited", "Ten",3, 1)
+    q9.show_question()
+    q10 = new Question("id10", "10) It is mandatory to declare an encoding of HTML file.", "True", "False", "noarg", "noarg",2, 2)
+    q10.show_question()
+    
+    q11 = new Question("id11", "11) <xmp><q></q></xmp> is an existing tag in HTML.", "True", "False", "noarg", "noarg",1, 2)
+    q11.show_question()
+    q12 = new Question("id12", "12) How do you create a function in JavaScript?", "There are no functions in JavaScript", "void my_func(){...}", "def my_func():", "function my_func(){...}",4, 1)
+    q12.show_question()
+    q13= new Question("id13", "13) Are there classes in JS?", "Yes", "No", "noarg", "noarg",1, 2)
+    q13.show_question()
+    q14= new Question("id14", "14) Why is the following code invalid? <xmp><!DOCTYPE Html> </xmp><xmp><HTML></xmp><xmp><HEAD></xmp><xmp><title>A</title></xmp><xmp></HEAD></xmp><xmp><BODY></xmp><xmp></BODY></xmp><xmp><HTML></xmp>", "All tags are written in caps", "Body tag is empty", "There is no closing tag for one of tags", "Encoding is not declared",3, 1)
+    q14.show_question()
+    q15= new Question("id15", "15) What characters are used to make a multiline comment in JavaScript?", "/ comment /", "* comment //", "/ comment */", "# comment",3, 1)
+    q15.show_question()
+    document.getElementById("results").style.display="none"
+    
+}
+
+
+function button_check(){
+    result += q1.check_answers()
+    result += q2.check_answers()
+    result += q3.check_answers()
+    result += q4.check_answers()
+    result += q5.check_answers()
+    result += q6.check_answers()
+    result += q7.check_answers()
+    result += q8.check_answers()
+    result += q9.check_answers()
+    result += q10.check_answers()
+    result += q11.check_answers()
+    result += q12.check_answers()
+    result += q13.check_answers()
+    result += q14.check_answers()
+    result += q15.check_answers()
+    
+    
+    /*
+    //just some output for debugging
+    console.log(q1.check_answers())
+    console.log(q2.check_answers())
+    console.log(q3.check_answers())
+    console.log(q4.check_answers())
+    console.log(q5.check_answers())
+    
+    console.log(q6.check_answers())
+    console.log(q7.check_answers())
+    console.log(q8.check_answers())
+    console.log(q9.check_answers())
+    console.log(q10.check_answers())
+    
+    console.log(q11.check_answers())
+    console.log(q12.check_answers())
+    console.log(q13.check_answers())
+    console.log(q14.check_answers())
+    console.log(q15.check_answers())
+    //just some output for debugging
+    
+    console.log(result)
+    */
+ document.getElementById("main").style.display="none";
+ document.getElementById("btn").style.display="none";
+ document.getElementById("results").style.display="block";
+res = document.getElementById("results_text");
+let temp_insert = "You answered " + result + " questions correctly."
+res.innerHTML = temp_insert;
+}
+
+function show_all_correct(){
+    res = document.getElementById("show_correct");
+    let temp_insert = q1.show_correct_answer()+q2.show_correct_answer()+q3.show_correct_answer()+ q4.show_correct_answer()+ q5.show_correct_answer()+q6.show_correct_answer()+q7.show_correct_answer()+q8.show_correct_answer()+q9.show_correct_answer()+q10.show_correct_answer()+q11.show_correct_answer()+q12.show_correct_answer()+q13.show_correct_answer()+ q14.show_correct_answer()+q15.show_correct_answer()+"<br/> Please upvote if you liked the code (^•_•^)"
+    res.innerHTML = temp_insert;
+
+}
+
+	</script>
+</body>
+</html>
