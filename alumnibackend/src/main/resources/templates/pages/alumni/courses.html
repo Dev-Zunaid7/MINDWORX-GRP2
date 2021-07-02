@@ -5,22 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>[[${title}]]</title>
+    <title>[[${title}]] · Alumni App </title>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            background-color: #f2f2f2;
-            font-family: 'Varela Round', sans-serif;
-            overflow-x: hidden;
-        }
-        
         .course-head {
             overflow: hidden;
             padding: 0 20px;
@@ -149,48 +138,9 @@
 </head>
 
 <body>
+    <div th:replace="~{page_layout/fragments :: preloader}"></div>
 
-    <div class="wrap">
-        <div class="loading">
-            <div class="bounceball"></div>
-            <div class="text">WELCOME HOME</div>
-        </div>
-    </div>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}">Alumni  <span style="color:#f37521;font-weight:bold">App</span></a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" th:href="@{/account/courses}">Courses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/account/admin}">Career</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/Webinars}">Webinars</a>
-                        </li>
-                    </ul>
-                    <div class="header-bar-menu">
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/userprofile}"><span sec:authentication="name">Username</span></a></li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/logout}">Logout</a></li>
-                        </ul>
-                    </div>
-                    <!-- .header-bar-menu -->
-                </div>
-            </div>
-        </nav>
+    <header th:replace="~{page_layout/fragments :: custom-header}">
     </header>
 
     <br>

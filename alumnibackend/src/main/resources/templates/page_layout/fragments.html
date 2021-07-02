@@ -20,7 +20,6 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/styles/css/signin.css}" rel="stylesheet">
-    <link th:href="@{/styles/css/sidebars.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/styles/css/feedsstyle.css}">
     <link rel="stylesheet" href="/styles/css/chatbot.css">
 
@@ -38,11 +37,18 @@
 
 
     <!--Scripts-->
-    <script src="/webjars/popper.js/2.9.2/umd/popper.js"></script>
-    <script src="/webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
-    <script src="/webjars/jquery/dist/jquery.min.js"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script th:src="@{/webjars/popper.js/2.9.2/umd/popper.min.js} "></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js} " integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+    <script th:src="@{/styles/js/sidebars.js} "></script>
+    <script th:src="@{/webjars/bootstrap/5.0.0/js/bootstrap.min.js} "></script>
+    <script th:src="@{/webjars/jquery/dist/jquery.min.js} "></script>
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.querySelector(".wrap ");
+            loader.className += " hidden ";
+            console.log(loader);
+        })
+    </script>
 </head>
 
 <body>
@@ -63,11 +69,26 @@
           </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/account/home}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" th:href="@{/account/admin}">User</a>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link " aria-current="page" th:href="@{/account/courses}">Courses</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated() == false" class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                        </li>
+                        <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                            <a class="nav-link" th:href="@{/account/admin}">Admin</a>
+                        </li>
+                        <li sec:authorize="hasAuthority('ALUMNI')" class="nav-item">
+                            <a class="nav-link" th:href="@{/account/Careers}">Careers</a>
+                        </li>
+                        <li sec:authorize="hasAuthority('COACH')" class="nav-item">
+                            <a class="nav-link" th:href="@{/account/coach}">Facilitator</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link" th:href="@{/Webinars}">Webinars</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/FAQ}">FAQ</a>
@@ -75,9 +96,13 @@
                     </ul>
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <li class="nav-item">
+                            <li sec:authorize="isAuthenticated()" class="nav-item">
+                                <a class="nav-link" th:href="@{/userprofile}"><span sec:authentication="name">Username</span></a></li>
+                            <li sec:authorize="isAuthenticated()" class="nav-item">
+                                <a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                            <li sec:authorize="isAuthenticated() == false" class="nav-item">
                                 <a class="nav-link" th:href="@{/registration}">REGISTER</a></li>
-                            <li class="nav-item">
+                            <li sec:authorize="isAuthenticated() == false" class="nav-item">
                                 <a class="nav-link" th:href="@{/login}">LOGIN</a></li>
                         </ul>
                     </div>
@@ -85,7 +110,6 @@
                 </div>
             </div>
         </nav>
-        <br>
     </header>
     <section th:fragment="custom-content">
         <div class="container">

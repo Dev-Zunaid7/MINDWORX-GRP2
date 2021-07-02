@@ -11,7 +11,7 @@ public class PostController {
     // only by user
     @GetMapping("/account/home")
     public String feed(Model model) {
-
+        model.addAttribute("title", "Welcome");
         return  "pages/alumni/feeds";
     }
 
