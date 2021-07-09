@@ -1,25 +1,168 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+<head th:replace="/page_layout/fragments.html :: head">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/styles/css/feedsstyle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <div th:replace="~{page_layout/fragments :: preloader}"></div>
 
-    <script src="" async defer></script>
+    <header th:replace="~{page_layout/fragments :: custom-header}">
+
+    </header>
+
+    <br>
+    <div id="outer-container mt-1">
+        <div id="sidebar" th:include="~{page_layout/fragments :: custome-sidebar}"></div>
+        <!-- Begin page content -->
+        <div id="content">
+            <div class="container">
+                <h3 class=" text-center">Messaging</h3>
+                <div class="messaging">
+                    <div class="inbox_msg">
+                        <div class="inbox_people">
+                            <div class="headind_srch">
+                                <div class="recent_heading">
+                                    <h4>Recent</h4>
+                                </div>
+                                <div class="srch_bar">
+                                    <div class="stylish-input-group">
+                                        <input type="text" class="search-bar" placeholder="Search">
+                                        <span class="input-group-addon">
+                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inbox_chat">
+                                <div class="chat_list active_chat">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_list">
+                                    <div class="chat_people">
+                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_ib">
+                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mesgs">
+                            <div class="msg_history">
+                                <div class="incoming_msg">
+                                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>Test which is a new approach to have all solutions
+                                            </p>
+                                            <span class="time_date"> 11:01 AM | June 9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>Test which is a new approach to have all solutions
+                                        </p>
+                                        <span class="time_date"> 11:01 AM | June 9</span>
+                                    </div>
+                                </div>
+                                <div class="incoming_msg">
+                                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>Test, which is a new approach to have</p>
+                                            <span class="time_date"> 11:01 AM | Yesterday</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>Apollo University, Delhi, India Test</p>
+                                        <span class="time_date"> 11:01 AM | Today</span>
+                                    </div>
+                                </div>
+                                <div class="incoming_msg">
+                                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>We work directly with our designers and suppliers, and sell direct to you, which means quality, exclusive products, at a price anyone can afford.</p>
+                                            <span class="time_date"> 11:01 AM | Today</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="type_msg">
+                                <div class="input_msg_write">
+                                    <input type="text" class="write_msg" placeholder="Type a message" />
+                                    <button class="msg_send_btn" type="button"><i class="fas fa-paper-plane"
+                                    aria-hidden="false"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

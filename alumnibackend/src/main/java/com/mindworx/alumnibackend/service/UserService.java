@@ -211,4 +211,7 @@ public class UserService implements UserDetailsService {
         MindworxGroup group = mindworxGroupdao.findByCode(groupCode);
         mindworxuser.addUserGroups(group);
     }
+
+    //POST CONTENT
+    
 }

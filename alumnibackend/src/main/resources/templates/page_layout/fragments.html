@@ -97,7 +97,7 @@
                     <div class="header-bar-menu">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li sec:authorize="isAuthenticated()" class="nav-item">
-                                <a class="nav-link" th:href="@{/userprofile}"><span sec:authentication="name">Username</span></a></li>
+                                <a class="nav-link" th:href="@{/account/profile}"><span sec:authentication="name">Username</span></a></li>
                             <li sec:authorize="isAuthenticated()" class="nav-item">
                                 <a class="nav-link" th:href="@{/logout}">Logout</a></li>
                             <li sec:authorize="isAuthenticated() == false" class="nav-item">
@@ -118,14 +118,58 @@
         </div>
     </section>
 
+    <div id="sidebar" th:fragment="custome-sidebar">
+
+        <!---------------------- Sidebar Start ---------------->
+        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; height: 100%;">
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link mb-4 active" aria-current="page">
+                        <i class="fas fa-home fa-1x fa-fw"></i><span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/account/courses}" class="nav-link mb-4  text-white">
+                        <i class="fas fa-laptop fa-1x fa-fw"></i><span>My Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link mb-4 text-white">
+                        <i class="fas fa-award fa-1x fa-fw"></i><span>Achievements</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/account/discuss}" class="nav-link mb-3 text-white">
+                        <i class="fas fa-comments fa-1x fa-fw"></i><span>Discussion</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/img/zachayO.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong><span sec:authentication="name">Username</span></strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" th:href="@{/account/profile}">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+        <!---------------------- Sidebar End ------------------>
+
+    </div>
     <div th:fragment="content_feed">
         <!-- dynamic content of discussion, alumni courses, achievements-->
         <!-- use model to achieve this-->
     </div>
 
-    <div th:fragment="chatbox_content">
 
-    </div>
 
     <footer th:fragment="custom-footer" class="footer mt-auto py-3 bg-light">
 

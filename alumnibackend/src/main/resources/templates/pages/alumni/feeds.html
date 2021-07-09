@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="/page_layout/fragments.html :: head"></head>
+<head th:replace="~{page_layout/fragments.html :: head}"></head>
 
 <body>
 
@@ -13,50 +13,8 @@
 
     <br>
     <div id="outer-container mt-1">
-        <div id="sidebar">
-            <!---------------------- Sidebar Start ---------------->
-            <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; height: 100%;">
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link mb-4 active" aria-current="page">
-                            <i class="fas fa-home fa-1x fa-fw"></i><span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a th:href="@{/account/courses}" class="nav-link mb-4  text-white">
-                            <i class="fas fa-laptop fa-1x fa-fw"></i><span>My Courses</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link mb-4 text-white">
-                            <i class="fas fa-award fa-1x fa-fw"></i><span>Achievements</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a th:href="@{/account/discuss}" class="nav-link mb-3 text-white">
-                            <i class="fas fa-comments fa-1x fa-fw"></i><span>Discussion</span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/img/zachayO.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong><span sec:authentication="name">Username</span></strong>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" th:href="@{/account/userprofile}">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!---------------------- Sidebar End ------------------>
-        </div>
+
+        <div id="sidebar" th:include="~{page_layout/fragments :: custome-sidebar}"></div>
         <!-- Begin page content -->
         <div id="content">
             <div class="mainbody">
@@ -65,20 +23,24 @@
                         <div class="input">
                             <div class="input_text">
                                 <img src="/img/zachayO.jpg" alt="no image" class=" profile rounded-circle me-2">
-                                <input type="text" value="start a post" class="post_input">
+                                <!-- select and pop-up post -->
+                                <a href="#" class="post_input" id="post_input"> start a post </a>
                             </div>
                             <div class="input_blocks">
                                 <div class="input_option">
                                     <div class="option"><i class="bi bi-image" style="color:lightblue"></i> </div>
                                     <div class="option_text">Photo</div>
+                                    <!-- Select and pop-up window dialog image type and discription input-->
                                 </div>
                                 <div class="input_option">
                                     <div class="option"><i class="bi bi-play-btn-fill" style="color:lightgreen"></i> </div>
                                     <div class="option_text">Video</div>
+                                    <!-- Select and pop-up window dialog for video type and discription input-->
                                 </div>
                                 <div class="input_option">
                                     <div class="option"><i class="bi bi-calendar-event" style="color:orange"></i> </div>
                                     <div class="option_text">Event</div>
+                                    <!-- Select and pop-up event and discription input-->
                                 </div>
                                 <div class="input_option">
                                     <div class="option"><i class="bi bi-card-text" style="color:crimson"></i> </div>
@@ -93,64 +55,11 @@
                     <div class="post_item">
                         <div class="post_item_header">
                             <div class="post_item_info">
-                                <img src="/img/SAA.png" alt="no image" class="post_profile" style="height:60px">
-                                <div class="post_item_owner" style="margin-left:8px;">
-                                    <a href="#" class="act_title">SAA Group</a>
-                                    <p class="account_name">792,456 Followers</p>
-                                    <p class="account_name">Promoted</p>
-                                </div>
-                            </div>
-                            <i class="bi bi-three-dots" style="padding:5px;"></i>
-                        </div>
-
-                        <div class="post_item_body_info">
-                            <p style="font-size: 0.95rem;"></p>
-                        </div>
-
-
-                        <img src="/img/adSAA.png" alt="noom" class="post_item_body_video" style="width:100%;">
-
-                        <div class="post_item_comment_info">
-                            <img src="1.svg" alt="">
-                            <img src="2.svg" alt="">
-                            <img src="3.svg" alt="">
-                            <span class="account_name">20 . Comments</span>
-
-                        </div>
-
-                        <div class="post_item_footer">
-                            <div class="footer_item">
-                                <i class="bi bi-hand-thumbs-up"></i>
-                                <div>Like</div>
-                            </div>
-                            <div class="footer_item">
-                                <i class="bi bi-chat-text"></i>
-                                <div>Comment</div>
-                            </div>
-                            <div class="footer_item">
-                                <i class="bi bi-arrow-90deg-right"></i>
-                                <div>Share</div>
-
-                            </div>
-                            <div class="footer_item">
-
-                                <i class="bi bi-cursor-fill"></i>
-                                <div>Send</div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <div class="post_item">
-                        <div class="post_item_header">
-                            <div class="post_item_info">
+                                <!-- dynamic picture, according to user's post-->
                                 <img src="/img/ozow-black.png" alt="no image" class="post_profile" style="height:60px">
                                 <div class="post_item_owner" style="margin-left:8px;">
-                                    <a href="#" class="act_title">Ozow Ltd </a>
-                                    <p class="account_name">483k - Followers</p>
+                                    <!-- dynamic content username of poster-->
+                                    <a href="#" class="act_title">Username </a>
                                     <p class="account_name">Youtube Channel</p>
                                 </div>
                             </div>
@@ -158,18 +67,20 @@
                         </div>
 
                         <div class="post_item_body_info">
+                            <!--dynamic post discription content here-->
                             <p style="font-size: 0.95rem;">Published new video on Customer Benefits Easy, Fast and Trusted online payments for your customers.
                             </p>
                         </div>
-
+                        <!--if user posted an image or video display it here-->
                         <video width="100%" muted controls autoplay loop class="post_iten_body_video" style="outline:none;">
                         <source src="/video/ozow_ad.mp4" type="video/mp4">
-                    </video>
+                         </video>
 
                         <div class="post_item_comment_info">
                             <img src="1.svg" alt="">
                             <img src="2.svg" alt="">
                             <img src="3.svg" alt="">
+                            <!-- dropdown list to show all comments on this post-->
                             <span class="account_name">20 . Comments</span>
 
                         </div>
@@ -177,6 +88,7 @@
                         <div class="post_item_footer">
                             <div class="footer_item">
                                 <i class="bi bi-hand-thumbs-up"></i>
+                                <!--post likes-->
                                 <div>Like</div>
                             </div>
                             <div class="footer_item">
@@ -198,60 +110,6 @@
 
                         </div>
                     </div>
-
-                    <div class="post_item">
-                        <div class="post_item_header">
-                            <div class="post_item_info">
-                                <img src="/img/good-faces.jpg " alt="no image " width="32" height="32" class="rounded-circle me-2" style="height:60px ">
-                                <div class="post_item_owner " style="margin-left:8px; ">
-                                    <a href="# " class="act_title ">Techniczoid </a>
-                                    <p class="account_name ">10 Million - Followers</p>
-                                    <p class="account_name ">Youtube Channel</p>
-                                </div>
-                            </div>
-                            <i class="bi bi-three-dots " style="padding:5px; "></i>
-                        </div>
-
-                        <div class="post_item_body_info ">
-                            <p style="font-size: 0.95rem; ">I want to intern at CRED. Here's my application. I figured that if I was going to apply, I'd make something worth it. It pays to be good. Cc: Kunal Shah Harish Sivaramakrishnan
-                            </p>
-                        </div>
-
-                        <div class="post_item_comment_info ">
-                            <img src="1.svg " alt=" ">
-                            <img src="2.svg " alt=" ">
-                            <img src="3.svg " alt=" ">
-                            <span class="account_name ">20 . Comments</span>
-
-                        </div>
-
-                        <div class="post_item_footer ">
-                            <div class="footer_item ">
-                                <i class="bi bi-hand-thumbs-up "></i>
-                                <div>Like</div>
-                            </div>
-                            <div class="footer_item ">
-                                <i class="bi bi-chat-text "></i>
-                                <div>Comment</div>
-                            </div>
-                            <div class="footer_item ">
-                                <i class="bi bi-arrow-90deg-right "></i>
-                                <div>Share</div>
-
-                            </div>
-                            <div class="footer_item ">
-
-                                <i class="bi bi-cursor-fill "></i>
-                                <div>Send</div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-
 
 
                 </div>
@@ -360,9 +218,64 @@
                 </div>
             </div>
         </div>
+        <div class="popup">
+            <div class="popup-content">
+                <div class="close">
+                    <i class="bi bi-x-circle "></i>
+                </div>
+
+                <div class="post_item_header">
+                    <div class="post_item_info">
+                        <!-- dynamic picture, according to user's post-->
+                        <img src="/img/zachayO.jpg" alt="no image" class="profile rounded-circle me-2">
+                        <div class="post_item_owner" style="margin-left:8px;">
+                            <!-- dynamic content username of poster-->
+                            <a href="#" class="act_title">Username </a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="post-description">
+                    <textarea id="txtDescription" type="text" placeholder="What would you like to share?"></textarea>
+                </div>
+                <div class="post-footer-items">
+                    <div class="input_blocks">
+                        <div class="input_option">
+                            <div class="option"><i class="bi bi-image" style="color:lightblue"></i> </div>
+                            <div class="option_text">Photo</div>
+                            <!-- Select and pop-up window dialog image type and discription input-->
+                        </div>
+                        <div class="input_option">
+                            <div class="option"><i class="bi bi-play-btn-fill" style="color:lightgreen"></i> </div>
+                            <div class="option_text">Video</div>
+                            <!-- Select and pop-up window dialog for video type and discription input-->
+                        </div>
+                        <div class="input_option">
+                            <div class="option"><i class="bi bi-calendar-event" style="color:orange"></i> </div>
+                            <div class="option_text">Event</div>
+                            <!-- Select and pop-up event and discription input-->
+                        </div>
+                        <div class="input_option">
+                            <div class="option"><i class="bi bi-card-text" style="color:crimson"></i> </div>
+                            <div class="option_text">Write article</div>
+                        </div>
+                        <a class="btn-0" href="#">Post</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
+    <script>
+        document.getElementById("post_input").addEventListener("click", function() {
+            document.querySelector(".popup").style.display = "flex";
+        })
 
+        document.querySelector(".close").addEventListener("click", function() {
+            document.querySelector(".popup").style.display = "none";
+        })
+    </script>
 
 </body>
 
