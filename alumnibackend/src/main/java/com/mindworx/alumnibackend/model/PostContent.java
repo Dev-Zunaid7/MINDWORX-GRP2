@@ -5,7 +5,6 @@ import java.sql.Date;
 public class PostContent {
     
     
-
         private String strDiscription;
         private String strImage;
         private String strVideo;
@@ -21,6 +20,9 @@ public class PostContent {
             this.dtPosttimeline = dtPosttimeline;
         }
 
+        public PostContent() {
+        }
+
         public String getStrDiscription() {
             return strDiscription;
         }
@@ -32,12 +34,11 @@ public class PostContent {
         public String getStrImage() {
             return strImage;
         }
-    
 
+        
         public void setStrImage(String strImage) {
             this.strImage = strImage;
         }
-
 
         public String getStrVideo() {
             return strVideo;

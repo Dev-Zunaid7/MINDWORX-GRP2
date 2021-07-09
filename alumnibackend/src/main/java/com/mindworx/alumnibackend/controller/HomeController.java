@@ -16,8 +16,10 @@ public class HomeController {
 
     @GetMapping("/login")
     public String login(Model model) {
+        model.addAttribute("title", "Sign-in");
         return "pages/login";
     }
+
 
     @GetMapping("/FAQ")
     public String getMethodName(Model model) {
