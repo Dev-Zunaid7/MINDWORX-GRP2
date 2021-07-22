@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mindworx.alumnibackend.model.PostContent;
+import com.mindworx.alumnibackend.service.PostService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PostController {
 
-    List<PostContent> listPosts = new ArrayList<>();
+    @Autowired
+    public  PostService postService;
+
+
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
+
     // only by user
     @GetMapping("/account/home")
     public String feed(Model model) {
@@ -27,10 +36,10 @@ public class PostController {
     //update your post.
     @PostMapping("/account/home/post")
     public String sendPost(Model model, @ModelAttribute PostContent postContent){
-        listPosts.add(postContent); //adds the new post on the list of posts from different users.
-
+         //adds the new post on the list of posts from different users.
+        
         //display the new added post on the feeds timeline.
-        model.addAttribute("listPosts", listPosts);
+        model.addAttribute("listPosts", postService.addPost(postContent));
 
         return "pages/alumni/feeds";
     }

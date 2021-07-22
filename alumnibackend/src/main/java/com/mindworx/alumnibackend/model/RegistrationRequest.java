@@ -30,9 +30,8 @@ public class RegistrationRequest {
     private String coachOrg;
 
     // REGISTER AN ALUMNI CONSTRUCTOR.
-    public RegistrationRequest(String firstName, String lastName, String userName, String initials, Date dateofBirth,
-            String gender, String email, String password, String alumInterests, boolean alumEmployed,
-            String alumWorkplace, String alumAddress) {
+    public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("DOB") Date dateofBirth,
+	@JsonProperty("gender") String gender,@JsonProperty("emailaddress") String email,@JsonProperty("psw") String password,@JsonProperty("alumInterests")  String alumInterests,@JsonProperty("alumEmployed") boolean alumEmployed,@JsonProperty("alumWorkplace") String alumWorkplace,@JsonProperty("alumAddress")	String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -46,14 +45,13 @@ public class RegistrationRequest {
         this.alumWorkplace = alumWorkplace;
         this.alumAddress = alumAddress;
     }
-
     // for
     public RegistrationRequest() {
     }
 
     // REGISTER AN ADMINISTRATOR CONSTRUCTOR.
-    public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("email") String email,@JsonProperty("dateofBirth") Date dateofBirth,
-    @JsonProperty("gender") String gender,@JsonProperty("password") String password,@JsonProperty("initials") String initials,@JsonProperty("adminDept") String adminDept) {
+    public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("emailaddress") String email,@JsonProperty("DOB") Date dateofBirth,
+    @JsonProperty("gender") String gender,@JsonProperty("psw") String password,@JsonProperty("initials") String initials,@JsonProperty("adminDept") String adminDept) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;

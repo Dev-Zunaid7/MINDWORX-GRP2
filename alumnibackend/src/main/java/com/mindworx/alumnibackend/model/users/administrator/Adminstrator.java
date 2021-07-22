@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
 @Entity
@@ -19,7 +20,7 @@ public class Adminstrator extends Mindworxuser {
 
     // Constructors to initialize the fields
     public Adminstrator(String firstName, String lastName, String userName, String initials, Date dateofBirth,
-            String gender, String email, String password, String adminDept) {
+    String gender, String email, String password,String adminDept) {
 
         super(firstName, lastName, userName, initials, dateofBirth, gender, email, password);
         this.adminDept = adminDept;

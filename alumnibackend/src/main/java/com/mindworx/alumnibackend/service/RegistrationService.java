@@ -31,6 +31,7 @@ public class RegistrationService {
 
     // register a user/alumni
     public void registerAlumni(RegistrationRequest request) {
+        System.out.println(request.getEmail());
 
         String token = userService.signUpUser(new Alumni(request.getFirstName(), request.getLastName(),
                 request.getUserName(), request.getInitials(), request.getDateofBirth(), request.getGender(),

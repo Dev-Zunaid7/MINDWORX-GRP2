@@ -2,22 +2,30 @@ package com.mindworx.alumnibackend.model;
 
 import java.sql.Date;
 
+import org.springframework.http.converter.BufferedImageHttpMessageConverter;
+
 public class PostContent {
     
     
         private String strDiscription;
-        private String strImage;
+        private BufferedImageHttpMessageConverter strImage;
         private String strVideo;
         private String strDoc;
         private Date dtPosttimeline;
+        private int  likeCounter;
+        private int  shareCounter;
 
-        public PostContent(String strDiscription, String strImage, String strVideo, String strDoc,
-                Date dtPosttimeline) {
+
+
+        public PostContent(String strDiscription, BufferedImageHttpMessageConverter strImage, String strVideo,
+                String strDoc, Date dtPosttimeline, int likeCounter, int shareCounter) {
             this.strDiscription = strDiscription;
             this.strImage = strImage;
             this.strVideo = strVideo;
             this.strDoc = strDoc;
             this.dtPosttimeline = dtPosttimeline;
+            this.likeCounter = likeCounter;
+            this.shareCounter = shareCounter;
         }
 
         public PostContent() {
@@ -31,12 +39,12 @@ public class PostContent {
             this.strDiscription = strDiscription;
         }
 
-        public String getStrImage() {
+        public BufferedImageHttpMessageConverter getStrImage() {
             return strImage;
         }
 
         
-        public void setStrImage(String strImage) {
+        public void setStrImage(BufferedImageHttpMessageConverter strImage) {
             this.strImage = strImage;
         }
 
@@ -68,7 +76,23 @@ public class PostContent {
             this.dtPosttimeline = dtPosttimeline;
         }
 
+        public int getLikeCounter() {
+            return likeCounter;
+        }
 
+        public void setLikeCounter(int likeCounter) {
+            this.likeCounter = likeCounter;
+        }
+
+        public int getShareCounter() {
+            return shareCounter;
+        }
+
+        public void setShareCounter(int shareCounter) {
+            this.shareCounter = shareCounter;
+        }
+
+        
     
 
 }
