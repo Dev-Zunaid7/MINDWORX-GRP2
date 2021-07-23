@@ -44,6 +44,8 @@ public class Alumni extends Mindworxuser {
 		this.alumEmployed = alumEmployed;
 		this.alumWorkplace = alumWorkplace;
 		this.alumAddress = alumAddress;
+
+		
 	}
 
 	// Accessor methods

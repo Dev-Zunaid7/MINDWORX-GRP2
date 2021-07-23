@@ -70,4 +70,8 @@ public class MindworxUserDetails implements UserDetails {
         return mindworxuser.isEnabled();
     }
 
+    public String getFullname(){
+        return this.mindworxuser.getFirstName() + " " + this.mindworxuser.getLastName();
+    }
+
 }
