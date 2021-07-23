@@ -12,8 +12,9 @@
 
     <br>
     <div class="container emp-profile">
-        <form method="post">
+        <form method="Post">
             <div class="row">
+
                 <div class="col-md-4">
                     <div class="profile-img">
                         <img src="/img/zachayO.jpg" alt="" />
@@ -26,18 +27,21 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            Kshiti Ghelani
+                            [[${Profile.firstName}]] [[${Profile.lastName}]]
                         </h5>
-                        <h6>
-                            Web Developer and Designer
+                        <h6 th:if="${Profile.alumEmployed==false}">
+                            Currently Unemployed
                         </h6>
-                        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                        <h6 th:if="${Profile.alumEmployed==true}">
+                            Employed at [[${Profile.alumWorkplace}]]
+                        </h6>
+                        <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" th:href="@{#home}" role="tab" aria-controls="home" aria-selected="true">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" th:href="@{#profile}" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                             </li>
                         </ul>
                     </div>
@@ -63,13 +67,13 @@
                 </div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade show active" id="home">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>User Id</label>
+                                    <label>Username</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Kshiti123</p>
+                                    <p>[[${Profile.userName}]]</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -77,7 +81,7 @@
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Kshiti Ghelani</p>
+                                    <p>[[${Profile.firstName}]] [[${Profile.lastName}]]</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -85,27 +89,27 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>kshitighelani@gmail.com</p>
+                                    <p>[[${Profile.email}]]</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Phone</label>
+                                    <label>Home Address</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>123 456 7890</p>
+                                    <p>[[${Profile.alumAddress}]]</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Profession</label>
+                                    <label>Works at</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Web Developer and Designer</p>
+                                    <p>[[${Profile.alumWorkplace}]]</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade" id="profile">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Experience</label>
@@ -158,6 +162,9 @@
             </div>
         </form>
     </div>
+
+
 </body>
+
 
 </html>

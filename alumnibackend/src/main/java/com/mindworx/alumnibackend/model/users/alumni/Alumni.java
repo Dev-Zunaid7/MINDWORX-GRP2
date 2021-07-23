@@ -30,7 +30,6 @@ public class Alumni extends Mindworxuser {
          nullable = false
      )
 	private boolean	alumEmployed;
-
      @Column(
          name = "Alum_Workplace",
          nullable = true
@@ -57,6 +56,8 @@ public class Alumni extends Mindworxuser {
 		this.alumEmployed = alumEmployed;
 		this.alumWorkplace = alumWorkplace;
 		this.alumAddress = alumAddress;
+
+		
 	}
 
 

@@ -12,6 +12,7 @@ import com.mindworx.alumnibackend.model.token.ConfirmationToken;
 import com.mindworx.alumnibackend.model.token.ConfirmationTokenService;
 import com.mindworx.alumnibackend.model.users.MindworxGroup;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
+import com.mindworx.alumnibackend.model.users.alumni.Alumni;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -77,6 +78,12 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
         // update the userdetails to set up login.
         return new MindworxUserDetails(mindworxuser);
+    }
+
+    public Alumni getUserbyEmail(String email){
+        Alumni mindworxuser = (Alumni) mindworxuserDao.findByEmail(email)
+        .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
+        return mindworxuser;
     }
 
     public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
