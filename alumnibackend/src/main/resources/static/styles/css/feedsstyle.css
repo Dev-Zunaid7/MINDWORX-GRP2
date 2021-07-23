@@ -54,11 +54,12 @@
     align-items: stretch;
 }
 
-.post-description {
-    height: 140px;
-}
 
-.post-description textarea {
+/* .post-description {
+    height: 140px;
+} */
+
+textarea {
     height: 140px;
     overflow-y: auto;
     width: -webkit-fill-available;
@@ -171,7 +172,7 @@
 .popup-content {
     width: 600px;
     background: #fff;
-    top: -100px;
+    /* top: -100px; */
     padding: 20px;
     border-radius: 5px;
     position: relative;

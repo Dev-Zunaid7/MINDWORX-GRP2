@@ -2,23 +2,22 @@ package com.mindworx.alumnibackend.model;
 
 import java.sql.Date;
 
-import org.springframework.http.converter.BufferedImageHttpMessageConverter;
 
 public class PostContent {
     
     
         private String strDiscription;
-        private BufferedImageHttpMessageConverter strImage;
+        private String strImage;
         private String strVideo;
         private String strDoc;
         private Date dtPosttimeline;
         private int  likeCounter;
         private int  shareCounter;
+        private String postedfilefolder;
 
 
-
-        public PostContent(String strDiscription, BufferedImageHttpMessageConverter strImage, String strVideo,
-                String strDoc, Date dtPosttimeline, int likeCounter, int shareCounter) {
+        public PostContent(String strDiscription, String strImage, String strVideo,
+                String strDoc, Date dtPosttimeline, int likeCounter, int shareCounter, String postedfilefolder) {
             this.strDiscription = strDiscription;
             this.strImage = strImage;
             this.strVideo = strVideo;
@@ -26,7 +25,10 @@ public class PostContent {
             this.dtPosttimeline = dtPosttimeline;
             this.likeCounter = likeCounter;
             this.shareCounter = shareCounter;
+            this.postedfilefolder = postedfilefolder;
         }
+
+    
 
         public PostContent() {
         }
@@ -39,13 +41,13 @@ public class PostContent {
             this.strDiscription = strDiscription;
         }
 
-        public BufferedImageHttpMessageConverter getStrImage() {
+        public String getStrImage() {
             return strImage;
         }
 
         
-        public void setStrImage(BufferedImageHttpMessageConverter strImage) {
-            this.strImage = strImage;
+        public void setStrImage(String strImage) {
+            this.strImage=strImage;
         }
 
         public String getStrVideo() {
@@ -90,6 +92,15 @@ public class PostContent {
 
         public void setShareCounter(int shareCounter) {
             this.shareCounter = shareCounter;
+        }
+
+        //this method is for testing- calling the method where image is stored
+        public String getUploadedDir(){
+            return postedfilefolder;
+        }
+
+        public void setUploadedDir(String postedfilefolder) {
+            this.postedfilefolder = postedfilefolder;
         }
 
         
