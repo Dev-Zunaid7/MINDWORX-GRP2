@@ -6,11 +6,6 @@
 package com.mindworx.alumnibackend.service;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mindworx.alumnibackend.model.PostContent;
-
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
 package com.mindworx.alumnibackend.controller;
 
 import com.mindworx.alumnibackend.model.MindworxUserDetails;
-import com.mindworx.alumnibackend.model.users.Mindworxuser;
+
 import com.mindworx.alumnibackend.model.users.alumni.Alumni;
 import com.mindworx.alumnibackend.service.UserService;
 

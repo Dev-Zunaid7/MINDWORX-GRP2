@@ -10,10 +10,14 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mindworx.alumnibackend.model.MindworxUserDetails;
 import com.mindworx.alumnibackend.model.PostContent;
+import com.mindworx.alumnibackend.model.users.alumni.Alumni;
 import com.mindworx.alumnibackend.service.PostService;
+import com.mindworx.alumnibackend.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,22 +30,24 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class PostController {
 
+    // @Autowired
+    // public  PostService postService;
     @Autowired
-    public  PostService postService;
+    private UserService userService; //for security and encapsulation. use postservices
+
 
     List<PostContent> listPosts = new ArrayList<>();
 
-
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
-
     // only by user
     @GetMapping("/account/home")
-    public String feed(Model model) {
+    public String feed(Model model,@AuthenticationPrincipal MindworxUserDetails loggedInUser) {
         model.addAttribute("postingRequest", new PostContent());
         model.addAttribute("title", "Welcome");
-                //display the new added post on the feeds timeline.
+        
+        Alumni mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
+        model.addAttribute("Profile",mindworxuser);
+
+        //display the new added post on the feeds timeline.
         model.addAttribute("Posts", listPosts );
         return  "pages/alumni/feeds";
     }
@@ -50,7 +56,8 @@ public class PostController {
     @PostMapping("/account/home/addpost")
     public String sendPost(Model model, @ModelAttribute("postingRequest") PostContent postContent, @RequestParam("fileImage") MultipartFile  multipartFile) throws IOException{
          //adds the new post on the list of posts from different users.
-        //read upload file, if any ( in test- read image)
+      
+         //read upload file, if any ( in test- read image)
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         postContent.setStrImage(fileName);
         String postedfilefolder= "./uploadedcontent/" + fileName; //was changed from "./uploadedcontent/" + fileName" means has folder 1231-1313.jpg/1231-1313.jpg
