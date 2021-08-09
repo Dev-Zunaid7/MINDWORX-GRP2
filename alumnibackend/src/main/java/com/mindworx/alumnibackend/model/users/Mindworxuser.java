@@ -21,7 +21,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.mindworx.alumnibackend.model.PostContent;
 
 
 @Entity
@@ -65,6 +68,9 @@ public class Mindworxuser {
     @JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     private Set<MindworxGroup> userGroups = new HashSet<>();
 
+    @OneToMany(mappedBy="mindworxuser")
+    private Set<PostContent> posts;
+
     @Column(name = "Blocked")
     private boolean active = false;
 
@@ -73,6 +79,9 @@ public class Mindworxuser {
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
+
+    @Column(name = "profile_picture",nullable = true)
+    private String profileImage;
      
 
     // constructors to initialize the variables.
@@ -216,6 +225,24 @@ public class Mindworxuser {
         this.resetPasswordToken = resetPasswordToken;
     }
 
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public Set<PostContent> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<PostContent> posts) {
+        this.posts = posts;
+    }
+
+    
+    
     
 
 }

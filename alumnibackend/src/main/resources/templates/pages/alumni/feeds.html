@@ -50,7 +50,56 @@
                         </div>
 
                     </div>
+                    <div class="popup">
+                        <form class="popup-content" method="POST" th:action="@{/account/home/addpost}" th:object="${postingRequest}" enctype="multipart/form-data">
 
+                            <div class="close">
+                                <i class="bi bi-x-circle "></i>
+                            </div>
+                            <div class="post_item_header">
+                                <div class="post_item_info">
+                                    <!-- dynamic picture, according to user's post-->
+                                    <img src="/img/zachayO.jpg" alt="no image" class="profile rounded-circle me-2">
+                                    <div class="post_item_owner" style="margin-left:8px;">
+                                        <!-- dynamic content username of poster-->
+                                        <a href="#" class="act_title">[[${Profile.firstName}]] [[${Profile.lastName}]] </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <textarea id="txtDescription" type="text" placeholder="What would you like to share?" required th:field="*{strDiscription}"></textarea>
+                                <p> <img id="blah" src="#" alt="your image" /></p>
+                            </div>
+                            <input accept="image/png, image/jpeg" type='file' name="fileImage" id="imgInp" />
+                            <div class="post-footer-items">
+                                <div class="input_blocks">
+                                    <div class="input_option">
+                                        <div class="option"><i class="bi bi-image" style="color:lightblue"></i> </div>
+                                        <div class="option_text">Photo</div>
+                                        <!-- Select and pop-up window dialog image type and discription input-->
+                                    </div>
+                                    <div class="input_option">
+                                        <div class="option"><i class="bi bi-play-btn-fill" style="color:lightgreen"></i> </div>
+                                        <div class="option_text">Video</div>
+                                        <!-- Select and pop-up window dialog for video type and discription input-->
+                                    </div>
+                                    <div class="input_option">
+                                        <div class="option"><i class="bi bi-calendar-event" style="color:orange"></i> </div>
+                                        <div class="option_text">Event</div>
+                                        <!-- Select and pop-up event and discription input-->
+                                    </div>
+                                    <div class="input_option">
+                                        <div class="option"><i class="bi bi-card-text" style="color:crimson"></i> </div>
+                                        <div class="option_text">Write article</div>
+                                    </div>
+                                    <button class="btn-0" type="submit">Post</button>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
 
 
                     <ul class="post_item" style="list-style-type: none;padding-left: 0px;">
@@ -222,56 +271,7 @@
                 </div>
             </div>
         </div>
-        <div class="popup">
-            <form class="popup-content" method="POST" th:action="@{/account/home/addpost}" th:object="${postingRequest}" enctype="multipart/form-data">
 
-                <div class="close">
-                    <i class="bi bi-x-circle "></i>
-                </div>
-                <div class="post_item_header">
-                    <div class="post_item_info">
-                        <!-- dynamic picture, according to user's post-->
-                        <img src="/img/zachayO.jpg" alt="no image" class="profile rounded-circle me-2">
-                        <div class="post_item_owner" style="margin-left:8px;">
-                            <!-- dynamic content username of poster-->
-                            <a href="#" class="act_title">[[${Profile.firstName}]] [[${Profile.lastName}]] </a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div>
-                    <textarea id="txtDescription" type="text" placeholder="What would you like to share?" required th:field="*{strDiscription}"></textarea>
-                    <p> <img id="blah" src="#" alt="your image" /></p>
-                </div>
-                <input accept="image/png, image/jpeg" type='file' name="fileImage" id="imgInp" />
-                <div class="post-footer-items">
-                    <div class="input_blocks">
-                        <div class="input_option">
-                            <div class="option"><i class="bi bi-image" style="color:lightblue"></i> </div>
-                            <div class="option_text">Photo</div>
-                            <!-- Select and pop-up window dialog image type and discription input-->
-                        </div>
-                        <div class="input_option">
-                            <div class="option"><i class="bi bi-play-btn-fill" style="color:lightgreen"></i> </div>
-                            <div class="option_text">Video</div>
-                            <!-- Select and pop-up window dialog for video type and discription input-->
-                        </div>
-                        <div class="input_option">
-                            <div class="option"><i class="bi bi-calendar-event" style="color:orange"></i> </div>
-                            <div class="option_text">Event</div>
-                            <!-- Select and pop-up event and discription input-->
-                        </div>
-                        <div class="input_option">
-                            <div class="option"><i class="bi bi-card-text" style="color:crimson"></i> </div>
-                            <div class="option_text">Write article</div>
-                        </div>
-                        <button class="btn-0" type="submit">Post</button>
-                    </div>
-
-                </div>
-
-            </form>
-        </div>
     </div>
 
     <script>

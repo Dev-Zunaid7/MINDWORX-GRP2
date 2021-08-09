@@ -60,8 +60,8 @@ public class UserService implements UserDetailsService {
     }
 
     // USER ALUMNI LEVEL: Update user details in database
-    public void updateMindworxUser(int id, Mindworxuser mindworxuser) {
-
+    public void updateMindworxUser(int id, Mindworxuser mindworxuser,String profileImg) {
+        
         // this.mindworxuserDao.saveAndFlush(id,mindworxuser);
     }
 

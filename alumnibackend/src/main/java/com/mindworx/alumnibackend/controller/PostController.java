@@ -43,7 +43,8 @@ public class PostController {
     public String feed(Model model,@AuthenticationPrincipal MindworxUserDetails loggedInUser) {
         model.addAttribute("postingRequest", new PostContent());
         model.addAttribute("title", "Welcome");
-        
+
+        //make sure this converts to a 
         Alumni mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
         model.addAttribute("Profile",mindworxuser);
 
@@ -57,25 +58,25 @@ public class PostController {
     public String sendPost(Model model, @ModelAttribute("postingRequest") PostContent postContent, @RequestParam("fileImage") MultipartFile  multipartFile) throws IOException{
          //adds the new post on the list of posts from different users.
       
-         //read upload file, if any ( in test- read image)
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        postContent.setStrImage(fileName);
-        String postedfilefolder= "./uploadedcontent/" + fileName; //was changed from "./uploadedcontent/" + fileName" means has folder 1231-1313.jpg/1231-1313.jpg
+        //  //read upload file, if any ( in test- read image)
+        // String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        // postContent.setStrImage(fileName);
+        // String postedfilefolder= "./uploadedcontent/" + fileName; //was changed from "./uploadedcontent/" + fileName" means has folder 1231-1313.jpg/1231-1313.jpg
 
-        Path   uploadPath  = Paths.get(postedfilefolder) ;
-        if(!Files.exists(uploadPath)){
-            Files.createDirectories(uploadPath);
-        }
-        postContent.setUploadedDir(postedfilefolder + fileName);
-        System.out.println(postContent.getUploadedDir());
+        // Path   uploadPath  = Paths.get(postedfilefolder) ;
+        // if(!Files.exists(uploadPath)){
+        //     Files.createDirectories(uploadPath);
+        // }
+        // postContent.setUploadedDir(postedfilefolder + fileName);
+        // System.out.println(postContent.getUploadedDir());
 
-        try {
-            InputStream inputStream = multipartFile.getInputStream();
-            Path    filePath=   uploadPath.resolve(fileName);
-            Files.copy(inputStream,filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Could not save uploaded file dude: " + fileName  );
-        }
+        // try {
+        //     InputStream inputStream = multipartFile.getInputStream();
+        //     Path    filePath=   uploadPath.resolve(fileName);
+        //     Files.copy(inputStream,filePath, StandardCopyOption.REPLACE_EXISTING);
+        // } catch (IOException e) {
+        //     throw new IOException("Could not save uploaded file dude: " + fileName  );
+        // }
 
         listPosts.add(postContent);
         return "redirect:/account/home";
