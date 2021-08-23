@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.mindworx.alumnibackend.model.MindworxUserDetails;
 import com.mindworx.alumnibackend.model.PostContent;
+import com.mindworx.alumnibackend.model.users.Mindworxuser;
 import com.mindworx.alumnibackend.model.users.alumni.Alumni;
 import com.mindworx.alumnibackend.service.PostService;
 import com.mindworx.alumnibackend.service.UserService;
@@ -45,7 +46,7 @@ public class PostController {
         model.addAttribute("title", "Welcome");
 
         //make sure this converts to a 
-        Alumni mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
+        Mindworxuser mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
         model.addAttribute("Profile",mindworxuser);
 
         //display the new added post on the feeds timeline.

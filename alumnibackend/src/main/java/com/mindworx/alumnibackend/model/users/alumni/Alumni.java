@@ -5,12 +5,15 @@
 package com.mindworx.alumnibackend.model.users.alumni;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
+
 
 @Entity
 @Table(name = "app_alum")
@@ -18,8 +21,10 @@ public class Alumni extends Mindworxuser {
 
 	// Known fields for an Alumni
 
-	@Column(name = "Alum_Interest", nullable = true)
-	private String alumInterests;
+	// @Column(name = "Alum_Interest", nullable = true)
+	// private String alumInterests;
+	@OneToMany(mappedBy = "alumni")
+    private Set<AlumniInterests> alumInterests;
 
 	@Column(name = "Alum_Employed", nullable = false)
 	private boolean alumEmployed;
@@ -35,11 +40,10 @@ public class Alumni extends Mindworxuser {
 	}
 
 	public Alumni(String firstName, String lastName, String userName, String initials, Date dateofBirth, String gender,
-			String email, String password, String alumInterests, boolean alumEmployed, String alumWorkplace,
+			String email, String password, boolean alumEmployed, String alumWorkplace,
 			String alumAddress) {
 		super(firstName, lastName, userName, initials, dateofBirth, gender, email, password);
 
-		this.alumInterests = alumInterests;
 		this.alumEmployed = alumEmployed;
 		this.alumWorkplace = alumWorkplace;
 		this.alumAddress = alumAddress;
@@ -48,14 +52,6 @@ public class Alumni extends Mindworxuser {
 	}
 
 	// Accessor methods
-
-	public String getAlumInterests() {
-		return alumInterests;
-	}
-
-	public void setAlumInterests(String alumInterests) {
-		this.alumInterests = alumInterests;
-	}
 
 	public boolean isAlumEmployed() {
 		return alumEmployed;
@@ -84,8 +80,17 @@ public class Alumni extends Mindworxuser {
 	// toString returns Alumni Details
 	@Override
 	public String toString() {
-		return "Alumni [alumAddress=" + alumAddress + ", alumEmployed=" + alumEmployed + ", alumInterests="
-				+ alumInterests + ", alumWorkplace=" + alumWorkplace + "]";
+		return "Alumni [alumAddress=" + alumAddress + ", alumEmployed=" + alumEmployed +
+				 ", alumWorkplace=" + alumWorkplace + "]";
 	}
 
+	public Set<AlumniInterests> getAlumInterests() {
+		return alumInterests;
+	}
+
+	public void setAlumInterests(Set<AlumniInterests> alumInterests) {
+		this.alumInterests = alumInterests;
+	}
+
+	
 }

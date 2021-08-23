@@ -35,7 +35,7 @@ public class RegistrationService {
 
         String token = userService.signUpUser(new Alumni(request.getFirstName(), request.getLastName(),
                 request.getUserName(), request.getInitials(), request.getDateofBirth(), request.getGender(),
-                request.getEmail(), request.getPassword(), request.getAlumInterests(), request.isAlumEmployed(),
+                request.getEmail(), request.getPassword(), request.isAlumEmployed(),
                 request.getAlumWorkplace(), request.getAlumAddress()));
 
         // send email confirmation link

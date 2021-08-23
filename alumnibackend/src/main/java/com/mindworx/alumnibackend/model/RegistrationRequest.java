@@ -18,7 +18,6 @@ public class RegistrationRequest {
     private String password;
     private String initials;
     // ALUMNI registration
-    private String alumInterests;
     private boolean alumEmployed;
     private String alumWorkplace;
     private String alumAddress;
@@ -31,7 +30,7 @@ public class RegistrationRequest {
 
     // REGISTER AN ALUMNI CONSTRUCTOR.
     public RegistrationRequest(@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("userName") String userName,@JsonProperty("initials") String initials,@JsonProperty("DOB") Date dateofBirth,
-	@JsonProperty("gender") String gender,@JsonProperty("emailaddress") String email,@JsonProperty("psw") String password,@JsonProperty("alumInterests")  String alumInterests,@JsonProperty("alumEmployed") boolean alumEmployed,@JsonProperty("alumWorkplace") String alumWorkplace,@JsonProperty("alumAddress")	String alumAddress) {
+	@JsonProperty("gender") String gender,@JsonProperty("emailaddress") String email,@JsonProperty("psw") String password,@JsonProperty("alumEmployed") boolean alumEmployed,@JsonProperty("alumWorkplace") String alumWorkplace,@JsonProperty("alumAddress")	String alumAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -40,7 +39,6 @@ public class RegistrationRequest {
         this.gender = gender;
         this.email = email;
         this.password = password;
-        this.alumInterests = alumInterests;
         this.alumEmployed = alumEmployed;
         this.alumWorkplace = alumWorkplace;
         this.alumAddress = alumAddress;
@@ -173,14 +171,6 @@ public class RegistrationRequest {
 
     public void setInitials(String initials) {
         this.initials = initials;
-    }
-
-    public String getAlumInterests() {
-        return alumInterests;
-    }
-
-    public void setAlumInterests(String alumInterests) {
-        this.alumInterests = alumInterests;
     }
 
     public boolean isAlumEmployed() {
