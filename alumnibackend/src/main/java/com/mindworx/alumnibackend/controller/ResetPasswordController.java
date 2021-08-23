@@ -81,8 +81,8 @@ public class ResetPasswordController {
          
         mailSender.send(message);
     }  
-     
-     
+       
+   
     @GetMapping("/reset_password")
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
         Mindworxuser customer = userService.getByResetPasswordToken(token);

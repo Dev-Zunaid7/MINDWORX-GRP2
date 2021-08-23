@@ -118,18 +118,15 @@ textarea {
     height: fit-content;
 }
 
-.post_item_header {
+
+/* .post_item_header {
     padding: 10px;
-}
+} */
 
 .post_item {
     background-color: white;
     border: 2px solid var(--border_color);
     height: fit-content;
-}
-
-.post_item_header {
-    padding: 10px;
 }
 
 .box1,
@@ -987,56 +984,6 @@ img {
 .profile-tab p {
     font-weight: 600;
     color: #0062cc;
-}
-
-
-/*achivement styles*/
-
-.skills {
-    text-align: right;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: white;
-}
-
-.html {
-    width: 90%;
-    background-color: #04AA6D;
-}
-
-.css {
-    width: 80%;
-    background-color: #2196F3;
-}
-
-.js {
-    width: 65%;
-    background-color: #f44336;
-}
-
-.php {
-    width: 60%;
-    background-color: #808080;
-}
-
-.java {
-    width: 50%;
-    background-color: #FF0000;
-}
-
-.ruby {
-    width: 100%;
-    background-color: 0000FF;
-}
-
-.sql {
-    width: 90%;
-    background-color: #00008B;
-}
-
-.c {
-    width: 70%;
-    background-color: #808080;
 }
 
 
