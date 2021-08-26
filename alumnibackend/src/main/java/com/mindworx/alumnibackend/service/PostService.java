@@ -6,28 +6,33 @@
 package com.mindworx.alumnibackend.service;
 
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.mindworx.alumnibackend.dao.IPostdao;
 import com.mindworx.alumnibackend.dao.IUserdao;
 import com.mindworx.alumnibackend.model.PostComments;
 import com.mindworx.alumnibackend.model.PostContent;
+import com.mindworx.alumnibackend.model.users.Mindworxuser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 @Service
 public class PostService {
 
     @Autowired
-    private IUserdao postDao;
-    private PostContent postContent;
-    private PostComments  postComments;
+    private IUserdao iUserdao;
 
-    
-    
-    public PostService(IUserdao postDao, PostContent postContent, PostComments postComments) {
-        this.postDao = postDao;
-        this.postContent = postContent;
-        this.postComments = postComments;
-    }
+    @Autowired
+    private IPostdao  iPostdao;
+
+    // @Autowired
+    // private PostComments  postComments;
+
+    @Autowired
+    private ModelMap modelMap;
 
 
 
@@ -36,13 +41,31 @@ public class PostService {
 
     //create methods to handle requests from Post Controller
     
-    // //testing - return same post. add it on current session timeline.
-    // public List<PostContent>  addPost(PostContent postContent){
-    //     //TODO: Find user who posted
-    //     //TODO: add to user's list of posted content
+    public PostContent savePost(Mindworxuser mindworxuser, String content, String photo){
+        PostContent post = new PostContent();
+        Mindworxuser user = mindworxuser;
+        post.setMindworxuser(user);
+        post.setStrDiscription(content);
+        post.setDtPosttimeline(LocalDateTime.now());
+        post.setStrImage(photo);
+        post.setStrVideo(null);
+        return iPostdao.save(post);
+    }
 
-
-    //     //TODO: save new post to database
-    //     return listPosts;
+    //getting posts of a specific user.
+    // public List<PostDto> getPostsOfUser(Integer userId){
+    //     List<Post> postList= postRepository.findPostByUserOrderById(userRepository.findUserById(userId));
+    //     List<PostDto> postDtoList= new ArrayList<>();
+    //     for (Post post :postList) {
+    //         postDtoList.add(modelMapper.map(post,PostDto.class));
+    //     }
+    //     return postDtoList;
     // }
+
+
+    //returning all posts.
+    public List<PostContent> getAllPost(){
+        return iPostdao.findAllByOrderByIdDesc();
+    }
 }
+ 
