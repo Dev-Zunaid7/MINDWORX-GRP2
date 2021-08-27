@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
-
+import com.mindworx.alumnibackend.model.users.alumni.*;
 
 @Entity
 @Table(name = "app_alum")

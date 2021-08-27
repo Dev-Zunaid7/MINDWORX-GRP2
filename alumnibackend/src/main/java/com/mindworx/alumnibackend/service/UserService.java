@@ -219,6 +219,5 @@ public class UserService implements UserDetailsService {
         mindworxuser.addUserGroups(group);
     }
 
-    //POST CONTENT
     
 }

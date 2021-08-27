@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mindworx.alumnibackend.dao.IPostdao;
-import com.mindworx.alumnibackend.dao.IUserdao;
 import com.mindworx.alumnibackend.model.PostComments;
 import com.mindworx.alumnibackend.model.PostContent;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
@@ -22,19 +21,22 @@ import org.springframework.ui.ModelMap;
 @Service
 public class PostService {
 
-    @Autowired
-    private IUserdao iUserdao;
-
-    @Autowired
     private IPostdao  iPostdao;
 
     // @Autowired
     // private PostComments  postComments;
 
-    @Autowired
+
     private ModelMap modelMap;
 
+    
 
+
+    @Autowired
+    public PostService( IPostdao iPostdao, ModelMap modelMap) {
+        this.iPostdao = iPostdao;
+        this.modelMap = modelMap;
+    }
 
     public PostService() {
     }

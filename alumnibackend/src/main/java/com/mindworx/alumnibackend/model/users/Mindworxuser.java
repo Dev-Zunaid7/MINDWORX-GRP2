@@ -68,7 +68,7 @@ public class Mindworxuser {
     @JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     private Set<MindworxGroup> userGroups = new HashSet<>();
 
-    @OneToMany(mappedBy="mindworxuser")
+    @OneToMany(mappedBy="user")
     private Set<PostContent> posts;
 
     @Column(name = "Blocked")

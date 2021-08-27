@@ -15,7 +15,7 @@ public class PostContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "postid")
-    private Long postID;
+    private Long id;
 
     @Column(name="postDescrip", nullable = false)
     private String strDiscription;
@@ -37,7 +37,7 @@ public class PostContent {
 
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
-    private Mindworxuser mindworxuser;
+    private Mindworxuser user;
 
     @OneToMany(mappedBy = "post")
     private Set<PostComments> postComments;
@@ -123,12 +123,12 @@ public class PostContent {
 
     public Mindworxuser getMindworxuser() {
         //TODO: return all the posts of a user in list.
-        return mindworxuser;
+        return user;
     }
 
     public void setMindworxuser(Mindworxuser mindworxuser) {
         //TODO: some updates to how a post is added and linked to its user.
-        this.mindworxuser = mindworxuser;
+        this.user = mindworxuser;
     }
     
 
@@ -143,7 +143,7 @@ public class PostContent {
     }
 
     public Long getPostID() {
-        return postID;
+        return id;
     }
     
 

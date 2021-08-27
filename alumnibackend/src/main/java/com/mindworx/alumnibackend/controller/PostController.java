@@ -8,13 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.mindworx.alumnibackend.model.MindworxUserDetails;
 import com.mindworx.alumnibackend.model.PostContent;
 import com.mindworx.alumnibackend.model.users.Mindworxuser;
-import com.mindworx.alumnibackend.model.users.alumni.Alumni;
 import com.mindworx.alumnibackend.service.PostService;
 import com.mindworx.alumnibackend.service.UserService;
 
@@ -35,12 +33,16 @@ public class PostController {
 
     // @Autowired
     // public  PostService postService;
-    @Autowired
     private UserService userService; //for security and encapsulation. use postservices
 
-    @Autowired
-    private PostService postService;
 
+    private PostService postService;
+    
+    @Autowired
+    public PostController(UserService userService, PostService postService) {
+        this.userService = userService;
+        this.postService = postService;
+    }
 
     // only by user
     @GetMapping("/account/home")

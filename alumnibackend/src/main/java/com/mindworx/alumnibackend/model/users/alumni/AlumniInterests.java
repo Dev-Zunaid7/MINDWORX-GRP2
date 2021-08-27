@@ -1,6 +1,5 @@
 package com.mindworx.alumnibackend.model.users.alumni;
 
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
