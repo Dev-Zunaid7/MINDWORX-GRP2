@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -60,9 +61,11 @@ public class UserService implements UserDetailsService {
     }
 
     // USER ALUMNI LEVEL: Update user details in database
-    public void updateMindworxUser(int id, Mindworxuser mindworxuser,String profileImg) {
-        
-        // this.mindworxuserDao.saveAndFlush(id,mindworxuser);
+    @Transactional
+    public void updateMindworxUser(long id,Mindworxuser user, String profileImg) {
+        Mindworxuser mindworxuser = getMindworxUserById(id).orElseThrow(() -> new UsernameNotFoundException("id doesnt exist"));
+        mindworxuser.setProfileImage(profileImg);
+        this.mindworxuserDao.saveAndFlush(mindworxuser);
     }
 
     // SYSTEM LEVEL

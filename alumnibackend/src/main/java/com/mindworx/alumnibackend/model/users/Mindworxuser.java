@@ -23,6 +23,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.mindworx.alumnibackend.model.PostContent;
 
@@ -225,14 +226,18 @@ public class Mindworxuser {
         this.resetPasswordToken = resetPasswordToken;
     }
 
-    public String getProfileImage() {
-        return profileImage;
+    @Transient
+    public String getProfileImagepath() {
+        
+        if(profileImage == null || sSID ==null) return null;
+        return "/userprofileImg/" + sSID + "/" + profileImage;
     }
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 
+    
     public Set<PostContent> getPosts() {
         return posts;
     }

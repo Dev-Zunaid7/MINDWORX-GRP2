@@ -11,29 +11,29 @@
     </header>
 
     <br>
-    <div class="container emp-profile">
-        <form method="Post">
+    <div th:object="${Profile}" class="container emp-profile">
+        <form th:action="@{/account/profile/updateprofile}" th:object="${user}" method="Post" enctype="multipart/form-data">
             <div class="row">
 
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="/img/zachayO.jpg" alt="" />
+                        <img id="blah" th:src="@{${ProfileImagepath}}" alt="" />
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
-                            <input type="file" name="file" />
+                            <input type="file" name="profileImag" accept="image/png, image/jpeg" />
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            [[${Profile.firstName}]] [[${Profile.lastName}]]
+                            <span th:text="${Profile.firstName}"></span> <span th:text="${Profile.lastName}"></span>
                         </h5>
                         <h6 th:if="${Profile.alumEmployed==false}">
                             Currently Unemployed
                         </h6>
                         <h6 th:if="${Profile.alumEmployed==true}">
-                            Employed at [[${Profile.alumWorkplace}]]
+                            Employed at <span th:text="${Profile.alumWorkplace}"></span>
                         </h6>
                         <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -73,7 +73,7 @@
                                     <label>Username</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>[[${Profile.userName}]]</p>
+                                    <p th:text="${Profile.userName}"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -81,7 +81,7 @@
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>[[${Profile.firstName}]] [[${Profile.lastName}]]</p>
+                                    <p> <span th:text="${Profile.firstName}"></span> <span th:text="${Profile.lastName}"></span> </p>
                                 </div>
                             </div>
                             <div class="row">
@@ -89,7 +89,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>[[${Profile.email}]]</p>
+                                    <p th:text="${Profile.email}">no email</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -97,7 +97,7 @@
                                     <label>Home Address</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>[[${Profile.alumAddress}]]</p>
+                                    <p th:text="${Profile.alumAddress}">no address</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -105,7 +105,7 @@
                                     <label>Works at</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>[[${Profile.alumWorkplace}]]</p>
+                                    <p th:text="${Profile.alumWorkplace}">no workplace</p>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,14 @@
         </form>
     </div>
 
-
+    <script>
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 </body>
 
 

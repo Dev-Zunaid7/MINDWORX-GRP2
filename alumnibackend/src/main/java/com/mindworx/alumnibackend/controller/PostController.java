@@ -93,6 +93,7 @@ public class PostController {
     @GetMapping("posts")
     public ResponseEntity<List<PostContent>> getAllPosts(){
         List<PostContent> postList = postService.getAllPost();
+
         return ResponseEntity.ok(postList);
     }
     //delete your post.

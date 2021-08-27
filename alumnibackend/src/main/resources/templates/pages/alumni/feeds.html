@@ -19,10 +19,10 @@
         <div id="content">
             <div class="mainbody">
                 <div class="posts">
-                    <div class="post_box">
+                    <div th:object="${Profile}" class="post_box">
                         <div class="input">
                             <div class="input_text">
-                                <img src="/img/zachayO.jpg" alt="no image" class=" profile rounded-circle me-2">
+                                <img th:src="@{${Profile.ProfileImagepath}}" alt="no image" class=" profile rounded-circle me-2">
                                 <!-- select and pop-up post -->
                                 <a href="#" class="post_input" id="post_input"> start a post </a>
                             </div>
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="popup">
+                <div th:object="${Profile}" class="popup">
                     <form class="popup-content" method="POST" th:action="@{/account/home/addpost}" th:object="${postingRequest}" enctype="multipart/form-data">
 
                         <div class="close">
@@ -227,10 +227,10 @@
                         <div class="post_item_header">
                             <div class="post_item_info">
                                 <!-- dynamic picture, according to user's post-->
-                                <img src="/img/zachayO.jpg" alt="no image" class="profile rounded-circle me-2">
+                                <img th:src="@{${ProfileImagepath}}" alt="no image" class="profile rounded-circle me-2">
                                 <div class="post_item_owner" style="margin-left:8px;">
                                     <!-- dynamic content username of poster-->
-                                    <a href="#" class="act_title">[[${Profile.firstName}]] [[${Profile.lastName}]] </a>
+                                    <a href="#" class="act_title"> <span th:text="${Profile.firstName}"></span> <span th:text="${Profile.lastName}"></span></a>
                                 </div>
                             </div>
                         </div>

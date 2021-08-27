@@ -48,14 +48,15 @@ public class UserProfileController {
         model.addAttribute("title", "Account Settings");
         return "pages/settings";
     }
-    
+
     //must update the profile picture. - this only updates the profile picture only.
     @PostMapping("/account/profile/updateprofile")
-    public RedirectView updateprofile(@AuthenticationPrincipal MindworxUserDetails loggedInUser, @RequestParam("profileImag") MultipartFile multipartFile) throws IOException {
+    public RedirectView updateprofile( Mindworxuser user,@AuthenticationPrincipal MindworxUserDetails loggedInUser, @RequestParam("profileImag") MultipartFile multipartFile) throws IOException {
         
         String flName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Mindworxuser mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
-        mindworxuser.setProfileImage(flName);
+       // mindworxuser.setProfileImage(flName);
+        userService.updateMindworxUser(mindworxuser.getsSID(),user, flName);
         
         String postedfilefolder= "./userprofileImg/" + mindworxuser.getsSID(); //was changed from "./uploadedcontent/" + fileName" means has folder 1231-1313.jpg/1231-1313.jpg
 
@@ -63,8 +64,9 @@ public class UserProfileController {
         if(!Files.exists(uploadPath)){
             Files.createDirectories(uploadPath);
         }
-        
+
         try {
+        
             InputStream inputStream = multipartFile.getInputStream();
             Path    filePath=   uploadPath.resolve(flName);
             Files.copy(inputStream,filePath, StandardCopyOption.REPLACE_EXISTING);
