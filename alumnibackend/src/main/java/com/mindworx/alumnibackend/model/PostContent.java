@@ -65,10 +65,12 @@ public class PostContent {
         this.strDiscription = strDiscription;
     }
 
-    public String getStrImage() {
-        return strImage;
+    @Transient
+    public String getPostImagePath() {
+        
+        if(strImage == null) return null;
+        return "/userprofileImg/" + strImage + "/" + strImage;
     }
-
     public void setStrImage(String strImage) {
         this.strImage = strImage;
     }

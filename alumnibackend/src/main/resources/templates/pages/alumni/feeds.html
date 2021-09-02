@@ -22,7 +22,7 @@
                     <div th:object="${Profile}" class="post_box">
                         <div class="input">
                             <div class="input_text">
-                                <img th:src="@{${Profile.ProfileImagepath}}" alt="no image" class=" profile rounded-circle me-2">
+                                <img th:src="@{${Profile.ProfileImagePath}}" alt="no image" class=" profile rounded-circle me-2">
                                 <!-- select and pop-up post -->
                                 <a href="#" class="post_input" id="post_input"> start a post </a>
                             </div>
@@ -51,16 +51,16 @@
 
                     </div>
 
-                    <ul class="post_item" style="list-style-type: none;padding-left: 0px;">
-                        <li th:each="Post : ${Posts}">
+                    <ul th:each="post : ${posts}" class="post_item" style="list-style-type: none;padding-left: 0px;">
+                        <li>
                             <!-- <div class="post_item"> -->
                             <div class="post_item_header">
                                 <div class="post_item_info">
                                     <!-- dynamic picture, according to user's post-->
-                                    <img src="/img/zachayO.jpg" alt="no image" class="post_profile" style="height:60px">
+                                    <img th:src="@{${post.user.ProfileImagePath}}" alt="no image" class="post_profile" style="height:60px">
                                     <div class="post_item_owner" style="margin-left:8px;">
                                         <!-- dynamic content username of poster-->
-                                        <a href="#" class="act_title">[[${Profile.firstName}]] [[${Profile.lastName}]]</a>
+                                        <a href="#" class="act_title" th:text="${post.user.firstName} ${post.user.lastName}"></a>
                                     </div>
                                 </div>
                                 <i class="bi bi-three-dots" style="padding:5px;"></i>
@@ -68,11 +68,11 @@
 
                             <div class="post_item_body_info">
                                 <!--dynamic post discription content here-->
-                                <p th:text="${Post.strDiscription}" style="font-size: 0.95rem;">Published new video on Customer Benefits Easy, Fast and Trusted online payments for your customers.
+                                <p th:text="${post.strDiscription}" style="font-size: 0.95rem;">Published new video on Customer Benefits Easy, Fast and Trusted online payments for your customers.
                                 </p>
                             </div>
                             <!--if user posted an image or video display it here-->
-                            <img th:src="${Post.postedfilefolder}" />
+                            <img th:src="@{${post.PostImagePath}}" />
                             <!-- <video width="100%" muted controls autoplay loop class="post_iten_body_video" style="outline:none;">
                                 <source src="/video/ozow_ad.mp4" type="video/mp4">
                                  </video> -->
@@ -82,7 +82,7 @@
                                 <img src="2.svg" alt="">
                                 <img src="3.svg" alt="">
                                 <!-- dropdown list to show all comments on this post-->
-                                <span class="account_name">20 . Comments</span>
+                                <span class="account_name" th:text="${post.commentCounter} + comments">20 . Comments</span>
 
                             </div>
 
@@ -90,7 +90,7 @@
                                 <div class="footer_item">
                                     <i class="bi bi-hand-thumbs-up"></i>
                                     <!--post likes-->
-                                    <div>Like</div>
+                                    <div> <span th:text="${post.likeCounter} + likes"></span> </div>
                                 </div>
                                 <div class="footer_item">
                                     <i class="bi bi-chat-text"></i>
@@ -227,7 +227,7 @@
                         <div class="post_item_header">
                             <div class="post_item_info">
                                 <!-- dynamic picture, according to user's post-->
-                                <img th:src="@{${ProfileImagepath}}" alt="no image" class="profile rounded-circle me-2">
+                                <img th:src="@{${Profile.ProfileImagePath}}" alt="no image" class="profile rounded-circle me-2">
                                 <div class="post_item_owner" style="margin-left:8px;">
                                     <!-- dynamic content username of poster-->
                                     <a href="#" class="act_title"> <span th:text="${Profile.firstName}"></span> <span th:text="${Profile.lastName}"></span></a>

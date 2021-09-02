@@ -28,6 +28,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class UserProfileController {
     
+
     @Autowired
     private UserService userService;
 
@@ -65,6 +66,7 @@ public class UserProfileController {
             Files.createDirectories(uploadPath);
         }
 
+
         try {
         
             InputStream inputStream = multipartFile.getInputStream();
@@ -75,5 +77,4 @@ public class UserProfileController {
         }
         return new RedirectView("/account/profile");
     }
-    
 }

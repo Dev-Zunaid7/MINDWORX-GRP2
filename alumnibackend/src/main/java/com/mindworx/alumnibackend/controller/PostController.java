@@ -54,6 +54,9 @@ public class PostController {
         Mindworxuser mindworxuser = userService.getUserbyEmail(loggedInUser.getUsername());
         model.addAttribute("Profile",mindworxuser);
 
+        List<PostContent> posts = getAllPosts();
+ 
+        model.addAttribute("posts", posts);
         //display the new added post on the feeds timeline.
         
         return  "pages/alumni/feeds";
@@ -90,11 +93,10 @@ public class PostController {
     }
 
     //getting all posst 
-    @GetMapping("posts")
-    public ResponseEntity<List<PostContent>> getAllPosts(){
+    public List<PostContent> getAllPosts(){
         List<PostContent> postList = postService.getAllPost();
 
-        return ResponseEntity.ok(postList);
+        return postList;
     }
     //delete your post.
 

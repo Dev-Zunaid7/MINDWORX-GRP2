@@ -14,5 +14,12 @@ public class ViewConfig implements WebMvcConfigurer {
         String profileImagePath =profileImageDir.toFile().getAbsolutePath();
 
         registry.addResourceHandler("/userprofileImg/**").addResourceLocations("file:/" + profileImagePath +"/");
+
+        Path postImageDir   =   Paths.get("./uploadedcontent/" );
+
+        String postImagePath = postImageDir.toFile().getAbsolutePath();
+
+        registry.addResourceHandler("/pathPatterns/**").addResourceLocations("file:/" + postImagePath + "/");
+
     }
 }

@@ -227,7 +227,7 @@ public class Mindworxuser {
     }
 
     @Transient
-    public String getProfileImagepath() {
+    public String getProfileImagePath() {
         
         if(profileImage == null || sSID ==null) return null;
         return "/userprofileImg/" + sSID + "/" + profileImage;
